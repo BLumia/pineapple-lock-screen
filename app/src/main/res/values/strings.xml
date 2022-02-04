@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Pineapple Lock Screen</string>
+    <string name="accessibility_service_label">Pineapple Lock Screen - Accessibility Service</string>
+</resources>
