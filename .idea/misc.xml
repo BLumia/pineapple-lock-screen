@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/code/PineappleLockScreen/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.1955" />
+        <entry key="..\:/code/PineappleLockScreen/app/src/main/res/drawable/ic_baseline_power_settings_new_24.xml" value="0.1955" />
         <entry key="..\:/code/PineappleLockScreen/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1235" />
         <entry key="..\:/code/PineappleLockScreen/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1235" />
         <entry key="..\:/code/PineappleLockScreen/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1235" />

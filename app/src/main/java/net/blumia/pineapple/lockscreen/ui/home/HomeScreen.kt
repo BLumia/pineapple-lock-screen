@@ -1,15 +1,14 @@
 package net.blumia.pineapple.lockscreen.ui.home
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
-import androidx.compose.runtime.Composable
+import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.blumia.pineapple.lockscreen.R
@@ -19,11 +18,23 @@ fun HomeScreen(
     onOpenA11ySettingsBtnClicked: () -> Unit = {},
     onLockScreenBtnClicked: () -> Unit = {},
     onCreateShortcutBtnClicked: () -> Unit = {},
+    onActionAboutClicked: () -> Unit = {},
 ) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(id = R.string.app_name)) }
+                title = { Text(stringResource(id = R.string.app_name)) },
+                actions = {
+                    var expanded by remember { mutableStateOf(false)}
+                    IconButton(onClick = { expanded = true }) {
+                        Icon(Icons.Default.MoreVert, contentDescription = "Menu")
+                    }
+                    DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+                        DropdownMenuItem(onClick = onActionAboutClicked) {
+                            Text(stringResource(id = R.string.about))
+                        }
+                    }
+                }
             )
         },
         floatingActionButton = {
@@ -41,8 +52,9 @@ fun HomeScreen(
     ) {
         Column(
             modifier = Modifier
-                .fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(0.dp),
+                .fillMaxWidth()
+                .padding(5.dp),
+            verticalArrangement = Arrangement.spacedBy(5.dp),
         ) {
             AccessibilityPermissionCard(onOpenA11ySettingsBtnClicked)
 
@@ -58,7 +70,6 @@ fun AccessibilityPermissionCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(5.dp)
     ) {
         Column(
             modifier = Modifier.padding(5.dp),
@@ -68,8 +79,13 @@ fun AccessibilityPermissionCard(
                 style = MaterialTheme.typography.body1,
                 text = "This application require to enable its accessibility service in order to work."
             )
-            TextButton(onClick = onOpenA11ySettingsBtnClicked) {
-                Text(text = "Accessibility Settings")
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Start
+            ) {
+                TextButton(onClick = onOpenA11ySettingsBtnClicked) {
+                    Text(text = "Accessibility Settings")
+                }
             }
         }
     }
@@ -82,7 +98,6 @@ fun CreateShortcutIconCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(5.dp)
     ) {
         Column(
             modifier = Modifier.padding(5.dp),
@@ -92,8 +107,13 @@ fun CreateShortcutIconCard(
                 style = MaterialTheme.typography.body1,
                 text = "You can create a shortcut icon on your launcher to preform the lock action."
             )
-            TextButton(onClick = onLockScreenBtnClicked) {
-                Text(text = "Create Shortcut Icon")
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Start
+            ) {
+                TextButton(onClick = onLockScreenBtnClicked) {
+                    Text(text = "Create Shortcut Icon")
+                }
             }
         }
     }
