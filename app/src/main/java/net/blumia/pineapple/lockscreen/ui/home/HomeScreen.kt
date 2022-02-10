@@ -15,12 +15,14 @@ import net.blumia.pineapple.lockscreen.R
 
 @Composable
 fun HomeScreen(
+    scaffoldState: ScaffoldState = rememberScaffoldState(),
     onOpenA11ySettingsBtnClicked: () -> Unit = {},
     onLockScreenBtnClicked: () -> Unit = {},
     onCreateShortcutBtnClicked: () -> Unit = {},
     onActionAboutClicked: () -> Unit = {},
 ) {
     Scaffold(
+        scaffoldState = scaffoldState,
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(id = R.string.app_name)) },
@@ -44,7 +46,7 @@ fun HomeScreen(
                     Icon(Icons.Filled.Lock, contentDescription = null)
                 },
                 text = {
-                    Text("Lock Screen")
+                    Text(stringResource(id = R.string.fab_lock_screen))
                 }
             )
         },
@@ -77,14 +79,14 @@ fun AccessibilityPermissionCard(
             Text(
                 modifier = Modifier.padding(6.dp),
                 style = MaterialTheme.typography.body1,
-                text = "This application require to enable its accessibility service in order to work."
+                text = stringResource(id = R.string.card_a11y_description)
             )
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Start
             ) {
                 TextButton(onClick = onOpenA11ySettingsBtnClicked) {
-                    Text(text = "Accessibility Settings")
+                    Text(text = stringResource(id = R.string.card_a11y_action_go_to_setting))
                 }
             }
         }
@@ -105,14 +107,14 @@ fun CreateShortcutIconCard(
             Text(
                 modifier = Modifier.padding(6.dp),
                 style = MaterialTheme.typography.body1,
-                text = "You can create a shortcut icon on your launcher to preform the lock action."
+                text = stringResource(id = R.string.card_shortcut_description)
             )
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Start
             ) {
                 TextButton(onClick = onLockScreenBtnClicked) {
-                    Text(text = "Create Shortcut Icon")
+                    Text(text = stringResource(id = R.string.card_shortcut_action_create_shortcut))
                 }
             }
         }

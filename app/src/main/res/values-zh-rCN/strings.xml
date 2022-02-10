@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">菠萝锁屏</string>
+    <string name="about">关于</string>
+    <string name="accessibility_service_label">菠萝锁屏 - 无障碍服务</string>
+    <string name="tile_service_label">锁屏</string>
+    <string name="shortcut_name">锁屏</string>
+    <string name="fab_lock_screen">锁定屏幕</string>
+    <string name="open_source_licenses">开放源代码许可</string>
+    <string name="current_version">当前版本</string>
+    <string name="card_a11y_description">此应用程序需要启用其对应的无障碍服务才能正常工作，您可以通过下面的按钮方便的开启或关闭相关服务。</string>
+    <string name="card_a11y_action_go_to_setting">无障碍设置</string>
+    <string name="card_shortcut_description">您可以在启动器上添加快捷方式图标以便更方便的进行锁屏。</string>
+    <string name="card_shortcut_action_create_shortcut">创建锁屏图标</string>
+    <string name="msg_pls_enable_a11y_service_first">请先开启对应的无障碍服务</string>
+    <string name="msg_action_open_a11y_settings">打开设置</string>
+</resources>

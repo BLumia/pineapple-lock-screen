@@ -92,25 +92,25 @@ fun AboutScreen(
                     ListItem(trailing = {
                         MutedText(text = net.blumia.pineapple.lockscreen.BuildConfig.VERSION_NAME)
                     }) {
-                        Text("Current Version")
+                        Text(stringResource(id = R.string.current_version))
                     }
                 }
             }
 
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(5.dp),
-            ) {
-                Column() {
-                    ListItem(
-                        modifier = Modifier.clickable {  },
-                        trailing = { MutedIcon(Icons.Default.KeyboardArrowRight) },
-                    ) {
-                        Text("Open Source Licenses")
-                    }
-                }
-            }
+//            Card(
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .padding(5.dp),
+//            ) {
+//                Column() {
+//                    ListItem(
+//                        modifier = Modifier.clickable {  },
+//                        trailing = { MutedIcon(Icons.Default.KeyboardArrowRight) },
+//                    ) {
+//                        Text(stringResource(id = R.string.open_source_licenses))
+//                    }
+//                }
+//            }
         }
     }
 }

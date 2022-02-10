@@ -4,14 +4,21 @@ import android.app.PendingIntent
 import android.content.Intent
 import android.content.pm.ShortcutInfo
 import android.content.pm.ShortcutManager
+import android.util.Log
 import android.widget.Toast
+import androidx.compose.material.SnackbarResult
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import kotlinx.coroutines.launch
 import net.blumia.pineapple.accessibility.A11yService
 import net.blumia.pineapple.accessibility.openSystemA11ySettings
 import net.blumia.pineapple.lockscreen.LockActivity
@@ -35,7 +42,13 @@ fun NavGraph(
     ) {
         composable(MainDestinations.MAIN_ROUTE) {
             val applicationContext = LocalContext.current
+            val msgString = stringResource(id = R.string.msg_pls_enable_a11y_service_first)
+            val msgActionString = stringResource(id = R.string.msg_action_open_a11y_settings)
+            val shortcutString = stringResource(id = R.string.shortcut_name)
+            val scaffoldState = rememberScaffoldState()
+            val coroutineScope = rememberCoroutineScope()
             HomeScreen(
+                scaffoldState = scaffoldState,
                 onOpenA11ySettingsBtnClicked = {
                     openSystemA11ySettings(applicationContext)
                 },
@@ -44,11 +57,12 @@ fun NavGraph(
                     if (a11yService != null) {
                         a11yService.lockScreen()
                     } else {
-                        Toast.makeText(
-                            applicationContext,
-                            "Please enable its accessibility service first.",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        coroutineScope.launch {
+                            when (scaffoldState.snackbarHostState.showSnackbar(msgString, msgActionString)) {
+                                SnackbarResult.ActionPerformed -> openSystemA11ySettings(applicationContext)
+                                SnackbarResult.Dismissed -> {}
+                            }
+                        }
                     }
                 },
                 onCreateShortcutBtnClicked = {
@@ -57,8 +71,8 @@ fun NavGraph(
                     if (shortcutManager!!.isRequestPinShortcutSupported) {
                         // Assumes there's already a shortcut with the ID "my-shortcut".
                         // The shortcut must be enabled.
-                        val pinShortcutInfo = ShortcutInfo.Builder(applicationContext, "my-shortcut")
-                            .setShortLabel("ddd")
+                        val pinShortcutInfo = ShortcutInfo.Builder(applicationContext, "shortcut-lockscreen-default")
+                            .setShortLabel(shortcutString)
                             .setIcon(android.graphics.drawable.Icon.createWithResource(applicationContext, R.mipmap.ic_launcher))
                             .setIntent(Intent(Intent.ACTION_VIEW, null, applicationContext, LockActivity::class.java))
                             .build()
