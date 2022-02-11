@@ -1,6 +1,5 @@
 package net.blumia.pineapple.lockscreen.ui.about
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -12,11 +11,11 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.blumia.pineapple.lockscreen.R
+
 
 @Composable
 fun LineItem(
@@ -69,6 +68,7 @@ fun MutedIcon(
 @Composable
 fun AboutScreen(
     onBackBtnClicked: () -> Unit = {},
+    onPrivacyPolicyBtnClicked: () -> Unit = {},
 ) {
     Scaffold(
         topBar = {
@@ -97,20 +97,26 @@ fun AboutScreen(
                 }
             }
 
-//            Card(
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .padding(5.dp),
-//            ) {
-//                Column() {
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp),
+            ) {
+                Column() {
 //                    ListItem(
 //                        modifier = Modifier.clickable {  },
 //                        trailing = { MutedIcon(Icons.Default.KeyboardArrowRight) },
 //                    ) {
 //                        Text(stringResource(id = R.string.open_source_licenses))
 //                    }
-//                }
-//            }
+                    ListItem(
+                        modifier = Modifier.clickable { onPrivacyPolicyBtnClicked() },
+                        trailing = { MutedIcon(Icons.Default.KeyboardArrowRight) },
+                    ) {
+                        Text(stringResource(id = R.string.privacy_policy))
+                    }
+                }
+            }
         }
     }
 }

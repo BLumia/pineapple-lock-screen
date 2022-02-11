@@ -13,4 +13,5 @@
     <string name="card_shortcut_action_create_shortcut">Create Shortcut Icon</string>
     <string name="msg_pls_enable_a11y_service_first">Please enable its accessibility service first</string>
     <string name="msg_action_open_a11y_settings">Open Settings</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

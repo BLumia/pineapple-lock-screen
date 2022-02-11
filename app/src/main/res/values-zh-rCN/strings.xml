@@ -14,4 +14,5 @@
     <string name="card_shortcut_action_create_shortcut">创建锁屏图标</string>
     <string name="msg_pls_enable_a11y_service_first">请先开启对应的无障碍服务</string>
     <string name="msg_action_open_a11y_settings">打开设置</string>
+    <string name="privacy_policy">隐私权政策</string>
 </resources>

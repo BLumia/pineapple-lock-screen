@@ -4,6 +4,7 @@ import android.app.PendingIntent
 import android.content.Intent
 import android.content.pm.ShortcutInfo
 import android.content.pm.ShortcutManager
+import android.net.Uri
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.material.SnackbarResult
@@ -12,7 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -99,9 +102,15 @@ fun NavGraph(
             )
         }
         composable(MainDestinations.ABOUT_ROUTE) {
+            val applicationContext = LocalContext.current
             AboutScreen(
                 onBackBtnClicked = {
                     navController.navigateUp()
+                },
+                onPrivacyPolicyBtnClicked = {
+                    val browserIntent =
+                        Intent(Intent.ACTION_VIEW, Uri.parse("https://sites.google.com/view/pineapplelockscreen-privacy/"))
+                    startActivity(applicationContext, browserIntent, null)
                 }
             )
         }
