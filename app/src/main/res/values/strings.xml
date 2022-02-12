@@ -14,4 +14,5 @@
     <string name="msg_pls_enable_a11y_service_first">Please enable its accessibility service first</string>
     <string name="msg_action_open_a11y_settings">Open Settings</string>
     <string name="privacy_policy">Privacy Policy</string>
+    <string name="accessibility_service_description">This accessibility service is used to provide the lock screen ability in the Pineapple Lock Screen application, otherwise the application won\'t be able to work.\n\nTo enable the accessibility service, just tap the toggle switch in the top right corner, then tap Allow on the next screen. You don\'t need to enable the second shortcut switch.\n\nNote:\n1. If you force stop the main application, you might need to enable this service again.\n2. If the service is enabled but the application doesn\'t work as intended, try disable and enable it again.</string>
 </resources>

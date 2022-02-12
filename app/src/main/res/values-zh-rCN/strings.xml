@@ -15,4 +15,5 @@
     <string name="msg_pls_enable_a11y_service_first">请先开启对应的无障碍服务</string>
     <string name="msg_action_open_a11y_settings">打开设置</string>
     <string name="privacy_policy">隐私权政策</string>
+    <string name="accessibility_service_description">此无障碍服务用于提供 菠萝锁屏 应用程序的锁屏功能，否则此应用程序将无法正常工作。\n\n若要启用此无障碍服务，您仅需点按此界面右上角的开关将其打开，然后按下下个屏幕上的“允许”按钮即可。您无需打开下面的快捷方式开关。\n\n注意：\n1. 若您强行停止了此应用程序，您可能会需要重新启用此服务。\n2. 若您已经启用了服务但程序仍无法按预期工作，请尝试关闭并重新打开这个服务。</string>
 </resources>

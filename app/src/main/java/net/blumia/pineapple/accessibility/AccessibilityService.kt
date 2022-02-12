@@ -5,6 +5,7 @@ import android.accessibilityservice.AccessibilityServiceInfo
 import android.content.Intent
 import android.os.Binder
 import android.view.accessibility.AccessibilityEvent
+import androidx.compose.ui.res.stringResource
 import java.lang.ref.WeakReference
 
 class A11yService : AccessibilityService() {
