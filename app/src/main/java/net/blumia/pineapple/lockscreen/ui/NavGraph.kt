@@ -5,18 +5,14 @@ import android.content.Intent
 import android.content.pm.ShortcutInfo
 import android.content.pm.ShortcutManager
 import android.net.Uri
-import android.util.Log
-import android.widget.Toast
 import androidx.compose.material.SnackbarResult
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.content.ContextCompat.startActivity
-import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -47,7 +43,7 @@ fun NavGraph(
             val applicationContext = LocalContext.current
             val msgString = stringResource(id = R.string.msg_pls_enable_a11y_service_first)
             val msgActionString = stringResource(id = R.string.msg_action_open_a11y_settings)
-            val shortcutString = stringResource(id = R.string.shortcut_name)
+            val shortcutString = stringResource(id = R.string.shortcut_name_lock)
             val scaffoldState = rememberScaffoldState()
             val coroutineScope = rememberCoroutineScope()
             HomeScreen(
@@ -59,6 +55,19 @@ fun NavGraph(
                     val a11yService = A11yService.instance()
                     if (a11yService != null) {
                         a11yService.lockScreen()
+                    } else {
+                        coroutineScope.launch {
+                            when (scaffoldState.snackbarHostState.showSnackbar(msgString, msgActionString)) {
+                                SnackbarResult.ActionPerformed -> openSystemA11ySettings(applicationContext)
+                                SnackbarResult.Dismissed -> {}
+                            }
+                        }
+                    }
+                },
+                onLockScreenBtnLongPressed = {
+                    val a11yService = A11yService.instance()
+                    if (a11yService != null) {
+                        a11yService.powerDialog()
                     } else {
                         coroutineScope.launch {
                             when (scaffoldState.snackbarHostState.showSnackbar(msgString, msgActionString)) {

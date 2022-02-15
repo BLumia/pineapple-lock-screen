@@ -8,7 +8,6 @@ import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.blumia.pineapple.lockscreen.R
@@ -18,6 +17,7 @@ fun HomeScreen(
     scaffoldState: ScaffoldState = rememberScaffoldState(),
     onOpenA11ySettingsBtnClicked: () -> Unit = {},
     onLockScreenBtnClicked: () -> Unit = {},
+    onLockScreenBtnLongPressed: () -> Unit = {},
     onCreateShortcutBtnClicked: () -> Unit = {},
     onActionAboutClicked: () -> Unit = {},
 ) {
@@ -29,7 +29,7 @@ fun HomeScreen(
                 actions = {
                     var expanded by remember { mutableStateOf(false)}
                     IconButton(onClick = { expanded = true }) {
-                        Icon(Icons.Default.MoreVert, contentDescription = "Menu")
+                        Icon(Icons.Default.MoreVert, contentDescription = stringResource(id = R.string.menu))
                     }
                     DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
                         DropdownMenuItem(onClick = onActionAboutClicked) {
