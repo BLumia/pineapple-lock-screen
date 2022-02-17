@@ -5,10 +5,8 @@ import android.content.Intent
 import android.content.pm.ShortcutInfo
 import android.content.pm.ShortcutManager
 import android.net.Uri
-import androidx.compose.material.SnackbarResult
-import androidx.compose.material.rememberScaffoldState
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.material.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.core.content.ContextCompat.getSystemService
@@ -46,10 +44,47 @@ fun NavGraph(
             val shortcutString = stringResource(id = R.string.shortcut_name_lock)
             val scaffoldState = rememberScaffoldState()
             val coroutineScope = rememberCoroutineScope()
+            var showDialog by remember { mutableStateOf(false) }
+
+            if (showDialog) {
+                AlertDialog(
+                    onDismissRequest = {
+                        showDialog = false
+                    },
+                    title = {
+                        Text(stringResource(id = R.string.accessibility_service_prominent_disclosure_dlg_title))
+                    },
+                    text = {
+                        Text(stringResource(id = R.string.accessibility_service_prominent_disclosure_dlg_desc))
+                    },
+                    confirmButton = {
+                        TextButton(onClick = {
+                            showDialog = false
+                            openSystemA11ySettings(applicationContext)
+                        }) {
+                            Text(stringResource(id = R.string.accept))
+                        }
+                    },
+                    dismissButton = {
+                        TextButton(onClick = {
+                            showDialog = false
+                        }) {
+                            Text(stringResource(id = R.string.cancel))
+                        }
+                    }
+                )
+            }
+
+            val prominentDisclosureDlg = {
+                showDialog = true
+                // openSystemA11ySettings(applicationContext)
+            }
+
             HomeScreen(
+                showDialog = showDialog,
                 scaffoldState = scaffoldState,
                 onOpenA11ySettingsBtnClicked = {
-                    openSystemA11ySettings(applicationContext)
+                    prominentDisclosureDlg()
                 },
                 onLockScreenBtnClicked = {
                     val a11yService = A11yService.instance()
@@ -58,7 +93,7 @@ fun NavGraph(
                     } else {
                         coroutineScope.launch {
                             when (scaffoldState.snackbarHostState.showSnackbar(msgString, msgActionString)) {
-                                SnackbarResult.ActionPerformed -> openSystemA11ySettings(applicationContext)
+                                SnackbarResult.ActionPerformed -> prominentDisclosureDlg()
                                 SnackbarResult.Dismissed -> {}
                             }
                         }
@@ -71,7 +106,7 @@ fun NavGraph(
                     } else {
                         coroutineScope.launch {
                             when (scaffoldState.snackbarHostState.showSnackbar(msgString, msgActionString)) {
-                                SnackbarResult.ActionPerformed -> openSystemA11ySettings(applicationContext)
+                                SnackbarResult.ActionPerformed -> prominentDisclosureDlg()
                                 SnackbarResult.Dismissed -> {}
                             }
                         }

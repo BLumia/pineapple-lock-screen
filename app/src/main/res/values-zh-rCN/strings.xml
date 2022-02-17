@@ -18,4 +18,8 @@
     <string name="accessibility_service_description">此无障碍服务用于提供 菠萝锁屏 应用程序的锁屏功能，否则此应用程序将无法正常工作。\n\n若要启用此无障碍服务，您仅需点按此界面右上角的开关将其打开，然后按下下个屏幕上的“允许”按钮即可。您无需打开下面的快捷方式开关。\n\n注意：\n1. 若您强行停止了此应用程序，您可能会需要重新启用此服务。\n2. 若您已经启用了服务但程序仍无法按预期工作，请尝试关闭并重新打开这个服务。</string>
     <string name="shortcut_name_powerdialog">电源菜单</string>
     <string name="menu">菜单</string>
+    <string name="accessibility_service_prominent_disclosure_dlg_title">无障碍服务权限说明</string>
+    <string name="accessibility_service_prominent_disclosure_dlg_desc">此应用程序通过无障碍服务提供关闭屏幕（锁屏）的功能，您需要手动启用相关服务才能正常使用。\n\n您可以通过主界面提供的入口，根据您的需要来随时打开和关闭无障碍服务。\n\n本应用程序不收集任何用户信息，您亦可在“关于”中查看此应用程序的完整隐私政策。</string>
+    <string name="accept">接受</string>
+    <string name="cancel">取消</string>
 </resources>

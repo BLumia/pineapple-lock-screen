@@ -17,4 +17,8 @@
     <string name="accessibility_service_description">This accessibility service is used to provide the lock screen ability in the Pineapple Lock Screen application, otherwise the application won\'t be able to work.\n\nTo enable the accessibility service, just tap the toggle switch in the top right corner, then tap Allow on the next screen. You don\'t need to enable the second shortcut switch.\n\nNote:\n1. If you force stop the main application, you might need to enable this service again.\n2. If the service is enabled but the application doesn\'t work as intended, try disable and enable it again.</string>
     <string name="shortcut_name_powerdialog">Power Dialog</string>
     <string name="menu">Menu</string>
+    <string name="accessibility_service_prominent_disclosure_dlg_title">About Accessibility Service Permission</string>
+    <string name="accessibility_service_prominent_disclosure_dlg_desc">This application uses the Accessibility Service to provide the lock screen functionality. Related service needs to be enabled to work.\n\nYou can use the entrance link in the main screen to access the accessibility setting at any time you want.\n\nThis application doesn\'t collect any user data. You can also review the full content of Privacy Policy in the About screen.</string>
+    <string name="accept">Accept</string>
+    <string name="cancel">Cancel</string>
 </resources>

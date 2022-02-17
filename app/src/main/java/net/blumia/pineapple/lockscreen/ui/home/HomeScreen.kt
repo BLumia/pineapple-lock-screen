@@ -14,6 +14,7 @@ import net.blumia.pineapple.lockscreen.R
 
 @Composable
 fun HomeScreen(
+    showDialog: Boolean = false,
     scaffoldState: ScaffoldState = rememberScaffoldState(),
     onOpenA11ySettingsBtnClicked: () -> Unit = {},
     onLockScreenBtnClicked: () -> Unit = {},
