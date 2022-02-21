@@ -18,8 +18,8 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
 import net.blumia.pineapple.accessibility.A11yService
 import net.blumia.pineapple.accessibility.openSystemA11ySettings
-import net.blumia.pineapple.lockscreen.LockActivity
 import net.blumia.pineapple.lockscreen.R
+import net.blumia.pineapple.lockscreen.shortcuts.LockScreenShortcut
 import net.blumia.pineapple.lockscreen.ui.about.AboutScreen
 import net.blumia.pineapple.lockscreen.ui.home.HomeScreen
 
@@ -120,8 +120,8 @@ fun NavGraph(
                         // The shortcut must be enabled.
                         val pinShortcutInfo = ShortcutInfo.Builder(applicationContext, "shortcut-lockscreen-default")
                             .setShortLabel(shortcutString)
-                            .setIcon(android.graphics.drawable.Icon.createWithResource(applicationContext, R.mipmap.ic_launcher))
-                            .setIntent(Intent(Intent.ACTION_VIEW, null, applicationContext, LockActivity::class.java))
+                            .setIcon(android.graphics.drawable.Icon.createWithResource(applicationContext, R.mipmap.ic_launcher_green_lock))
+                            .setIntent(Intent(Intent.ACTION_VIEW, null, applicationContext, LockScreenShortcut::class.java))
                             .build()
 
                         // Create the PendingIntent object only if your app needs to be notified

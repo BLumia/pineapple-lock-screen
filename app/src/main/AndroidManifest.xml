@@ -6,9 +6,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_green_lock"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_green_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PineappleLockScreen">
         <activity
@@ -20,16 +20,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".LockActivity"
-            android:exported="true"
-            android:theme="@style/Theme.PineappleLockScreen">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
         </activity>
         <service android:name="net.blumia.pineapple.accessibility.A11yService"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
@@ -54,10 +44,22 @@
             </intent-filter>
         </service>
         <activity
-            android:name=".ShortcutSetupWizardActivity"
+            android:name=".shortcuts.LockScreenShortcut"
             android:label="@string/shortcut_name_lock"
-            android:icon="@mipmap/ic_launcher"
-            android:exported="true">
+            android:icon="@mipmap/ic_launcher_green_lock"
+            android:exported="true"
+            android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".shortcuts.PowerDialogShortcut"
+            android:label="@string/shortcut_name_powerdialog"
+            android:icon="@mipmap/ic_launcher_red_power"
+            android:exported="true"
+            android:theme="@android:style/Theme.NoDisplay">
             <intent-filter>
                 <action android:name="android.intent.action.CREATE_SHORTCUT" />
                 <category android:name="android.intent.category.DEFAULT" />
