@@ -22,4 +22,10 @@
     <string name="accessibility_service_prominent_disclosure_dlg_desc">此应用程序通过无障碍服务提供关闭屏幕（锁屏）的功能，您需要手动启用相关服务才能正常使用。\n\n您可以通过主界面提供的入口，根据您的需要来随时打开和关闭无障碍服务。\n\n本应用程序不收集任何用户信息，您亦可在“关于”中查看此应用程序的完整隐私政策。</string>
     <string name="accept">接受</string>
     <string name="cancel">取消</string>
+    <string name="settings">设置</string>
+    <string name="ok">确定</string>
+    <string name="details">详情</string>
+    <string name="option_use_compat_method">使用兼容方案添加快捷方式</string>
+    <string name="option_use_compat_method_short_desc">从小部件添加快捷方式时使用兼容方案</string>
+    <string name="option_use_compat_method_long_desc">在一些启动器中，若从小部件列表中拖拽快捷方式到主屏幕，则使用兼容的方案可以创建没有应用图标角标的快捷方式图标。</string>
 </resources>

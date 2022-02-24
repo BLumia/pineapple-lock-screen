@@ -20,6 +20,7 @@ fun HomeScreen(
     onLockScreenBtnClicked: () -> Unit = {},
     onLockScreenBtnLongPressed: () -> Unit = {},
     onCreateShortcutBtnClicked: () -> Unit = {},
+    onActionSettingsClicked: () -> Unit = {},
     onActionAboutClicked: () -> Unit = {},
 ) {
     Scaffold(
@@ -33,6 +34,9 @@ fun HomeScreen(
                         Icon(Icons.Default.MoreVert, contentDescription = stringResource(id = R.string.menu))
                     }
                     DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+                        DropdownMenuItem(onClick = onActionSettingsClicked) {
+                            Text(stringResource(id = R.string.settings))
+                        }
                         DropdownMenuItem(onClick = onActionAboutClicked) {
                             Text(stringResource(id = R.string.about))
                         }

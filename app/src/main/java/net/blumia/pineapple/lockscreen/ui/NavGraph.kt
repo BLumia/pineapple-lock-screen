@@ -19,13 +19,18 @@ import kotlinx.coroutines.launch
 import net.blumia.pineapple.accessibility.A11yService
 import net.blumia.pineapple.accessibility.openSystemA11ySettings
 import net.blumia.pineapple.lockscreen.R
+import net.blumia.pineapple.lockscreen.preferences.P_PROMINENT_DISCLOSURE_ACCEPTED
+import net.blumia.pineapple.lockscreen.preferences.booleanPreference
+import net.blumia.pineapple.lockscreen.preferences.setBooleanPreference
 import net.blumia.pineapple.lockscreen.shortcuts.LockScreenShortcut
 import net.blumia.pineapple.lockscreen.ui.about.AboutScreen
 import net.blumia.pineapple.lockscreen.ui.home.HomeScreen
+import net.blumia.pineapple.lockscreen.ui.settings.SettingsScreen
 
 object MainDestinations {
     const val MAIN_ROUTE = "main"
     const val ABOUT_ROUTE = "about"
+    const val SETTINGS_ROUTE = "settings"
 }
 
 @Composable
@@ -46,6 +51,10 @@ fun NavGraph(
             val coroutineScope = rememberCoroutineScope()
             var showDialog by remember { mutableStateOf(false) }
 
+            val prominentDisclosureAccepted by applicationContext.booleanPreference(P_PROMINENT_DISCLOSURE_ACCEPTED, false).collectAsState(
+                initial = false
+            )
+
             if (showDialog) {
                 AlertDialog(
                     onDismissRequest = {
@@ -60,6 +69,9 @@ fun NavGraph(
                     confirmButton = {
                         TextButton(onClick = {
                             showDialog = false
+                            coroutineScope.launch {
+                                applicationContext.setBooleanPreference(P_PROMINENT_DISCLOSURE_ACCEPTED, true)
+                            }
                             openSystemA11ySettings(applicationContext)
                         }) {
                             Text(stringResource(id = R.string.accept))
@@ -76,8 +88,11 @@ fun NavGraph(
             }
 
             val prominentDisclosureDlg = {
-                showDialog = true
-                // openSystemA11ySettings(applicationContext)
+                if (!prominentDisclosureAccepted) {
+                    showDialog = true
+                } else {
+                    openSystemA11ySettings(applicationContext)
+                }
             }
 
             HomeScreen(
@@ -140,11 +155,44 @@ fun NavGraph(
                             successCallback.intentSender)
                     }
                 },
+                onActionSettingsClicked = {
+                    navController.navigate(MainDestinations.SETTINGS_ROUTE)
+                },
                 onActionAboutClicked = {
                     navController.navigate(MainDestinations.ABOUT_ROUTE)
                 }
             )
         }
+
+        composable(MainDestinations.SETTINGS_ROUTE) {
+            val msgCompatMethodDescString = stringResource(id = R.string.option_use_compat_method_long_desc)
+            var dialogText by remember { mutableStateOf("") }
+            if (dialogText.isNotEmpty()) {
+                AlertDialog(
+                    onDismissRequest = {
+                        dialogText = ""
+                    },
+                    text = { Text(dialogText) },
+                    confirmButton = {
+                        TextButton(onClick = {
+                            dialogText = ""
+                        }) {
+                            Text(stringResource(id = R.string.ok))
+                        }
+                    },
+                )
+            }
+
+            SettingsScreen(
+                onBackBtnClicked = {
+                    navController.navigateUp()
+                },
+                onDeprecatedShortcutInfoBtnClicked = {
+                    dialogText = msgCompatMethodDescString
+                }
+            )
+        }
+
         composable(MainDestinations.ABOUT_ROUTE) {
             val applicationContext = LocalContext.current
             AboutScreen(
