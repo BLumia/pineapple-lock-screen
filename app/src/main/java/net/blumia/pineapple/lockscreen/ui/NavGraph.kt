@@ -1,10 +1,13 @@
 package net.blumia.pineapple.lockscreen.ui
 
 import android.app.PendingIntent
+import android.content.Context.POWER_SERVICE
 import android.content.Intent
 import android.content.pm.ShortcutInfo
 import android.content.pm.ShortcutManager
 import android.net.Uri
+import android.os.PowerManager
+import android.provider.Settings
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
@@ -19,6 +22,7 @@ import kotlinx.coroutines.launch
 import net.blumia.pineapple.accessibility.A11yService
 import net.blumia.pineapple.accessibility.openSystemA11ySettings
 import net.blumia.pineapple.lockscreen.R
+import net.blumia.pineapple.lockscreen.preferences.P_DEPRECATED_SHORTCUT_METHOD
 import net.blumia.pineapple.lockscreen.preferences.P_PROMINENT_DISCLOSURE_ACCEPTED
 import net.blumia.pineapple.lockscreen.preferences.booleanPreference
 import net.blumia.pineapple.lockscreen.preferences.setBooleanPreference
@@ -26,6 +30,7 @@ import net.blumia.pineapple.lockscreen.shortcuts.LockScreenShortcut
 import net.blumia.pineapple.lockscreen.ui.about.AboutScreen
 import net.blumia.pineapple.lockscreen.ui.home.HomeScreen
 import net.blumia.pineapple.lockscreen.ui.settings.SettingsScreen
+
 
 object MainDestinations {
     const val MAIN_ROUTE = "main"
@@ -165,7 +170,14 @@ fun NavGraph(
         }
 
         composable(MainDestinations.SETTINGS_ROUTE) {
+            val applicationContext = LocalContext.current
+            val coroutineScope = rememberCoroutineScope()
+            val deprecatedShortcutMethodEnabled by applicationContext.booleanPreference(
+                P_DEPRECATED_SHORTCUT_METHOD, false).collectAsState(
+                initial = false
+            )
             val msgCompatMethodDescString = stringResource(id = R.string.option_use_compat_method_long_desc)
+            val msgBatteryOptimizationDescString = stringResource(id = R.string.option_battery_optimization_long_desc)
             var dialogText by remember { mutableStateOf("") }
             if (dialogText.isNotEmpty()) {
                 AlertDialog(
@@ -187,9 +199,22 @@ fun NavGraph(
                 onBackBtnClicked = {
                     navController.navigateUp()
                 },
+                deprecatedShortcutMethodEnabled = deprecatedShortcutMethodEnabled,
+                onDeprecatedShortcutSwitchClicked = { enabled ->
+                    coroutineScope.launch {
+                        applicationContext.setBooleanPreference(P_DEPRECATED_SHORTCUT_METHOD, enabled)
+                    }
+                },
                 onDeprecatedShortcutInfoBtnClicked = {
                     dialogText = msgCompatMethodDescString
-                }
+                },
+                onBatteryOptimizationBtnClicked = {
+                    val intent = Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)
+                    applicationContext.startActivity(intent)
+                },
+                onBatteryOptimizationInfoBtnClicked = {
+                    dialogText = msgBatteryOptimizationDescString
+                },
             )
         }
 
@@ -202,6 +227,11 @@ fun NavGraph(
                 onPrivacyPolicyBtnClicked = {
                     val browserIntent =
                         Intent(Intent.ACTION_VIEW, Uri.parse("https://sites.google.com/view/pineapplelockscreen-privacy/"))
+                    startActivity(applicationContext, browserIntent, null)
+                },
+                onSourceCodeBtnClicked = {
+                    val browserIntent =
+                        Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/BLumia/pineapple-lock-screen"))
                     startActivity(applicationContext, browserIntent, null)
                 }
             )

@@ -27,4 +27,8 @@
     <string name="option_use_compat_method">Use compat shortcut method</string>
     <string name="option_use_compat_method_short_desc">When creating shortcut from widgets</string>
     <string name="option_use_compat_method_long_desc">In some launchers, if you drag a shortcut from the widget list to the home screen, you can create a shortcut icon without the application icon displayed in the corner when using the compat method.</string>
+    <string name="source_code">Source Code</string>
+    <string name="option_battery_optimization">Battery optimization option</string>
+    <string name="option_battery_optimization_short_desc">Consider disable it for this application</string>
+    <string name="option_battery_optimization_long_desc">Some phone models/ROM may have very restrictive battery optimization functions which will result application service get killed in the background. Every time this application get killed, you\'ll need to enable its accessibility service again.\n\n To prevent this, you can disable Battery optimization for this application via system Settings screen by:\n \n 1. Select All apps in the dropdown\n 2. Select Pineapple Lock Screen then switch off or choose Don\'t optimize\n \nThis setting is only needed when your ROM keep killing the service of this application, you don\'t need to do anything if it works fine. Providing the ability of locking screen is the only thing that the service of this application will do. This won\'t affact your battery life.</string>
 </resources>

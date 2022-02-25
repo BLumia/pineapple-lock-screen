@@ -69,6 +69,7 @@ fun MutedIcon(
 fun AboutScreen(
     onBackBtnClicked: () -> Unit = {},
     onPrivacyPolicyBtnClicked: () -> Unit = {},
+    onSourceCodeBtnClicked: () -> Unit = {},
 ) {
     Scaffold(
         topBar = {
@@ -114,6 +115,12 @@ fun AboutScreen(
                         trailing = { MutedIcon(Icons.Default.KeyboardArrowRight) },
                     ) {
                         Text(stringResource(id = R.string.privacy_policy))
+                    }
+                    ListItem(
+                        modifier = Modifier.clickable { onSourceCodeBtnClicked() },
+                        trailing = { MutedIcon(Icons.Default.KeyboardArrowRight) },
+                    ) {
+                        Text(stringResource(id = R.string.source_code))
                     }
                 }
             }

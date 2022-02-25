@@ -28,4 +28,8 @@
     <string name="option_use_compat_method">使用兼容方案添加快捷方式</string>
     <string name="option_use_compat_method_short_desc">从小部件添加快捷方式时使用兼容方案</string>
     <string name="option_use_compat_method_long_desc">在一些启动器中，若从小部件列表中拖拽快捷方式到主屏幕，则使用兼容的方案可以创建没有应用图标角标的快捷方式图标。</string>
+    <string name="source_code">软件源代码</string>
+    <string name="option_battery_optimization">电池优化选项</string>
+    <string name="option_battery_optimization_short_desc">请考虑为此应用关闭电池优化</string>
+    <string name="option_battery_optimization_long_desc">部分手机型号 / ROM 可能包含了非常严格的电池保护策略，致使应用程序服务可能在后台被系统强制结束。每当此应用程序的服务被结束或停止时，您就将需要再次重新启用此程序的无障碍服务。\n\n为防止这种情况发生，您可以在系统的设置屏幕中为此应用程序关闭电池优化功能，方法为：\n\n1. 在下拉菜单中选择 所有应用\n2. 选择 菠萝锁屏 并关闭开关或选择不要优化\n\n仅当您的 ROM 反复停止此应用程序的后台服务时，您才可能需要进行这个操作。若此程序本身在您的系统中工作正常，则您不需要进行任何额外设置。提供锁屏功能即此应用的无障碍服务包含的唯一功能，故此应用不会影响您的电池寿命。</string>
 </resources>

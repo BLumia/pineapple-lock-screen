@@ -1,6 +1,8 @@
 package net.blumia.pineapple.lockscreen.ui.home
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
@@ -59,6 +61,7 @@ fun HomeScreen(
     ) {
         Column(
             modifier = Modifier
+                .verticalScroll(rememberScrollState())
                 .fillMaxWidth()
                 .padding(5.dp),
             verticalArrangement = Arrangement.spacedBy(5.dp),
