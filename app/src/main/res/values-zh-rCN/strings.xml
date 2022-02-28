@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">菠萝锁屏</string>
+    <string name="app_launcher_name">菠萝锁屏</string>
     <string name="about">关于</string>
     <string name="accessibility_service_label">菠萝锁屏 - 无障碍服务</string>
     <string name="tile_service_label">锁屏</string>
@@ -32,4 +33,8 @@
     <string name="option_battery_optimization">电池优化选项</string>
     <string name="option_battery_optimization_short_desc">请考虑为此应用关闭电池优化</string>
     <string name="option_battery_optimization_long_desc">部分手机型号 / ROM 可能包含了非常严格的电池保护策略，致使应用程序服务可能在后台被系统强制结束。每当此应用程序的服务被结束或停止时，您就将需要再次重新启用此程序的无障碍服务。\n\n为防止这种情况发生，您可以在系统的设置屏幕中为此应用程序关闭电池优化功能，方法为：\n\n1. 在下拉菜单中选择 所有应用\n2. 选择 菠萝锁屏 并关闭开关或选择不要优化\n\n仅当您的 ROM 反复停止此应用程序的后台服务时，您才可能需要进行这个操作。若此程序本身在您的系统中工作正常，则您不需要进行任何额外设置。提供锁屏功能即此应用的无障碍服务包含的唯一功能，故此应用不会影响您的电池寿命。</string>
+    <string name="card_qstile_description">此应用也提供了一个可用于快捷设置的设置项以供关闭屏幕。您可以通过编辑快捷设置区域的方式将“锁定屏幕”快捷设置图标拖拽到您希望的位置以供使用。</string>
+    <string name="card_qstile_action_open_qs">打开快捷设置</string>
+    <string name="rate_us">评价应用</string>
+    <string name="share">分享应用</string>
 </resources>

@@ -1,6 +1,7 @@
 package net.blumia.pineapple.lockscreen.ui
 
 import android.app.PendingIntent
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.ShortcutInfo
 import android.content.pm.ShortcutManager
@@ -19,6 +20,7 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
 import net.blumia.pineapple.accessibility.A11yService
 import net.blumia.pineapple.accessibility.openSystemA11ySettings
+import net.blumia.pineapple.lockscreen.BuildConfig
 import net.blumia.pineapple.lockscreen.R
 import net.blumia.pineapple.lockscreen.preferences.*
 import net.blumia.pineapple.lockscreen.shortcuts.LockScreenShortcut
@@ -156,6 +158,19 @@ fun NavGraph(
                             successCallback.intentSender)
                     }
                 },
+                onOpenQuickSettingsBtnClicked = {
+                    val a11yService = A11yService.instance()
+                    if (a11yService != null) {
+                        a11yService.quickSettings()
+                    } else {
+                        coroutineScope.launch {
+                            when (scaffoldState.snackbarHostState.showSnackbar(msgString, msgActionString)) {
+                                SnackbarResult.ActionPerformed -> prominentDisclosureDlg()
+                                SnackbarResult.Dismissed -> {}
+                            }
+                        }
+                    }
+                },
                 onActionSettingsClicked = {
                     navController.navigate(MainDestinations.SETTINGS_ROUTE)
                 },
@@ -216,14 +231,40 @@ fun NavGraph(
 
         composable(MainDestinations.ABOUT_ROUTE) {
             val applicationContext = LocalContext.current
+            val appPackageName = applicationContext.packageName
             AboutScreen(
                 onBackBtnClicked = {
                     navController.navigateUp()
+                },
+                onShareBtnClicked = {
+                    val sendIntent: Intent = Intent().apply {
+                        action = Intent.ACTION_SEND
+                        putExtra(Intent.EXTRA_TEXT, BuildConfig.STORE_LINK.format(appPackageName))
+                        type = "text/plain"
+                    }
+
+                    val shareIntent = Intent.createChooser(sendIntent, null)
+                    startActivity(applicationContext, shareIntent, null)
                 },
                 onPrivacyPolicyBtnClicked = {
                     val browserIntent =
                         Intent(Intent.ACTION_VIEW, Uri.parse("https://sites.google.com/view/pineapplelockscreen-privacy/"))
                     startActivity(applicationContext, browserIntent, null)
+                },
+                onRateUsBtnClicked = {
+                    try {
+                        startActivity(
+                            applicationContext,
+                            Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackageName")),
+                            null
+                        )
+                    } catch (e: ActivityNotFoundException) {
+                        startActivity(
+                            applicationContext,
+                            Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=$appPackageName")),
+                            null
+                        )
+                    }
                 },
                 onSourceCodeBtnClicked = {
                     val browserIntent =

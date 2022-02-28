@@ -6,6 +6,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
@@ -69,6 +70,8 @@ fun MutedIcon(
 fun AboutScreen(
     onBackBtnClicked: () -> Unit = {},
     onPrivacyPolicyBtnClicked: () -> Unit = {},
+    onRateUsBtnClicked: () -> Unit = {},
+    onShareBtnClicked: () -> Unit = {},
     onSourceCodeBtnClicked: () -> Unit = {},
 ) {
     Scaffold(
@@ -95,6 +98,13 @@ fun AboutScreen(
                     }) {
                         Text(stringResource(id = R.string.current_version))
                     }
+
+                    ListItem(
+                        modifier = Modifier.clickable { onShareBtnClicked() },
+                        trailing = { MutedIcon(Icons.Default.Share) },
+                    ) {
+                        Text(stringResource(id = R.string.share))
+                    }
                 }
             }
 
@@ -116,6 +126,14 @@ fun AboutScreen(
                     ) {
                         Text(stringResource(id = R.string.privacy_policy))
                     }
+
+                    ListItem(
+                        modifier = Modifier.clickable { onRateUsBtnClicked() },
+                        trailing = { MutedIcon(Icons.Default.KeyboardArrowRight) },
+                    ) {
+                        Text(stringResource(id = R.string.rate_us))
+                    }
+
                     ListItem(
                         modifier = Modifier.clickable { onSourceCodeBtnClicked() },
                         trailing = { MutedIcon(Icons.Default.KeyboardArrowRight) },

@@ -13,9 +13,51 @@ android {
         versionCode 2
         versionName "1.0.0"
 
+        manifestPlaceholders = [
+            launcherIcon: "@mipmap/ic_launcher_green_lock",
+            launcherIconRound: "@mipmap/ic_launcher_green_round"
+        ]
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary true
+        }
+    }
+
+    flavorDimensions "mode"
+    productFlavors {
+        create("free") {
+            dimension = "mode"
+
+            resValue "bool", "supportQuickSettingsTile", "false"
+            buildConfigField "boolean", "PROMINENT_DISCLOSURE_REQUIRED", "true"
+            buildConfigField "boolean", "USE_DEPRECATED_SHORTCUT_METHOD", "false"
+            buildConfigField "String", "STORE_LINK", "\"https://play.google.com/store/apps/details?id=%s\""
+        }
+        create("plus") {
+            dimension = "mode"
+            applicationIdSuffix = ".plus"
+            versionNameSuffix = "-plus"
+
+            manifestPlaceholders = [
+                launcherIcon: "@mipmap/ic_launcher_blue_lock",
+                launcherIconRound: "@mipmap/ic_launcher_blue_round"
+            ]
+            resValue "bool", "supportQuickSettingsTile", "true"
+            buildConfigField "boolean", "PROMINENT_DISCLOSURE_REQUIRED", "true"
+            buildConfigField "boolean", "USE_DEPRECATED_SHORTCUT_METHOD", "true"
+            buildConfigField "String", "STORE_LINK", "\"https://play.google.com/store/apps/details?id=%s\""
+        }
+        create("oss") {
+            dimension = "mode"
+            applicationIdSuffix = ".oss"
+            versionNameSuffix = "-oss"
+
+            resValue "bool", "supportQuickSettingsTile", "true"
+            buildConfigField "boolean", "PROMINENT_DISCLOSURE_REQUIRED", "false"
+            buildConfigField "boolean", "USE_DEPRECATED_SHORTCUT_METHOD", "false"
+            // Change this to other FOSS store link when we have one.
+            buildConfigField "String", "STORE_LINK", "\"https://play.google.com/store/apps/details?id=%s\""
         }
     }
 

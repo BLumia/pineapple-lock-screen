@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import net.blumia.pineapple.lockscreen.BuildConfig
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -25,8 +26,8 @@ fun Context.stringPreference(key: Preferences.Key<String>) : Flow<String> {
 
 private fun booleanDefaultValue(key: Preferences.Key<Boolean>): Boolean {
     return when (key) {
-        PreferencesKeys.PROMINENT_DISCLOSURE_ACCEPTED -> false
-        PreferencesKeys.DEPRECATED_SHORTCUT_METHOD -> false
+        PreferencesKeys.PROMINENT_DISCLOSURE_ACCEPTED -> !BuildConfig.PROMINENT_DISCLOSURE_REQUIRED
+        PreferencesKeys.DEPRECATED_SHORTCUT_METHOD -> BuildConfig.USE_DEPRECATED_SHORTCUT_METHOD
         else -> false
     }
 }
