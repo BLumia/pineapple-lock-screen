@@ -4,7 +4,7 @@
       alt="Get it on Google Play"
       height="80">](https://play.google.com/store/apps/details?id=net.blumia.pineapple.lockscreen)
 
-Turn the screen off without using the physic power button.
+Turn the screen off without using the physical power button.
 
 ## Pull requests
 

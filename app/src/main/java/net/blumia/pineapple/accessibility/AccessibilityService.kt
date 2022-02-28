@@ -55,6 +55,8 @@ class A11yService : AccessibilityService() {
 
     fun powerDialog(): Boolean = performGlobalAction(GLOBAL_ACTION_POWER_DIALOG)
 
+    fun quickSettings(): Boolean = performGlobalAction(GLOBAL_ACTION_QUICK_SETTINGS)
+
     companion object {
         private var mInstance: WeakReference<A11yService> = WeakReference(null)
         fun instance(): A11yService? {

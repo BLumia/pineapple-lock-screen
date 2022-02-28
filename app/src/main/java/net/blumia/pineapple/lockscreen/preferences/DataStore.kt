@@ -11,8 +11,10 @@ import kotlinx.coroutines.flow.map
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
-val P_PROMINENT_DISCLOSURE_ACCEPTED = booleanPreferencesKey("prominent_disclosure_accepted")
-val P_DEPRECATED_SHORTCUT_METHOD = booleanPreferencesKey("deprecated_shortcut_method")
+object PreferencesKeys {
+    val PROMINENT_DISCLOSURE_ACCEPTED = booleanPreferencesKey("prominent_disclosure_accepted")
+    val DEPRECATED_SHORTCUT_METHOD = booleanPreferencesKey("deprecated_shortcut_method")
+}
 
 fun Context.stringPreference(key: Preferences.Key<String>) : Flow<String> {
     return dataStore.data
@@ -21,10 +23,18 @@ fun Context.stringPreference(key: Preferences.Key<String>) : Flow<String> {
         }
 }
 
-fun Context.booleanPreference(key: Preferences.Key<Boolean>, defaultValue: Boolean) : Flow<Boolean> {
+private fun booleanDefaultValue(key: Preferences.Key<Boolean>): Boolean {
+    return when (key) {
+        PreferencesKeys.PROMINENT_DISCLOSURE_ACCEPTED -> false
+        PreferencesKeys.DEPRECATED_SHORTCUT_METHOD -> false
+        else -> false
+    }
+}
+
+fun Context.booleanPreference(key: Preferences.Key<Boolean>) : Flow<Boolean> {
     return dataStore.data
         .map { preferences ->
-            preferences[key] ?: defaultValue
+            preferences[key] ?: booleanDefaultValue(key)
         }
 }
 

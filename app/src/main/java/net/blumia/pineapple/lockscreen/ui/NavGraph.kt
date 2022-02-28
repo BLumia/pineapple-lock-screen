@@ -1,12 +1,10 @@
 package net.blumia.pineapple.lockscreen.ui
 
 import android.app.PendingIntent
-import android.content.Context.POWER_SERVICE
 import android.content.Intent
 import android.content.pm.ShortcutInfo
 import android.content.pm.ShortcutManager
 import android.net.Uri
-import android.os.PowerManager
 import android.provider.Settings
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -22,10 +20,7 @@ import kotlinx.coroutines.launch
 import net.blumia.pineapple.accessibility.A11yService
 import net.blumia.pineapple.accessibility.openSystemA11ySettings
 import net.blumia.pineapple.lockscreen.R
-import net.blumia.pineapple.lockscreen.preferences.P_DEPRECATED_SHORTCUT_METHOD
-import net.blumia.pineapple.lockscreen.preferences.P_PROMINENT_DISCLOSURE_ACCEPTED
-import net.blumia.pineapple.lockscreen.preferences.booleanPreference
-import net.blumia.pineapple.lockscreen.preferences.setBooleanPreference
+import net.blumia.pineapple.lockscreen.preferences.*
 import net.blumia.pineapple.lockscreen.shortcuts.LockScreenShortcut
 import net.blumia.pineapple.lockscreen.ui.about.AboutScreen
 import net.blumia.pineapple.lockscreen.ui.home.HomeScreen
@@ -56,7 +51,8 @@ fun NavGraph(
             val coroutineScope = rememberCoroutineScope()
             var showDialog by remember { mutableStateOf(false) }
 
-            val prominentDisclosureAccepted by applicationContext.booleanPreference(P_PROMINENT_DISCLOSURE_ACCEPTED, false).collectAsState(
+            val prominentDisclosureAccepted by applicationContext.booleanPreference(
+                PreferencesKeys.PROMINENT_DISCLOSURE_ACCEPTED).collectAsState(
                 initial = false
             )
 
@@ -75,7 +71,7 @@ fun NavGraph(
                         TextButton(onClick = {
                             showDialog = false
                             coroutineScope.launch {
-                                applicationContext.setBooleanPreference(P_PROMINENT_DISCLOSURE_ACCEPTED, true)
+                                applicationContext.setBooleanPreference(PreferencesKeys.PROMINENT_DISCLOSURE_ACCEPTED, true)
                             }
                             openSystemA11ySettings(applicationContext)
                         }) {
@@ -173,7 +169,7 @@ fun NavGraph(
             val applicationContext = LocalContext.current
             val coroutineScope = rememberCoroutineScope()
             val deprecatedShortcutMethodEnabled by applicationContext.booleanPreference(
-                P_DEPRECATED_SHORTCUT_METHOD, false).collectAsState(
+                PreferencesKeys.DEPRECATED_SHORTCUT_METHOD).collectAsState(
                 initial = false
             )
             val msgCompatMethodDescString = stringResource(id = R.string.option_use_compat_method_long_desc)
@@ -202,7 +198,7 @@ fun NavGraph(
                 deprecatedShortcutMethodEnabled = deprecatedShortcutMethodEnabled,
                 onDeprecatedShortcutSwitchClicked = { enabled ->
                     coroutineScope.launch {
-                        applicationContext.setBooleanPreference(P_DEPRECATED_SHORTCUT_METHOD, enabled)
+                        applicationContext.setBooleanPreference(PreferencesKeys.DEPRECATED_SHORTCUT_METHOD, enabled)
                     }
                 },
                 onDeprecatedShortcutInfoBtnClicked = {

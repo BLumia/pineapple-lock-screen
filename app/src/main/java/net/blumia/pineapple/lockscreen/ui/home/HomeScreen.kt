@@ -74,8 +74,10 @@ fun HomeScreen(
 }
 
 @Composable
-fun AccessibilityPermissionCard(
-    onOpenA11ySettingsBtnClicked: () -> Unit = {}
+fun MainScreenCard(
+    descriptionText: String,
+    actionText: String,
+    onActionClicked: () -> Unit = {},
 ) {
     Card(
         modifier = Modifier
@@ -87,14 +89,14 @@ fun AccessibilityPermissionCard(
             Text(
                 modifier = Modifier.padding(6.dp),
                 style = MaterialTheme.typography.body1,
-                text = stringResource(id = R.string.card_a11y_description)
+                text = descriptionText
             )
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Start
             ) {
-                TextButton(onClick = onOpenA11ySettingsBtnClicked) {
-                    Text(text = stringResource(id = R.string.card_a11y_action_go_to_setting))
+                TextButton(onClick = onActionClicked) {
+                    Text(text = actionText)
                 }
             }
         }
@@ -102,31 +104,25 @@ fun AccessibilityPermissionCard(
 }
 
 @Composable
+fun AccessibilityPermissionCard(
+    onOpenA11ySettingsBtnClicked: () -> Unit = {}
+) {
+    MainScreenCard(
+        descriptionText = stringResource(id = R.string.card_a11y_description),
+        actionText = stringResource(id = R.string.card_a11y_action_go_to_setting),
+        onActionClicked = onOpenA11ySettingsBtnClicked
+    )
+}
+
+@Composable
 fun CreateShortcutIconCard(
     onLockScreenBtnClicked: () -> Unit = {}
 ) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-    ) {
-        Column(
-            modifier = Modifier.padding(5.dp),
-        ) {
-            Text(
-                modifier = Modifier.padding(6.dp),
-                style = MaterialTheme.typography.body1,
-                text = stringResource(id = R.string.card_shortcut_description)
-            )
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.Start
-            ) {
-                TextButton(onClick = onLockScreenBtnClicked) {
-                    Text(text = stringResource(id = R.string.card_shortcut_action_create_shortcut))
-                }
-            }
-        }
-    }
+    MainScreenCard(
+        descriptionText = stringResource(id = R.string.card_shortcut_description),
+        actionText = stringResource(id = R.string.card_shortcut_action_create_shortcut),
+        onActionClicked = onLockScreenBtnClicked
+    )
 }
 
 @Composable

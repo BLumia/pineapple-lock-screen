@@ -6,13 +6,11 @@ import android.content.pm.ShortcutInfo
 import android.content.pm.ShortcutManager
 import android.graphics.drawable.Icon
 import android.os.Bundle
-import android.util.Log
 import androidx.core.content.ContextCompat
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.runBlocking
 import net.blumia.pineapple.lockscreen.R
-import net.blumia.pineapple.lockscreen.preferences.P_DEPRECATED_SHORTCUT_METHOD
+import net.blumia.pineapple.lockscreen.preferences.PreferencesKeys
 import net.blumia.pineapple.lockscreen.preferences.booleanPreference
 
 abstract class ShortcutActivity: Activity() {
@@ -29,7 +27,7 @@ abstract class ShortcutActivity: Activity() {
         val shortcutManager = ContextCompat.getSystemService(applicationContext, ShortcutManager::class.java)
         val useDeprecatedMethod: Boolean
         runBlocking {
-            useDeprecatedMethod = applicationContext.booleanPreference(P_DEPRECATED_SHORTCUT_METHOD, false).firstOrNull()!!
+            useDeprecatedMethod = applicationContext.booleanPreference(PreferencesKeys.DEPRECATED_SHORTCUT_METHOD).firstOrNull()!!
         }
         return if (useDeprecatedMethod || shortcutManager == null) {
             Intent().putExtra(Intent.EXTRA_SHORTCUT_INTENT, Intent(this, this::class.java))
