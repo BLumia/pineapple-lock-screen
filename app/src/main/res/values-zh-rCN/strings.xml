@@ -37,4 +37,7 @@
     <string name="card_qstile_action_open_qs">打开快捷设置</string>
     <string name="rate_us">评价应用</string>
     <string name="share">分享应用</string>
+    <string name="app_widget_description">可调整大小的锁屏小部件</string>
+    <string name="loading_widget">加载中</string>
+    <string name="app_widget_name">锁屏小部件</string>
 </resources>

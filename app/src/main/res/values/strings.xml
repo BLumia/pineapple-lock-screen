@@ -36,4 +36,7 @@
     <string name="card_qstile_action_open_qs">Open Quick Settings</string>
     <string name="rate_us">Rate Us</string>
     <string name="share">Share</string>
+    <string name="app_widget_description">Resizable widget for locking screen</string>
+    <string name="loading_widget">Loading</string>
+    <string name="app_widget_name">Lock Screen Widget</string>
 </resources>
