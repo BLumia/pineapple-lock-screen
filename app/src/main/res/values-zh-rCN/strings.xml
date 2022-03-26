@@ -40,4 +40,5 @@
     <string name="app_widget_description">可调整大小的锁屏小部件</string>
     <string name="loading_widget">加载中</string>
     <string name="app_widget_name">锁屏小部件</string>
+    <string name="get_plus_version">获取 Plus 版</string>
 </resources>

@@ -246,6 +246,13 @@ fun NavGraph(
                     val shareIntent = Intent.createChooser(sendIntent, null)
                     startActivity(applicationContext, shareIntent, null)
                 },
+                onGetPlusVersionBtnClicked = {
+                    startActivity(
+                        applicationContext,
+                        Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=net.blumia.pineapple.lockscreen.plus")),
+                        null
+                    )
+                },
                 onPrivacyPolicyBtnClicked = {
                     val browserIntent =
                         Intent(Intent.ACTION_VIEW, Uri.parse("https://sites.google.com/view/pineapplelockscreen-privacy/"))

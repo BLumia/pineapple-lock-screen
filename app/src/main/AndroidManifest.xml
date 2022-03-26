@@ -67,7 +67,7 @@
         </activity>
         <receiver
             android:name=".glancewidget.FirstGlanceWidgetReceiver"
-            android:enabled="@bool/glance_appwidget_available"
+            android:enabled="@bool/supportAppWidget"
             android:label="@string/app_widget_name"
             android:exported="false">
             <intent-filter>
