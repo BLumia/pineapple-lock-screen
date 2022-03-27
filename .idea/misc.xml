@@ -8,13 +8,16 @@
         <entry key="..\:/code/PineappleLockScreen/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1235" />
         <entry key="..\:/code/PineappleLockScreen/app/src/main/res/drawable/ic_launcher_background_blue.xml" value="0.1715" />
         <entry key="..\:/code/PineappleLockScreen/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1235" />
+        <entry key="..\:/code/PineappleLockScreen/app/src/main/res/drawable/ic_launcher_foreground_lock.xml" value="0.1275" />
         <entry key="..\:/code/PineappleLockScreen/app/src/main/res/layout/widget_loading.xml" value="0.176" />
         <entry key="..\:/code/PineappleLockScreen/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1235" />
         <entry key="..\:/code/PineappleLockScreen/app/src/main/res/mipmap-anydpi-v26/ic_launcher_blue.xml" value="0.1715" />
+        <entry key="..\:/code/PineappleLockScreen/app/src/main/res/mipmap-anydpi-v26/ic_launcher_blue_lock.xml" value="0.1275" />
         <entry key="..\:/code/PineappleLockScreen/app/src/main/res/mipmap-anydpi-v26/ic_launcher_blue_round.xml" value="0.1715" />
         <entry key="..\:/code/PineappleLockScreen/app/src/main/res/mipmap-anydpi-v26/ic_launcher_green_lock.xml" value="0.1295" />
         <entry key="..\:/code/PineappleLockScreen/app/src/main/res/mipmap-anydpi-v26/ic_launcher_green_round.xml" value="0.1295" />
         <entry key="..\:/code/PineappleLockScreen/app/src/main/res/mipmap-anydpi-v26/ic_launcher_red.xml" value="0.1715" />
+        <entry key="..\:/code/PineappleLockScreen/app/src/main/res/mipmap-anydpi-v26/ic_launcher_red_power.xml" value="0.1275" />
         <entry key="..\:/code/PineappleLockScreen/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1235" />
         <entry key="..\:/code/PineappleLockScreen/app/src/main/res/xml/accessibility_service_config.xml" value="0.22826086956521738" />
         <entry key="..\:/code/PineappleLockScreen/app/src/main/res/xml/lockscreen_widget_info.xml" value="0.22826086956521738" />
