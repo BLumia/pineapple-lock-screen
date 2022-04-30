@@ -63,7 +63,7 @@ android {
             buildConfigField "boolean", "USE_DEPRECATED_SHORTCUT_METHOD", "false"
             buildConfigField "boolean", "PROMOTE_PLUS_VERSION", "true"
             // Change this to other FOSS store link when we have one.
-            buildConfigField "String", "STORE_LINK", "\"https://play.google.com/store/apps/details?id=%s\""
+            buildConfigField "String", "STORE_LINK", "\"https://f-droid.org/packages/%s/\""
         }
     }
 
@@ -102,7 +102,7 @@ dependencies {
     implementation 'androidx.activity:activity-compose:1.4.0'
     implementation "androidx.glance:glance-appwidget:1.0.0-alpha03"
     implementation "androidx.datastore:datastore-preferences:1.0.0"
-    def nav_compose_version = '2.4.1'
+    def nav_compose_version = '2.4.2'
     implementation "androidx.navigation:navigation-compose:$nav_compose_version"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
