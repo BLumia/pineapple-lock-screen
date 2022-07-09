@@ -1,5 +1,6 @@
 package net.blumia.pineapple.lockscreen.ui
 
+import android.app.Activity
 import android.app.PendingIntent
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -7,6 +8,7 @@ import android.content.pm.ShortcutInfo
 import android.content.pm.ShortcutManager
 import android.net.Uri
 import android.provider.Settings
+import androidx.activity.compose.BackHandler
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
@@ -98,6 +100,11 @@ fun NavGraph(
                 }
             }
 
+            // Finish the activity so it will no longer be in the recent app screen.
+            // For https://github.com/BLumia/pineapple-lock-screen/issues/3
+            BackHandler(onBack = {
+                (applicationContext as Activity).finish()
+            })
             HomeScreen(
                 showDialog = showDialog,
                 scaffoldState = scaffoldState,
