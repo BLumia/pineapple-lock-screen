@@ -84,7 +84,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerExtensionVersion "1.3.2"
     }
     packagingOptions {
         resources {
@@ -95,19 +95,26 @@ android {
 }
 
 dependencies {
+    // Import the Compose BOM
+    // BOM to library version mapping: https://developer.android.com/jetpack/compose/setup#bom-version-mapping
+    implementation platform('androidx.compose:compose-bom:2022.11.00')
+    // Declare dependencies for the desired Compose libraries without versions
+    implementation 'androidx.compose.foundation:foundation'
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
+
     implementation 'androidx.core:core-ktx:1.9.0'
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    implementation "androidx.compose.ui:ui"
+    implementation "androidx.compose.material:material"
+    implementation "androidx.compose.ui:ui-tooling-preview"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
-    implementation 'androidx.activity:activity-compose:1.5.1'
-    implementation "androidx.glance:glance-appwidget:1.0.0-alpha04"
+    implementation 'androidx.activity:activity-compose:1.6.1'
+    implementation "androidx.glance:glance-appwidget:1.0.0-alpha05"
     implementation "androidx.datastore:datastore-preferences:1.0.0"
-    def nav_compose_version = '2.5.2'
+    def nav_compose_version = '2.5.3'
     implementation "androidx.navigation:navigation-compose:$nav_compose_version"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4"
+    debugImplementation "androidx.compose.ui:ui-tooling"
 }
