@@ -1,2 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="about">Sobre</string>
+    <string name="app_name">Pineapple Lock Screen</string>
+    <string name="card_a11y_action_go_to_setting">Configurações de Acessibilidade</string>
+    <string name="current_version">Versão Atual</string>
+    <string name="open_source_licenses">Licenças Código Aberto</string>
+    <string name="privacy_policy">Política de Privacidade</string>
+    <string name="accept">Aceitar</string>
+    <string name="menu">Menu</string>
+    <string name="ok">OK</string>
+    <string name="share">Compartilhe</string>
+    <string name="app_widget_name">Widget de Tela de Bloqueio</string>
+    <string name="loading_widget">Carregando</string>
+    <string name="card_qstile_action_open_qs">Abra Configurações Rápidas</string>
+    <string name="cancel">Cancelar</string>
+    <string name="details">Detalhes</string>
+    <string name="settings">Configurações</string>
+    <string name="source_code">Código Fonte</string>
+</resources>
