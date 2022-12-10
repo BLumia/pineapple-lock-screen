@@ -60,11 +60,12 @@ fun HomeScreen(
             )
         },
         floatingActionButtonPosition = FabPosition.Center,
-    ) {
+    ) { padding ->
         Column(
             modifier = Modifier
                 .verticalScroll(rememberScrollState())
                 .fillMaxWidth()
+                .padding(padding)
                 .padding(5.dp),
             verticalArrangement = Arrangement.spacedBy(5.dp),
         ) {

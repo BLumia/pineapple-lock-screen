@@ -41,4 +41,6 @@
     <string name="loading_widget">加载中</string>
     <string name="app_widget_name">锁屏小部件</string>
     <string name="get_plus_version">获取 Plus 版</string>
+    <string name="language">语言</string>
+    <string name="contribute_translation">贡献翻译</string>
 </resources>

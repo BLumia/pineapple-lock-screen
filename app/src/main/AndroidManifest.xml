@@ -9,6 +9,7 @@
         android:icon="${launcherIcon}"
         android:roundIcon="${launcherIconRound}"
         android:supportsRtl="true"
+        android:localeConfig="@xml/locale_config"
         android:theme="@style/Theme.PineappleLockScreen">
         <activity
             android:name=".MainActivity"
@@ -30,6 +31,14 @@
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
+        </service>
+        <service
+            android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
+            android:enabled="false"
+            android:exported="false">
+            <meta-data
+                android:name="autoStoreLocales"
+                android:value="true" />
         </service>
         <service
             android:name=".QuickSettingService"

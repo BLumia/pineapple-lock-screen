@@ -4,10 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.Share
-import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
@@ -18,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.blumia.pineapple.lockscreen.BuildConfig
 import net.blumia.pineapple.lockscreen.R
+import net.blumia.pineapple.lockscreen.ui.icons.Translate
 
 
 @Composable
@@ -75,6 +73,7 @@ fun AboutScreen(
     onRateUsBtnClicked: () -> Unit = {},
     onShareBtnClicked: () -> Unit = {},
     onGetPlusVersionBtnClicked: () -> Unit = {},
+    onContributeTranslationBtnClicked: () -> Unit = {},
     onSourceCodeBtnClicked: () -> Unit = {},
 ) {
     Scaffold(
@@ -88,8 +87,8 @@ fun AboutScreen(
                 title = { Text(stringResource(id = R.string.about)) }
             )
         },
-    ) {
-        Column(Modifier.fillMaxWidth()) {
+    ) { padding ->
+        Column(Modifier.fillMaxWidth().padding(padding)) {
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -107,6 +106,13 @@ fun AboutScreen(
                         trailing = { MutedIcon(Icons.Default.Share) },
                     ) {
                         Text(stringResource(id = R.string.share))
+                    }
+
+                    ListItem(
+                        modifier = Modifier.clickable { onContributeTranslationBtnClicked() },
+                        trailing = { MutedIcon(Icons.Default.Translate) },
+                    ) {
+                        Text(stringResource(id = R.string.contribute_translation))
                     }
 
                     if (BuildConfig.PROMOTE_PLUS_VERSION) {

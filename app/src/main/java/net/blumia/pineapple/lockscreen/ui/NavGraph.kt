@@ -280,6 +280,11 @@ fun NavGraph(
                         )
                     }
                 },
+                onContributeTranslationBtnClicked = {
+                    val browserIntent =
+                        Intent(Intent.ACTION_VIEW, Uri.parse("https://translate.codeberg.org/projects/pineapple-lock-screen/"))
+                    startActivity(applicationContext, browserIntent, null)
+                },
                 onSourceCodeBtnClicked = {
                     val browserIntent =
                         Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/BLumia/pineapple-lock-screen"))

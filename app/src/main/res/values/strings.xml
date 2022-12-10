@@ -40,4 +40,6 @@
     <string name="loading_widget">Loading</string>
     <string name="app_widget_name">Lock Screen Widget</string>
     <string name="get_plus_version">Get Plus Version</string>
+    <string name="language">Language</string>
+    <string name="contribute_translation">Contribute Translation</string>
 </resources>

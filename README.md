@@ -6,9 +6,13 @@
 
 Turn the screen off without using the physical power button.
 
+## Help translate to your language
+
+Head to [Codeberg's Weblate](https://translate.codeberg.org/projects/pineapple-lock-screen/) to start translating :)
+
 ## Pull requests
 
-I will not take any pull requests.
+I will not take any Pull Requests other than translation related Pull Requests.
 
 ## What can you do with the source
 
