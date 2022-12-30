@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Pineapple Lock Screen</string>
     <string name="app_launcher_name">Lock Screen</string>
@@ -10,7 +11,7 @@
     <string name="current_version">Current Version</string>
     <string name="card_a11y_description">This application require to enable its accessibility service in order to work.\nYou can use the following button to enable or disable the service conveniently.</string>
     <string name="card_a11y_action_go_to_setting">Accessibility Settings</string>
-    <string name="card_shortcut_description">You can create a shortcut icon on your launcher to preform the lock action.</string>
+    <string name="card_shortcut_description">You can create a shortcut icon on your launcher to perform the lock action.</string>
     <string name="card_shortcut_action_create_shortcut">Create Shortcut Icon</string>
     <string name="msg_pls_enable_a11y_service_first">Please enable its accessibility service first</string>
     <string name="msg_action_open_a11y_settings">Open Settings</string>
