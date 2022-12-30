@@ -1,2 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="about">Über</string>
+    <string name="accessibility_service_label">Pineapple Sperrbildschirm - Eingabehilfe</string>
+    <string name="tile_service_label">Sperrbildschirm</string>
+    <string name="shortcut_name_lock">Sperren</string>
+    <string name="fab_lock_screen">Sperrbildschirm</string>
+    <string name="open_source_licenses">Open-Source Lizenzen</string>
+    <string name="current_version">Aktuelle Version</string>
+    <string name="card_a11y_action_go_to_setting">Barrierefreiheit Einstellungen</string>
+    <string name="card_shortcut_description">Sie können in Ihrem Launcher eine Verknüpfung erstellen, um den Bildschirm zu sperren.</string>
+    <string name="card_shortcut_action_create_shortcut">Verknüpfung anlegen</string>
+    <string name="msg_pls_enable_a11y_service_first">Bitte zuerst den Barrierefreiheitsdienst aktivieren</string>
+    <string name="msg_action_open_a11y_settings">Einstellungen öffnen</string>
+    <string name="privacy_policy">Datenschutzerklärung</string>
+    <string name="menu">Menü</string>
+    <string name="shortcut_name_powerdialog">Power-Dialog</string>
+    <string name="app_name">Pineapple Sperrbildschirm</string>
+    <string name="app_launcher_name">Sperrbildschirm</string>
+    <string name="card_a11y_description">Für diese Anwendung muss der Barrierefreiheitsdienst aktiviert sein, damit sie funktioniert.
+\nÜber die folgende Schaltfläche können Sie den Dienst bequem aktivieren oder deaktivieren.</string>
+    <string name="accessibility_service_prominent_disclosure_dlg_title">Informationen zur Berechtigung des Barrierefreiheitsdienst</string>
+    <string name="accept">Annehmen</string>
+    <string name="cancel">Ablehnen</string>
+    <string name="settings">Einstellungen</string>
+    <string name="ok">OK</string>
+    <string name="details">Details</string>
+    <string name="option_use_compat_method">Kompatible Methode der Verknüpfung verwenden</string>
+    <string name="option_use_compat_method_short_desc">Beim Erstellen einer Verknüpfung aus Widgets</string>
+    <string name="option_use_compat_method_long_desc">In einigen Startern können Sie bei Verwendung der kompatiblen Methode der Verknüpfung ein Verknüpfungssymbol ohne Anwendungssymbol in der Ecke erstellen.</string>
+    <string name="source_code">Quellcode</string>
+    <string name="option_battery_optimization">Batterieoptimierung</string>
+    <string name="option_battery_optimization_short_desc">Erwägen Sie, es für diese Anwendung zu deaktivieren</string>
+    <string name="card_qstile_description">Diese Anwendung bietet auch eine Schnelleinstellungskachel zum Ausschalten des Bildschirms. Sie können die Kachel hinzufügen, indem Sie den Schnelleinstellungsbereich bearbeiten und die Sperrbildschirmkachel an die gewünschte Stelle ziehen.</string>
+    <string name="card_qstile_action_open_qs">Schnelleinstellungen öffnen</string>
+    <string name="rate_us">Bewerten Sie uns</string>
+    <string name="share">Teilen</string>
+    <string name="app_widget_description">Anpassbares Widget zum Sperren des Bildschirms</string>
+    <string name="loading_widget">Laden</string>
+    <string name="app_widget_name">Sperrbildschirmwidget</string>
+    <string name="get_plus_version">Plus Version kaufen</string>
+    <string name="language">Sprache</string>
+    <string name="contribute_translation">Übersetzen</string>
+    <string name="accessibility_service_description">Der Barrierefreiheitsdienst wird verwendet, um den Bildschirm durch die PineApple Sperrbildschirmanwendung zu sperren, ohne diesen Dienst kann die Anwendung nicht funktionieren.
+\n
+\nUm den Barrierefreiheitsdienst zu aktivieren, tippen Sie einfach auf den Schalter in der oberen rechten Ecke und im nächsten Bildschirm auf Zulassen. Sie müssen den zweiten Schalter nicht aktivieren.
+\n
+\nHinweis:
+\n1. Wenn Sie die Apllikation über \"Beenden erzwingen\" stoppen, müssen Sie diesen Dienst ggf. wieder aktivieren.
+\n2. Wenn der Dienst aktiviert ist, aber die Anwendung nicht wie erwartet arbeitet, versuchen Sie den Dienst zu deaktivieren und wieder zu aktivieren.</string>
+    <string name="accessibility_service_prominent_disclosure_dlg_desc">Diese Anwendung nutzt den Barrierefreiheitsdienst um die Bildschirmsperrfunktion anzubieten. Der zugehörige Dienst muss aktiviert werden, damit er funktioniert.
+\n
+\nSie können die Verknüpfung im Hauptbildschirm verwenden, um jederzeit auf die Einstellungen für die Barrierefreiheit zuzugreifen.
+\n
+\nDiese Anwendung sammelt keine Benutzerdaten. Sie können den vollständigen Inhalt der Datenschutzrichtlinie auch im Info-Bildschirm ansehen.</string>
+    <string name="option_battery_optimization_long_desc">Einige Telefonmodelle / ROMs verfügen möglicherweise über sehr restriktive Batterieoptimierungen, die dazu führen, dass der Anwendungsdienst im Hintergrund beendet wird. Jedes mal, wenn diese Anwendung beendet wird, müssen Sie den Barrierefreiheitsdienst erneut aktivieren.
+\n
+\nUm dies zu verhindern, können Sie die Batterieoptimierung für diese Anwendung über den Systemeinstellungsbildschirm deaktivieren, indem Sie:
+\n
+\n1. Wählen Sie im Menü \"Alle Apps\" aus
+\n2. Suchen Sie Pineapple Sperrbildschirm und schalten Sie die Optimierung aus, bzw. wählen Sie \"Nicht optimieren\".
+\n
+\nDiese Einstellung wird nur benötigt, wenn ihr ROM diese Anwendung immer beendet. Wenn Sie keine Probleme haben, müssen Sie nichts tun. Die Bereitstellung der Möglichkeit, den Bildschirm zu sperren, ist das einzige, was der Dienst dieser Anwendung tun wird. Dies wirkt sich nicht auf Ihre Akkulaufzeit aus.</string>
+</resources>
