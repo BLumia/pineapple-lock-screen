@@ -4,6 +4,8 @@
     <locale android:name="en"/>
     <!-- Simplified Chinese -->
     <locale android:name="zh-CN"/>
+    <!-- German -->
+    <locale android:name="de"/>
     <!-- Brazilian Portuguese -->
     <locale android:name="pt-BR"/>
 </locale-config>
