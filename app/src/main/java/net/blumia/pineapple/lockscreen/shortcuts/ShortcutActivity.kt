@@ -30,14 +30,17 @@ abstract class ShortcutActivity: Activity() {
             useDeprecatedMethod = applicationContext.booleanPreference(PreferencesKeys.DEPRECATED_SHORTCUT_METHOD).firstOrNull()!!
         }
         return if (useDeprecatedMethod || shortcutManager == null) {
-            Intent().putExtra(Intent.EXTRA_SHORTCUT_INTENT, Intent(this, this::class.java))
+            // Seems no longer works with Android 13. Anyway...
+            val shortcutIntent = Intent(this, this::class.java)
+            // val shortcutIntent: Intent = packageManager.getLaunchIntentForPackage(packageName) ?: Intent(this, this::class.java)
+            Intent().putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent)
                 .putExtra(Intent.EXTRA_SHORTCUT_NAME, shortLabel)
                 .putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(this, iconResource));
         } else {
             val classRef = this::class.java
             runBlocking {
                 val pinShortcutInfo = ShortcutInfo.Builder(applicationContext, shortcutId)
-                    .setShortLabel(resources.getString(R.string.shortcut_name_lock))
+                    .setShortLabel(shortLabel)
                     .setIcon(Icon.createWithResource(applicationContext, iconResource))
                     .setIntent(Intent(Intent.ACTION_VIEW, null, applicationContext, classRef))
                     .build()
