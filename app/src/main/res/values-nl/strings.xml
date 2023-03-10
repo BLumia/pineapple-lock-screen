@@ -1,2 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_launcher_name">Vergrendelscherm</string>
+    <string name="about">Over</string>
+    <string name="tile_service_label">Vergrendelscherm</string>
+    <string name="shortcut_name_lock">Vergrendelen</string>
+    <string name="fab_lock_screen">Scherm vergrendelen</string>
+    <string name="open_source_licenses">Opensourcelicenties</string>
+    <string name="current_version">Huidige versie</string>
+    <string name="card_a11y_action_go_to_setting">Toegankelijkheidsinstellingen</string>
+    <string name="card_shortcut_action_create_shortcut">Snelkoppeling maken</string>
+    <string name="msg_pls_enable_a11y_service_first">Schakel hiervoor de toegankelijkheidsdienst in</string>
+    <string name="msg_action_open_a11y_settings">Instellingen openen</string>
+    <string name="privacy_policy">Privacybeleid</string>
+    <string name="shortcut_name_powerdialog">Afsluitmenu</string>
+    <string name="menu">Menu</string>
+    <string name="accept">Accepteren</string>
+    <string name="cancel">Annuleren</string>
+    <string name="settings">Instellingen</string>
+    <string name="ok">Oké</string>
+    <string name="details">Details</string>
+    <string name="option_use_compat_method">Compatibele snelkoppelingsmethode gebruiken</string>
+    <string name="option_use_compat_method_short_desc">Bij het maken van een snelkoppeling uit widgets</string>
+    <string name="source_code">Broncode</string>
+    <string name="card_shortcut_description">Je kunt een snelkoppeling op je startscherm plaatsen waarmee je het scherm kunt vergrendelen.</string>
+    <string name="accessibility_service_prominent_disclosure_dlg_desc">Deze app maakt gebruik van de toegankelijkheidsdienst om het scherm te kunnen vergrendelen. Hiervoor dient de dienst in kwestie te worden ingeschakeld.
+\n
+\nMet de knop op het hoofdscherm kun je de instellingen te allen tijde openen.
+\n
+\nDeze app verzamelt geen gebruikersgegevens. Op het scherm ‘Over’ kun je het volledige privacybeleid lezen.</string>
+    <string name="option_use_compat_method_long_desc">Sommige startschermen staan toe dat je een snelkoppeling kunt maken door hem vanaf de widgetlijst te verslepen. Met behulp van de compatibele methode zie je geen pictogram bij de snelkoppeling.</string>
+    <string name="app_name">Pineapple-vergrendelscherm</string>
+    <string name="accessibility_service_label">Pineapple-vergrendelscherm - Toegankelijkheidsdienst</string>
+    <string name="accessibility_service_prominent_disclosure_dlg_title">Over toegankelijkheidsdienstrecht</string>
+    <string name="option_battery_optimization">Accu-optimalisatie</string>
+    <string name="option_battery_optimization_short_desc">Overweeg om accu-optimalisatie uit te schakelen voor deze app</string>
+    <string name="card_qstile_action_open_qs">Snelle instellingen openen</string>
+    <string name="rate_us">Beoordelen</string>
+    <string name="share">Delen</string>
+    <string name="app_widget_description">Aanpasbare widget op vergrendelscherm</string>
+    <string name="loading_widget">Bezig met laden…</string>
+    <string name="app_widget_name">Vergrendelschermwidget</string>
+    <string name="get_plus_version">Plusversie aanschaffen</string>
+    <string name="language">Taal</string>
+    <string name="contribute_translation">Helpen met vertalen</string>
+    <string name="card_a11y_description">Voor deze app is de toegankelijkheidsdienst vereist.
+\nDruk op de volgende knop om de dienst in of uit te schakelen.</string>
+    <string name="accessibility_service_description">Deze toegankelijkheidsdienst wordt door Pineapple-vergrendelscherm gebruikt om het scherm te kunnen vergrendelen. Zonder deze dienst werkt de app niet.
+\n
+\nSchakel de dienst in door rechtsboven de schuifknop op aan te zetten en vervolgens op ‘Toestaan’ te drukken. De tweede schuifknop hoeft niet te worden aangezet.
+\n
+\nLet op:
+\n1. Als je de app geforceerd afsluit, dan dien je deze dienst mogelijk opnieuw in te schakelen;
+\n2. Als de dienst is ingeschakeld maar de app niet naar behoren werkt, probeer dan om de dienst uit en in te schakelen.</string>
+    <string name="card_qstile_description">Deze app biedt tevens een tegel voor de snelle instellingen, waarmee je het scherm snel uit kunt schakelen. Je kunt de tegel toevoegen door de snelle instellingen te bewerken en de tegel op een plaats naar keuze te zetten.</string>
+    <string name="option_battery_optimization_long_desc">Sommige telefoons/roms beschikken over zeer aggressieve accu-optimalisaties, waardoor de appdienst regelmatig wordt afgesloten. Telkens als dit gebeurt, dien je de dienst opnieuw in te schakelen.
+\n
+\n Om dit te voorkomen kun je als volgt accu-optimalisatie voor deze app uitschakelen in de systeeminstellingen:
+\n 1. Kies ‘Alle apps’ in het uitrolmenu;
+\n 2. Kies ‘Pineapple-vergrendelscherm’ en schakel uit of kies ‘Niet optimaliseren’.
+\n
+\nLet op: deze instelling is alléén benodigd als je rom de dienst blijft afsluiten. Als alles naar behoren werkt, hoef je niks te doen. Deze dienst biedt alléén de mogelijkheid om het scherm te vergrendelen en beïnvloedt de accuduur niet.</string>
+</resources>
