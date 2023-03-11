@@ -6,6 +6,8 @@
     <locale android:name="zh-CN"/>
     <!-- German -->
     <locale android:name="de"/>
+    <!-- Dutch -->
+    <locale android:name="nl"/>
     <!-- Brazilian Portuguese -->
     <locale android:name="pt-BR"/>
 </locale-config>
