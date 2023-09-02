@@ -1,2 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="about">O programie</string>
+    <string name="shortcut_name_lock">Zablokuj</string>
+    <string name="menu">Menu</string>
+    <string name="app_launcher_name">Ekran blokady</string>
+    <string name="tile_service_label">Ekran blokady</string>
+    <string name="fab_lock_screen">Ekran blokady</string>
+    <string name="current_version">Bieżąca wersja</string>
+    <string name="card_a11y_action_go_to_setting">Ustawienia dostępności</string>
+    <string name="msg_action_open_a11y_settings">Otwórz ustawienia</string>
+    <string name="privacy_policy">Polityka prywatności</string>
+    <string name="app_name">Ekran blokady Pineapple</string>
+    <string name="open_source_licenses">Licencje typu Open Source</string>
+    <string name="card_shortcut_action_create_shortcut">Stwórz ikonę skrótu</string>
+    <string name="accept">Akceptuj</string>
+    <string name="cancel">Anuluj</string>
+    <string name="settings">Ustawienia</string>
+    <string name="ok">OK</string>
+    <string name="details">Szczegóły</string>
+    <string name="share">Udostepnij</string>
+    <string name="loading_widget">Ładowanie</string>
+    <string name="language">Język</string>
+    <string name="source_code">Kod źródłowy</string>
+    <string name="rate_us">Oceń aplikację</string>
+    <string name="contribute_translation">Pomóż w tłumaczeniu</string>
+    <string name="option_battery_optimization">Ustawienie optymalizacji baterii</string>
+    <string name="card_qstile_action_open_qs">Otwórz szybkie ustawienia</string>
+    <string name="app_widget_name">Widżet blokady ekranu</string>
+    <string name="get_plus_version">Uzyskaj wersję Plus</string>
+</resources>
