@@ -53,6 +53,7 @@ fun SettingsScreen(
                 "zh-CN",
                 "de",
                 "nl",
+                "pl",
                 "pt-BR"
             )
             val currentLocale = AppCompatDelegate.getApplicationLocales()[0]

@@ -8,6 +8,8 @@
     <locale android:name="de"/>
     <!-- Dutch -->
     <locale android:name="nl"/>
+    <!-- Polish -->
+    <locale android:name="pl"/>
     <!-- Brazilian Portuguese -->
     <locale android:name="pt-BR"/>
 </locale-config>
