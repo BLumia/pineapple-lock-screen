@@ -19,6 +19,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navDeepLink
 import kotlinx.coroutines.launch
 import net.blumia.pineapple.accessibility.A11yService
 import net.blumia.pineapple.accessibility.openSystemA11ySettings
@@ -187,7 +188,10 @@ fun NavGraph(
             )
         }
 
-        composable(MainDestinations.SETTINGS_ROUTE) {
+        composable(
+            MainDestinations.SETTINGS_ROUTE,
+            deepLinks = listOf( navDeepLink { uriPattern = "pineapple-lock-screen://" + MainDestinations.SETTINGS_ROUTE } )
+        ) {
             val applicationContext = LocalContext.current
             val coroutineScope = rememberCoroutineScope()
             val deprecatedShortcutMethodEnabled by applicationContext.booleanPreference(
