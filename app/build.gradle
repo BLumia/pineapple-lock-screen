@@ -98,20 +98,20 @@ android {
 dependencies {
     // Import the Compose BOM
     // BOM to library version mapping: https://developer.android.com/jetpack/compose/bom/bom-mapping
-    implementation platform('androidx.compose:compose-bom:2023.08.00')
+    implementation platform('androidx.compose:compose-bom:2023.09.02')
     // Declare dependencies for the desired Compose libraries without versions
     implementation 'androidx.compose.foundation:foundation'
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
 
-    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.core:core-ktx:1.12.0'
     implementation "androidx.compose.ui:ui"
     implementation "androidx.compose.material:material"
     implementation "androidx.compose.ui:ui-tooling-preview"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
-    implementation 'androidx.activity:activity-compose:1.7.0'
-    implementation "androidx.glance:glance-appwidget:1.0.0-alpha05"
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.2'
+    implementation 'androidx.activity:activity-compose:1.7.2'
+    implementation "androidx.glance:glance-appwidget:1.0.0"
     implementation "androidx.datastore:datastore-preferences:1.0.0"
-    def nav_compose_version = '2.5.3'
+    def nav_compose_version = '2.7.3'
     implementation "androidx.navigation:navigation-compose:$nav_compose_version"
     def latestAppCompatVersion = "1.6.1"
     implementation "androidx.appcompat:appcompat:$latestAppCompatVersion"
@@ -119,6 +119,6 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:1.5.0" // https://stackoverflow.com/a/75948151/5785726 why?
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:1.5.2" // https://stackoverflow.com/a/75948151/5785726 why?
     debugImplementation "androidx.compose.ui:ui-tooling"
 }

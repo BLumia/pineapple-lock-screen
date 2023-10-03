@@ -1,8 +1,10 @@
 package net.blumia.pineapple.lockscreen.glancewidget
 
+import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.glance.GlanceId
 import androidx.glance.GlanceModifier
 import androidx.glance.LocalContext
 import androidx.glance.action.actionStartActivity
@@ -10,6 +12,7 @@ import androidx.glance.action.clickable
 import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.GlanceAppWidgetReceiver
 import androidx.glance.appwidget.appWidgetBackground
+import androidx.glance.appwidget.provideContent
 import androidx.glance.background
 import androidx.glance.layout.*
 import androidx.glance.text.Text
@@ -19,8 +22,15 @@ import net.blumia.pineapple.lockscreen.R
 import net.blumia.pineapple.lockscreen.shortcuts.LockScreenShortcut
 
 class LockScreenWidget : GlanceAppWidget() {
+
+    override suspend fun provideGlance(context: Context, id: GlanceId) {
+        provideContent {
+            Content()
+        }
+    }
+
     @Composable
-    override fun Content() {
+    fun Content() {
         Column(
             modifier = GlanceModifier
                 .fillMaxSize()
