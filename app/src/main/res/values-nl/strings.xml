@@ -60,4 +60,6 @@
 \n 2. Kies ‘Pineapple-vergrendelscherm’ en schakel uit of kies ‘Niet optimaliseren’.
 \n
 \nLet op: deze instelling is alléén benodigd als je rom de dienst blijft afsluiten. Als alles naar behoren werkt, hoef je niks te doen. Deze dienst biedt alléén de mogelijkheid om het scherm te vergrendelen en beïnvloedt de accuduur niet.</string>
+    <string name="option_use_launcher_icon_to_lock_desc">Druk op het app-pictogram om te vergrendelen</string>
+    <string name="option_use_launcher_icon_to_lock">Vergrendelen met app-pictogram</string>
 </resources>
