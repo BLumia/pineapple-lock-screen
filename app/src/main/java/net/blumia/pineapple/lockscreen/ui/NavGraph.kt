@@ -43,6 +43,8 @@ fun NavGraph(
     navController: NavHostController = rememberNavController(),
     startDestination: String = MainDestinations.MAIN_ROUTE,
 ) {
+    val deepLinkScheme = "pineapple-lock-screen://"
+
     NavHost(
         navController = navController,
         startDestination = startDestination
@@ -190,7 +192,7 @@ fun NavGraph(
 
         composable(
             MainDestinations.SETTINGS_ROUTE,
-            deepLinks = listOf( navDeepLink { uriPattern = "pineapple-lock-screen://" + MainDestinations.SETTINGS_ROUTE } )
+            deepLinks = listOf( navDeepLink { uriPattern = deepLinkScheme + MainDestinations.SETTINGS_ROUTE } )
         ) {
             val applicationContext = LocalContext.current
             val coroutineScope = rememberCoroutineScope()
@@ -198,7 +200,12 @@ fun NavGraph(
                 PreferencesKeys.DEPRECATED_SHORTCUT_METHOD).collectAsState(
                 initial = false
             )
+            val useLauncherIconToLock by applicationContext.booleanPreference(
+                PreferencesKeys.USE_LAUNCHER_ICON_TO_LOCK).collectAsState(
+                initial = false
+            )
             val msgCompatMethodDescString = stringResource(id = R.string.option_use_compat_method_long_desc)
+            val msgLauncherIconToLockDescString = stringResource(id = R.string.option_use_launcher_icon_to_lock_long_desc)
             val msgBatteryOptimizationDescString = stringResource(id = R.string.option_battery_optimization_long_desc)
             var dialogText by remember { mutableStateOf("") }
             if (dialogText.isNotEmpty()) {
@@ -230,6 +237,15 @@ fun NavGraph(
                 onDeprecatedShortcutInfoBtnClicked = {
                     dialogText = msgCompatMethodDescString
                 },
+                useLauncherIconToLock = useLauncherIconToLock,
+                onUseLauncherIconToLockSwitchClicked = { enabled ->
+                    coroutineScope.launch {
+                        applicationContext.setBooleanPreference(PreferencesKeys.USE_LAUNCHER_ICON_TO_LOCK, enabled)
+                    }
+                },
+                onUseLauncherIconToLockInfoButtonClicked = {
+                    dialogText = msgLauncherIconToLockDescString
+                },
                 onBatteryOptimizationBtnClicked = {
                     val intent = Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)
                     applicationContext.startActivity(intent)
@@ -240,7 +256,10 @@ fun NavGraph(
             )
         }
 
-        composable(MainDestinations.ABOUT_ROUTE) {
+        composable(
+            MainDestinations.ABOUT_ROUTE,
+            deepLinks = listOf( navDeepLink { uriPattern = deepLinkScheme + MainDestinations.ABOUT_ROUTE } )
+        ) {
             val applicationContext = LocalContext.current
             val appPackageName = applicationContext.packageName
             AboutScreen(

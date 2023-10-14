@@ -29,6 +29,9 @@ fun SettingsScreen(
     deprecatedShortcutMethodEnabled: Boolean = false,
     onDeprecatedShortcutSwitchClicked: (Boolean) -> Unit = {},
     onDeprecatedShortcutInfoBtnClicked: () -> Unit = {},
+    useLauncherIconToLock: Boolean = false,
+    onUseLauncherIconToLockSwitchClicked: (Boolean) -> Unit = {},
+    onUseLauncherIconToLockInfoButtonClicked: () -> Unit = {},
     onBatteryOptimizationBtnClicked: () -> Unit = {},
     onBatteryOptimizationInfoBtnClicked: () -> Unit = {},
 ) {
@@ -119,6 +122,26 @@ fun SettingsScreen(
                         Switch(
                             checked = deprecatedShortcutMethodEnabled,
                             onCheckedChange = onDeprecatedShortcutSwitchClicked
+                        )
+                    }
+                }
+            )
+
+            ListItem(
+                modifier = Modifier.toggleable(
+                    value = useLauncherIconToLock,
+                    onValueChange = onUseLauncherIconToLockSwitchClicked
+                ),
+                text = { Text(stringResource(id = R.string.option_use_launcher_icon_to_lock)) },
+                secondaryText = { Text(stringResource(id = R.string.option_use_launcher_icon_to_lock_desc)) },
+                trailing = {
+                    Row {
+                        IconButton(onClick = onUseLauncherIconToLockInfoButtonClicked) {
+                            Icon(Icons.Filled.Info, stringResource(id = R.string.details))
+                        }
+                        Switch(
+                            checked = useLauncherIconToLock,
+                            onCheckedChange = onUseLauncherIconToLockSwitchClicked
                         )
                     }
                 }

@@ -43,4 +43,7 @@
     <string name="get_plus_version">获取 Plus 版</string>
     <string name="language">语言</string>
     <string name="contribute_translation">贡献翻译</string>
+    <string name="option_use_launcher_icon_to_lock">使用应用程序图标进行锁屏</string>
+    <string name="option_use_launcher_icon_to_lock_desc">点按应用图标即可锁定屏幕</string>
+    <string name="option_use_launcher_icon_to_lock_long_desc">当开启此选项后，若无障碍服务已被启用，则你可以直接通过点按此应用程序的默认启动图标的方式来锁定屏幕。\n\n此选项旨在解决兼容模式不再可用时，用户无法创建不带应用角标的快捷方式图标导致的美观性问题。\n\n当此选项启用后，你仍可以通过长按应用程序图标的方式触发快捷方式菜单，并从中选择“设置”来打开设置菜单来关闭此功能。</string>
 </resources>
