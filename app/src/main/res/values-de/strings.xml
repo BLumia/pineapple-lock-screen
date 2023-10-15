@@ -61,4 +61,11 @@
 \n2. Suchen Sie Pineapple Sperrbildschirm und schalten Sie die Optimierung aus, bzw. wählen Sie \"Nicht optimieren\".
 \n
 \nDiese Einstellung wird nur benötigt, wenn ihr ROM diese Anwendung immer beendet. Wenn Sie keine Probleme haben, müssen Sie nichts tun. Die Bereitstellung der Möglichkeit, den Bildschirm zu sperren, ist das einzige, was der Dienst dieser Anwendung tun wird. Dies wirkt sich nicht auf Ihre Akkulaufzeit aus.</string>
+    <string name="option_use_launcher_icon_to_lock_long_desc">Sobald diese Option und der Eingabehilfedienst aktiviert sind, können Sie das Standardsymbol dieser Anwendung verwenden, um den Bildschirm zu sperren.
+\n
+\nDiese Option ist gedacht für den Fall, dass die kompakte Methode auf neueren Android-Versionen nicht mehr funktioniert, und für Benutzer, die kein Abzeichen-Symbol auf den Verknüpfungen haben möchten.
+\n
+\nNach dem Aktivieren können Sie immer noch auf die Einstellungen zugreifen und die Option dort deaktivieren: Tippen Sie auf das Standardsymbol der Anwendung und halten Sie es gedrückt, um das Kontextmenü zu öffnen, und wählen Sie dort den Punkt „Einstellungen“.</string>
+    <string name="option_use_launcher_icon_to_lock_desc">Auf das App-Icon tippen, um den Bildschirm zu sperren</string>
+    <string name="option_use_launcher_icon_to_lock">Sperren mit App-Icon</string>
 </resources>
