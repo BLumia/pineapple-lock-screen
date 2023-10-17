@@ -62,4 +62,9 @@
 \nLet op: deze instelling is alléén benodigd als je rom de dienst blijft afsluiten. Als alles naar behoren werkt, hoef je niks te doen. Deze dienst biedt alléén de mogelijkheid om het scherm te vergrendelen en beïnvloedt de accuduur niet.</string>
     <string name="option_use_launcher_icon_to_lock_desc">Druk op het app-pictogram om te vergrendelen</string>
     <string name="option_use_launcher_icon_to_lock">Vergrendelen met app-pictogram</string>
+    <string name="option_use_launcher_icon_to_lock_long_desc">Met behulp van deze functie kun je het app-pictogram gebruiken om het scherm te vergrendelen. Schakel hiertoe de optie in en vervolgens de toegankelijkheidsdienst.
+\n
+\nDeze functie is bedoeld voor als de compacte methode niet meer werkt op een nieuwere Android-versie en voor gebruikers die geen embleem op snelkoppelingen willen.
+\n
+\nNa het inschakelen heb je nog steeds toegang tot de instellingen om de functie weer uit te schakelen. Houd hiervoor het app-pictogram ingedrukt, open het snelkoppelingenmenu en druk op ‘Instellingen’.</string>
 </resources>
