@@ -1,2 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="tile_service_label">Ekranı Kilitle</string>
+    <string name="card_qstile_action_open_qs">Hızlı Ayarları Aç</string>
+    <string name="card_a11y_action_go_to_setting">Erişilebilirlik Ayarları</string>
+    <string name="loading_widget">Yükleniyor</string>
+    <string name="fab_lock_screen">Ekranı Kilitle</string>
+    <string name="contribute_translation">Çevirilere Katkıda Bulunun</string>
+    <string name="accessibility_service_label">Ananas Ekranı Kilitle - Erişilebilirlik Hizmeti</string>
+    <string name="app_widget_description">Ekranı kilitlemek için yeniden boyutlandırılabilir widget</string>
+    <string name="source_code">Kaynak Kodu</string>
+    <string name="app_launcher_name">Ekranı Kilitle</string>
+    <string name="option_use_compat_method_long_desc">Bazı başlatıcılarda, bir kısayolu widget listesinden ana ekrana sürüklerseniz, uyumlu yöntemi kullanırken köşede görüntülenen uygulama simgesi olmadan bir kısayol simgesi oluşturabilirsiniz.</string>
+    <string name="menu">Menü</string>
+    <string name="current_version">Geçerli Sürüm</string>
+    <string name="option_use_launcher_icon_to_lock_long_desc">Bu seçenek etkinleştirildikten sonra, erişilebilirlik hizmeti etkinleştirildiğinde, ekranı kilitlemek için bu uygulamanın öntanımlı simgesini kullanabilirsiniz.
+\n
+\nBu seçenek, uyumlu yöntemin yeni android sürümlerinde artık çalışmaması durumunda ve oluşturdukları kısayollarda bir rozet simgesine sahip olmak istemeyen kullanıcılar içindir.
+\n
+\nEtkinleştirildikten sonra, kısayol menüsünü açmak için öntanımlı uygulama simgesine dokunup basılı tutarak ve Ayarlar kısayol menüsü seçeneğini belirleyerek seçeneği devre dışı bırakmak için yine de Ayarlar ekranına erişebilirsiniz.</string>
+    <string name="ok">Tamam</string>
+    <string name="msg_action_open_a11y_settings">Ayarları Aç</string>
+    <string name="get_plus_version">Artı Sürümünü Edinin</string>
+    <string name="card_shortcut_action_create_shortcut">Kısayol Simgesi Oluştur</string>
+    <string name="msg_pls_enable_a11y_service_first">Lütfen önce erişilebilirlik hizmetini etkinleştirin</string>
+    <string name="open_source_licenses">Açık Kaynak Lisansları</string>
+    <string name="shortcut_name_lock">Kilitle</string>
+    <string name="about">Hakkında</string>
+    <string name="details">Ayrıntılar</string>
+    <string name="option_use_compat_method_short_desc">Widget\'lardan kısayol oluştururken</string>
+    <string name="privacy_policy">Gizlilik Politikası</string>
+    <string name="option_use_launcher_icon_to_lock_desc">Ekranı kilitlemek için uygulama simgesine dokunun</string>
+    <string name="shortcut_name_powerdialog">Güç İletişim Kutusu</string>
+    <string name="cancel">İptal</string>
+    <string name="accessibility_service_description">Bu erişilebilirlik hizmeti Ananas Ekranı Kilitle uygulamasında ekranı kilitleme özelliğini sağlamak için kullanılır, aksi takdirde uygulama çalışamaz.
+\n
+\nErişilebilirlik hizmetini etkinleştirmek için sağ üst köşedeki geçiş anahtarına dokunmanız ve ardından bir sonraki ekranda İzin Ver\'e dokunmanız yeterlidir. İkinci kısayol anahtarını etkinleştirmeniz gerekmez.
+\n
+\nNot
+\n1. Ana uygulamayı durdurmaya zorlarsanız, bu hizmeti tekrar etkinleştirmeniz gerekebilir.
+\n2. Hizmet etkinleştirilir ancak uygulama amaçlandığı gibi çalışmazsa, devre dışı bırakmayı ve tekrar etkinleştirmeyi deneyin.</string>
+    <string name="option_use_compat_method">Uyumlu kısayol yöntemini kullan</string>
+    <string name="accessibility_service_prominent_disclosure_dlg_title">Erişilebilirlik Hizmeti İzni Hakkında</string>
+    <string name="language">Dil</string>
+    <string name="card_a11y_description">Bu uygulamanın çalışması için erişilebilirlik hizmetinin etkinleştirilmesi gerekir.
+\nHizmeti rahatça etkinleştirmek veya devre dışı bırakmak için aşağıdaki düğmeyi kullanabilirsiniz.</string>
+    <string name="rate_us">Bizi Değerlendirin</string>
+    <string name="option_battery_optimization">Pil iyileştirme seçeneği</string>
+    <string name="app_widget_name">Ekran Kilitleme Widget\'ı</string>
+    <string name="option_battery_optimization_long_desc">Bazı telefon modellerinde/ROM\'da çok kısıtlayıcı pil iyileştirme işlevleri olabilir, bu da uygulama hizmetinin arka planda sonlandırılmasına neden olur. Bu uygulama her sonlandırıldığında, erişilebilirlik hizmetini tekrar etkinleştirmeniz gerekecektir.
+\n
+\n Bunu önlemek için, sistem Ayarları ekranından bu uygulama için Pil iyileştirmesini şu şekilde devre dışı bırakabilirsiniz:
+\n
+\n 1. Açılır menüden Tüm uygulamalar\'ı seçin
+\n 2. Ananas Ekranı Kilitle\'yi seçin, ardından kapatın veya İyileştirme\'yi seçin
+\n
+\nBu ayar yalnızca ROM\'unuz bu uygulamanın hizmetini sonlandırmaya devam ettiğinde gereklidir, iyi çalışıyorsa hiçbir şey yapmanıza gerek yoktur. Ekranı kilitleme yeteneği sağlamak, bu uygulamanın hizmetinin yapacağı tek şeydir. Bu pil ömrünüzü etkilemeyecektir.</string>
+    <string name="option_use_launcher_icon_to_lock">Kilitlemek için uygulama simgesini kullan</string>
+    <string name="settings">Ayarlar</string>
+    <string name="card_shortcut_description">Kilitleme eylemini gerçekleştirmek için başlatıcınızda bir kısayol simgesi oluşturabilirsiniz.</string>
+    <string name="app_name">Ananas Ekranı Kilitle</string>
+    <string name="accept">Kabul et</string>
+    <string name="share">Paylaş</string>
+    <string name="card_qstile_description">Bu uygulama ayrıca ekranı kapatmak için bir hızlı ayarlar kutucuğu sağlar. Hızlı ayarlar alanını düzenleyerek kutucuğu ekleyebilir ve Ekranı Kilitle kutucuğunu istediğiniz yere sürükleyebilirsiniz.</string>
+    <string name="accessibility_service_prominent_disclosure_dlg_desc">Bu uygulama, ekranı kilitleme işlevselliğini sağlamak için Erişilebilirlik Hizmetini kullanır. İlgili hizmetin çalışması için etkinleştirilmesi gerekir.
+\n
+\nErişilebilirlik ayarına istediğiniz zaman erişmek için ana ekrandaki giriş bağlantısını kullanabilirsiniz.
+\n
+\nBu uygulama herhangi bir kullanıcı verisi toplamaz. Hakkında ekranında Gizlilik Politikasının tüm içeriğini de inceleyebilirsiniz.</string>
+    <string name="option_battery_optimization_short_desc">Bu uygulama için devre dışı bırakmayı düşünün</string>
+</resources>
