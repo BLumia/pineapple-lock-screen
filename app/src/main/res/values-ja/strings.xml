@@ -1,2 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="msg_pls_enable_a11y_service_first">まずアクセシビリティーサービスを有効にしてください</string>
+    <string name="msg_action_open_a11y_settings">設定を開く</string>
+    <string name="privacy_policy">プライバシーポリシー</string>
+    <string name="menu">メニュー</string>
+    <string name="accessibility_service_prominent_disclosure_dlg_title">アクセシビリティーサービスの権限について</string>
+    <string name="accept">許可</string>
+    <string name="cancel">キャンセル</string>
+    <string name="settings">設定</string>
+    <string name="ok">はい</string>
+    <string name="details">詳細</string>
+    <string name="option_use_compat_method">互換性のあるショートカットの方法を使用</string>
+    <string name="card_a11y_action_go_to_setting">アクセシビリティーの設定</string>
+    <string name="card_shortcut_description">ロックを実行するショートカットアイコンを、ランチャーに作成できます。</string>
+    <string name="card_shortcut_action_create_shortcut">ショートカットアイコンを作成</string>
+    <string name="card_a11y_description">このアプリケーションを使用するには、以下のアクセシビリティーサービスを有効にする必要があります。
+\nサービスの有効化、無効化には、以下のリンクを使用するのが便利です。</string>
+    <string name="shortcut_name_lock">ロック</string>
+    <string name="open_source_licenses">オープンソースライセンス</string>
+    <string name="about">概要</string>
+    <string name="current_version">現在のバージョン</string>
+    <string name="app_name">Pineapple画面ロック</string>
+    <string name="app_launcher_name">画面をロック</string>
+    <string name="tile_service_label">画面をロック</string>
+    <string name="fab_lock_screen">画面をロック</string>
+    <string name="accessibility_service_label">Pineapple画面ロック - アクセシビリティーサービス</string>
+    <string name="source_code">ソースコード</string>
+    <string name="share">共有</string>
+    <string name="language">言語</string>
+    <string name="contribute_translation">翻訳に協力</string>
+    <string name="option_use_launcher_icon_to_lock">ロックにアプリケーションアイコンを使用</string>
+    <string name="option_use_launcher_icon_to_lock_desc">アプリケーションのアイコンをタップして画面をロック</string>
+    <string name="option_battery_optimization">バッテリー最適化の設定</string>
+    <string name="card_qstile_action_open_qs">クイック設定を開く</string>
+    <string name="rate_us">アプリを評価</string>
+    <string name="option_use_compat_method_long_desc">ランチャーの中には、互換性モードを使用すると、ウィジェットの一覧からホーム画面にショートカットをドラッグした際、角にアプリケーションのアイコンを表示させることなくショートカットアイコンを作成することができるものがあります。</string>
+    <string name="shortcut_name_powerdialog">電源ダイアログ</string>
+    <string name="option_use_compat_method_short_desc">ウィジェットでショートカットを作成する場合</string>
+    <string name="accessibility_service_description">このアクセシビリティーサービスは、Pineapple画面ロックアプリケーションに、画面のロックを行う権限を付与するためのものです。権限が付与されなければ、アプリケーションは機能しません。
+\n
+\nアクセシビリティーサービスを有効にするには、右上の角にある切り替えスイッチをタップし、次の画面で許可をタップしてください。2つ目のショートカットに関するスイッチを有効にする必要はありません。
+\n
+\n注意：
+\n1. メインのアプリケーションを強制終了した場合、このサービスを再度有効にする必要がある場合があります。
+\n2. サービスが有効になっている場合でも、アプリケーションが適切に動作しない場合、サービスを一度無効にして再び有効にしてみてください。</string>
+</resources>
