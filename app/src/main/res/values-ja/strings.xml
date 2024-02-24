@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="msg_pls_enable_a11y_service_first">まずアクセシビリティーサービスを有効にしてください</string>
+    <string name="msg_pls_enable_a11y_service_first">初めにアクセシビリティーサービスを有効にしてください</string>
     <string name="msg_action_open_a11y_settings">設定を開く</string>
     <string name="privacy_policy">プライバシーポリシー</string>
     <string name="menu">メニュー</string>
@@ -10,7 +10,7 @@
     <string name="settings">設定</string>
     <string name="ok">はい</string>
     <string name="details">詳細</string>
-    <string name="option_use_compat_method">互換性のあるショートカットの方法を使用</string>
+    <string name="option_use_compat_method">互換性モードを使用</string>
     <string name="card_a11y_action_go_to_setting">アクセシビリティーの設定</string>
     <string name="card_shortcut_description">ロックを実行するショートカットアイコンを、ランチャーに作成できます。</string>
     <string name="card_shortcut_action_create_shortcut">ショートカットアイコンを作成</string>
@@ -44,4 +44,28 @@
 \n注意：
 \n1. メインのアプリケーションを強制終了した場合、このサービスを再度有効にする必要がある場合があります。
 \n2. サービスが有効になっている場合でも、アプリケーションが適切に動作しない場合、サービスを一度無効にして再び有効にしてみてください。</string>
+    <string name="option_use_launcher_icon_to_lock_long_desc">このオプションを有効にすると、アクセシビリティーサービスが有効になっている間、アプリケーションの既定のアイコンをタップして画面をロックすることができます。
+\n
+\nこのオプションは、使用しているバージョンのAndroidで互換性モードが機能しなかったり、バッジのアイコンが付いているショートカットを使用したくなかったりする場合に利用できます。
+\n
+\nこれを有効にした場合、設定画面を開くには、既定のアプリケーションアイコンをタップして押し続けてショートカットメニューを開き、「設定」のメニューオプションを選択してください。</string>
+    <string name="accessibility_service_prominent_disclosure_dlg_desc">このアプリケーションは、画面ロックの機能にアクセシビリティーサービスを使用しています。アプリケーションを機能させるには、関連するサービスを有効にする必要があります。
+\n
+\nメイン画面のリンクから、アクセシビリティーの設定画面に移動することができます。
+\n
+\nこのアプリケーションはユーザーのデータを収集しません。概要からプライバシーポリシーを確認することもできます。</string>
+    <string name="option_battery_optimization_short_desc">アプリケーションを適切に動作させるために無効にすることを推奨します</string>
+    <string name="option_battery_optimization_long_desc">電話のモデルまたはROMの中には、バッテリー最適化の機能が非常に厳格であり、アプリケーションサービスをバックグラウンドで強制終了させるものがあります。アプリケーションが強制終了させられるたびに、ユーザーは、アクセシビリティーサービスを再び有効にする必要があります。
+\n
+\nこれを防ぐには、このアプリケーションに関するバッテリー最適化を、システム設定にて無効に設定してみてください。
+\n
+\n1. ドロップダウンで「全てのアプリケーション」を選択
+\n2. Pinapple画面ロックを選択し、スイッチを切るか、「最適化しない」を選択
+\n
+\nこの設定は、あなたの使用しているROMがこのアプリケーションのサービスを強制終了し続ける場合にのみ必要となります。アプリケーションが適切に機能している場合には、この設定は必要ありません。このアプリケーションのサービスは、画面ロックの機能を行うために必要なものであり、それ以外のことは行いません。なお、この設定はバッテリーの性能には影響を与えません。</string>
+    <string name="card_qstile_description">このアプリケーションでは、画面の電源を切るためのクイック設定タイルを配置することもできます。クイック設定のエリアを編集して、画面ロックのタイルを好きな場所にドラッグすると、これを追加することができます。</string>
+    <string name="app_widget_description">画面ロック用のサイズ変更可能なウィジェット</string>
+    <string name="loading_widget">読み込み中</string>
+    <string name="app_widget_name">画面ロック用ウィジェット</string>
+    <string name="get_plus_version">プラスバージョンを入手</string>
 </resources>
