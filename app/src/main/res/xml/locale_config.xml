@@ -6,10 +6,14 @@
     <locale android:name="zh-CN"/>
     <!-- German -->
     <locale android:name="de"/>
+    <!-- Japanese -->
+    <locale android:name="ja"/>
     <!-- Dutch -->
     <locale android:name="nl"/>
     <!-- Polish -->
     <locale android:name="pl"/>
     <!-- Brazilian Portuguese -->
     <locale android:name="pt-BR"/>
+    <!-- Turkish -->
+    <locale android:name="tr"/>
 </locale-config>

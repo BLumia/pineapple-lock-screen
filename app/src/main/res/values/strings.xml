@@ -46,4 +46,8 @@
     <string name="option_use_launcher_icon_to_lock">Use application icon to lock</string>
     <string name="option_use_launcher_icon_to_lock_desc">Tap the app icon to lock the screen</string>
     <string name="option_use_launcher_icon_to_lock_long_desc">Once this option is enabled, when accessibility service is enabled, you can then use this application\'s default icon to lock the screen.\n\nThis option is in case the compact method no longer works on newer android version and for users that don\'t want to have a badge icon on the shortcuts that they created.\n\nOnce enabled, you can still access the Settings screen to disable the option by tap and hold the default application icon to open the shortcut menu, and choose the Settings shortcut menu option.</string>
+    <string name="install_source">Install Source</string>
+    <string name="google_play">Google Play</string>
+    <string name="amazon_appstore">Amazon Appstore</string>
+    <string name="sideloaded">Side-loaded</string>
 </resources>

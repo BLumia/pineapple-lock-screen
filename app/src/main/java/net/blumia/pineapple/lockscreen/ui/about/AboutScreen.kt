@@ -1,18 +1,24 @@
 package net.blumia.pineapple.lockscreen.ui.about
 
+import android.content.Context
+import android.os.Build
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.platform.LocalContext
 import net.blumia.pineapple.lockscreen.BuildConfig
 import net.blumia.pineapple.lockscreen.R
 import net.blumia.pineapple.lockscreen.ui.icons.Translate
@@ -65,6 +71,25 @@ fun MutedIcon(
     }
 }
 
+fun getInstallerPackageDisplayName(context: Context): String {
+    fun pkgDisplayName(pkgName: String?): String {
+        return when (pkgName) {
+            "com.android.vending" -> context.getString(R.string.google_play)
+            "com.amazon.venezia" -> context.getString(R.string.amazon_appstore)
+            null -> context.getString(R.string.sideloaded)
+            else -> pkgName
+        }
+    }
+
+    runCatching {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+            return pkgDisplayName(context.packageManager.getInstallSourceInfo(context.packageName).installingPackageName)
+        @Suppress("DEPRECATION")
+        return pkgDisplayName(context.packageManager.getInstallerPackageName(context.packageName))
+    }
+    return "Unknown" // should be a bug
+}
+
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun AboutScreen(
@@ -81,7 +106,7 @@ fun AboutScreen(
             TopAppBar(
                 navigationIcon = {
                     IconButton(onClick = onBackBtnClicked) {
-                        Icon(Icons.Filled.ArrowBack, contentDescription = null)
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
                     }
                 },
                 title = { Text(stringResource(id = R.string.about)) }
@@ -99,6 +124,15 @@ fun AboutScreen(
                         MutedText(text = BuildConfig.VERSION_NAME)
                     }) {
                         Text(stringResource(id = R.string.current_version))
+                    }
+
+                    ListItem(trailing = {
+                        MutedText(text =
+                            if (LocalInspectionMode.current) "Preview"
+                            else (getInstallerPackageDisplayName(LocalContext.current))
+                        )
+                    }) {
+                        Text(stringResource(id = R.string.install_source))
                     }
 
                     ListItem(
@@ -140,21 +174,21 @@ fun AboutScreen(
 //                    }
                     ListItem(
                         modifier = Modifier.clickable { onPrivacyPolicyBtnClicked() },
-                        trailing = { MutedIcon(Icons.Default.KeyboardArrowRight) },
+                        trailing = { MutedIcon(Icons.AutoMirrored.Filled.KeyboardArrowRight) },
                     ) {
                         Text(stringResource(id = R.string.privacy_policy))
                     }
 
                     ListItem(
                         modifier = Modifier.clickable { onRateUsBtnClicked() },
-                        trailing = { MutedIcon(Icons.Default.KeyboardArrowRight) },
+                        trailing = { MutedIcon(Icons.AutoMirrored.Filled.KeyboardArrowRight) },
                     ) {
                         Text(stringResource(id = R.string.rate_us))
                     }
 
                     ListItem(
                         modifier = Modifier.clickable { onSourceCodeBtnClicked() },
-                        trailing = { MutedIcon(Icons.Default.KeyboardArrowRight) },
+                        trailing = { MutedIcon(Icons.AutoMirrored.Filled.KeyboardArrowRight) },
                     ) {
                         Text(stringResource(id = R.string.source_code))
                     }

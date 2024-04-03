@@ -10,7 +10,7 @@ import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.*
@@ -40,7 +40,7 @@ fun SettingsScreen(
             TopAppBar(
                 navigationIcon = {
                     IconButton(onClick = onBackBtnClicked) {
-                        Icon(Icons.Filled.ArrowBack, contentDescription = null)
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
                     }
                 },
                 title = { Text(stringResource(id = R.string.settings)) }
@@ -55,9 +55,11 @@ fun SettingsScreen(
                 "en",
                 "zh-CN",
                 "de",
+                "ja",
                 "nl",
                 "pl",
-                "pt-BR"
+                "pt-BR",
+                "tr"
             )
             val currentLocale = AppCompatDelegate.getApplicationLocales()[0]
                 ?: Locale.forLanguageTag(IntlLocale.current.toLanguageTag())
