@@ -67,4 +67,8 @@
 \nDeze functie is bedoeld voor als de compacte methode niet meer werkt op een nieuwere Android-versie en voor gebruikers die geen embleem op snelkoppelingen willen.
 \n
 \nNa het inschakelen heb je nog steeds toegang tot de instellingen om de functie weer uit te schakelen. Houd hiervoor het app-pictogram ingedrukt, open het snelkoppelingenmenu en druk op ‘Instellingen’.</string>
+    <string name="install_source">Herkomst</string>
+    <string name="google_play">Google Play</string>
+    <string name="amazon_appstore">Amazon Appstore</string>
+    <string name="sideloaded">Apk-bestand</string>
 </resources>
