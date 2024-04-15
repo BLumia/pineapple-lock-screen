@@ -68,4 +68,8 @@
 \nNach dem Aktivieren können Sie immer noch auf die Einstellungen zugreifen und die Option dort deaktivieren: Tippen Sie auf das Standardsymbol der Anwendung und halten Sie es gedrückt, um das Kontextmenü zu öffnen, und wählen Sie dort den Punkt „Einstellungen“.</string>
     <string name="option_use_launcher_icon_to_lock_desc">Auf das App-Icon tippen, um den Bildschirm zu sperren</string>
     <string name="option_use_launcher_icon_to_lock">Sperren mit App-Icon</string>
+    <string name="install_source">Installationsquelle</string>
+    <string name="google_play">Google Play</string>
+    <string name="amazon_appstore">Amazon Appstore</string>
+    <string name="sideloaded">Manuell installiert</string>
 </resources>
