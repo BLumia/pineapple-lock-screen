@@ -1,10 +1,10 @@
 plugins {
-    id 'com.android.application' version '8.1.2' apply false
-    id 'com.android.library' version '8.1.2' apply false
+    id 'com.android.application' version '8.5.0' apply false
+    id 'com.android.library' version '8.5.0' apply false
     // Compose compiler and kotlin version table: https://developer.android.com/jetpack/androidx/releases/compose-kotlin
     id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+tasks.register('clean', Delete) {
+    delete rootProject.layout.buildDirectory
 }

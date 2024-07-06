@@ -33,6 +33,7 @@ abstract class ShortcutActivity: Activity() {
             // Seems no longer works with Android 13. Anyway...
             val shortcutIntent = Intent(this, this::class.java)
             // val shortcutIntent: Intent = packageManager.getLaunchIntentForPackage(packageName) ?: Intent(this, this::class.java)
+            @Suppress("DEPRECATION")
             Intent().putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent)
                 .putExtra(Intent.EXTRA_SHORTCUT_NAME, shortLabel)
                 .putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(this, iconResource));
