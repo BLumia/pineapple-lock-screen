@@ -32,6 +32,9 @@ fun SettingsScreen(
     useLauncherIconToLock: Boolean = false,
     onUseLauncherIconToLockSwitchClicked: (Boolean) -> Unit = {},
     onUseLauncherIconToLockInfoButtonClicked: () -> Unit = {},
+    excludeFromRecents: Boolean = false,
+    onExcludeFromRecentsSwitchClicked: (Boolean) -> Unit = {},
+    onExcludeFromRecentsInfoBtnClicked: () -> Unit = {},
     onBatteryOptimizationBtnClicked: () -> Unit = {},
     onBatteryOptimizationInfoBtnClicked: () -> Unit = {},
 ) {
@@ -148,6 +151,28 @@ fun SettingsScreen(
                     }
                 }
             )
+
+            if (useLauncherIconToLock) {
+                ListItem(
+                    modifier = Modifier.toggleable(
+                        value = excludeFromRecents,
+                        onValueChange = onExcludeFromRecentsSwitchClicked
+                    ),
+                    text = { Text(stringResource(id = R.string.option_exclude_from_recents_screen)) },
+                    secondaryText = { Text(stringResource(id = R.string.option_exclude_from_recents_screen_desc)) },
+                    trailing = {
+                        Row {
+                            IconButton(onClick = onExcludeFromRecentsInfoBtnClicked) {
+                                Icon(Icons.Filled.Info, stringResource(id = R.string.details))
+                            }
+                            Switch(
+                                checked = excludeFromRecents,
+                                onCheckedChange = onExcludeFromRecentsSwitchClicked
+                            )
+                        }
+                    }
+                )
+            }
 
             ListItem(
                 modifier = Modifier.clickable { onBatteryOptimizationBtnClicked() },

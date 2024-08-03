@@ -24,7 +24,7 @@ android {
         }
     }
 
-    flavorDimensions "mode"
+    flavorDimensions = ["mode"]
     productFlavors {
         create("free") {
             dimension = "mode"

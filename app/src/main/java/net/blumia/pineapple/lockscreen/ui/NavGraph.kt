@@ -204,8 +204,13 @@ fun NavGraph(
                 PreferencesKeys.USE_LAUNCHER_ICON_TO_LOCK).collectAsState(
                 initial = false
             )
+            val excludeFromRecents by applicationContext.booleanPreference(
+                PreferencesKeys.EXCLUDE_FROM_RECENTS).collectAsState(
+                initial = false
+            )
             val msgCompatMethodDescString = stringResource(id = R.string.option_use_compat_method_long_desc)
             val msgLauncherIconToLockDescString = stringResource(id = R.string.option_use_launcher_icon_to_lock_long_desc)
+            val msgExcludeFromRecentsDescString = stringResource(id = R.string.option_exclude_from_recents_screen_long_desc)
             val msgBatteryOptimizationDescString = stringResource(id = R.string.option_battery_optimization_long_desc)
             var dialogText by remember { mutableStateOf("") }
             if (dialogText.isNotEmpty()) {
@@ -245,6 +250,15 @@ fun NavGraph(
                 },
                 onUseLauncherIconToLockInfoButtonClicked = {
                     dialogText = msgLauncherIconToLockDescString
+                },
+                excludeFromRecents = excludeFromRecents,
+                onExcludeFromRecentsSwitchClicked = { enabled ->
+                    coroutineScope.launch {
+                        applicationContext.setBooleanPreference(PreferencesKeys.EXCLUDE_FROM_RECENTS, enabled)
+                    }
+                },
+                onExcludeFromRecentsInfoBtnClicked = {
+                    dialogText = msgExcludeFromRecentsDescString
                 },
                 onBatteryOptimizationBtnClicked = {
                     val intent = Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)

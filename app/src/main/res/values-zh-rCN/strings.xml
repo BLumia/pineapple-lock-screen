@@ -50,4 +50,7 @@
     <string name="google_play">Google Play</string>
     <string name="amazon_appstore">Amazon Appstore</string>
     <string name="sideloaded">侧载</string>
+    <string name="option_exclude_from_recents_screen">从最近任务列表中排除</string>
+    <string name="option_exclude_from_recents_screen_desc">避免应用显示在最近任务列表中</string>
+    <string name="option_exclude_from_recents_screen_long_desc">当你使用应用程序图标进行锁屏时，此选项会尝试避免在你的 ROM 的“最近屏幕”或“最近应用列表”界面中显示此应用。\n\n此选项在大部分设备/ROM可以正常工作。如果你的设备/ROM会尝试停止不在最近应用列表中的应用程序的话，请保持此选项为关闭。\n\n此选项需配合“使用应用程序图标进行锁屏”一同使用。应用主屏幕内的“锁定屏幕”悬浮按钮并不受此选项控制。</string>
 </resources>

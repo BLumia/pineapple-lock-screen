@@ -50,4 +50,7 @@
     <string name="google_play">Google Play</string>
     <string name="amazon_appstore">Amazon Appstore</string>
     <string name="sideloaded">Side-loaded</string>
+    <string name="option_exclude_from_recents_screen">Exclude from the Recents screen</string>
+    <string name="option_exclude_from_recents_screen_desc">Avoid app shown in recent task list</string>
+    <string name="option_exclude_from_recents_screen_long_desc">This option will try to exclude the application to be shown in your ROM\'s \"Recents screen\" or \"Recent task list\" UI when you use the application icon to lock the screen.\n\nThis option should works in most Android devices/ROMs. If your device/ROM attempts to stop the application when its not in the recent task list, please keep this option off.\n\nThis option is intended to be used together with the \"Use application icon to lock\" option. The floating \"Lock Screen\" action button in the main screen is unaffected with this option.</string>
 </resources>

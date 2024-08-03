@@ -16,6 +16,7 @@ object PreferencesKeys {
     val PROMINENT_DISCLOSURE_ACCEPTED = booleanPreferencesKey("prominent_disclosure_accepted")
     val DEPRECATED_SHORTCUT_METHOD = booleanPreferencesKey("deprecated_shortcut_method")
     val USE_LAUNCHER_ICON_TO_LOCK = booleanPreferencesKey("use_launcher_icon_to_lock")
+    val EXCLUDE_FROM_RECENTS = booleanPreferencesKey("exclude_from_recents")
 }
 
 fun Context.stringPreference(key: Preferences.Key<String>) : Flow<String> {
@@ -30,6 +31,7 @@ private fun booleanDefaultValue(key: Preferences.Key<Boolean>): Boolean {
         PreferencesKeys.PROMINENT_DISCLOSURE_ACCEPTED -> !BuildConfig.PROMINENT_DISCLOSURE_REQUIRED
         PreferencesKeys.DEPRECATED_SHORTCUT_METHOD -> BuildConfig.USE_DEPRECATED_SHORTCUT_METHOD
         PreferencesKeys.USE_LAUNCHER_ICON_TO_LOCK -> false
+        PreferencesKeys.EXCLUDE_FROM_RECENTS -> false
         else -> false
     }
 }

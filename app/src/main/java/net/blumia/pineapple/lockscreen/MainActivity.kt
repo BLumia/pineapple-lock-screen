@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import net.blumia.pineapple.accessibility.A11yService
+import net.blumia.pineapple.lockscreen.preferences.PreferencesKeys.EXCLUDE_FROM_RECENTS
 import net.blumia.pineapple.lockscreen.preferences.PreferencesKeys.USE_LAUNCHER_ICON_TO_LOCK
 import net.blumia.pineapple.lockscreen.preferences.booleanPreference
 import net.blumia.pineapple.lockscreen.ui.NavGraph
@@ -33,8 +34,12 @@ class MainActivity : AppCompatActivity() {
             var deepLinked = false
             intent?.data?.let { deepLinked = true }
             if (!deepLinked) {
+                var removeTask: Boolean
+                runBlocking {
+                    removeTask = applicationContext.booleanPreference(EXCLUDE_FROM_RECENTS).first()
+                }
                 a11yService.lockScreen()
-                finishAffinity()
+                if (removeTask) finishAndRemoveTask() else finishAffinity()
                 return true
             }
         }
