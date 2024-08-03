@@ -71,4 +71,11 @@
     <string name="google_play">Google Play</string>
     <string name="amazon_appstore">Amazon Appstore</string>
     <string name="sideloaded">Apk-bestand</string>
+    <string name="option_exclude_from_recents_screen_long_desc">Deze optie zal proberen de applicatie uit te sluiten van de lijst \"Recente apps\" wanneer je het app-pictogram gebruikt om het scherm te vergrendelen.
+\n
+\nDeze optie zou moeten werken op de meeste Android-apparaten/-ROMs. Als je toestel/ROM de applicatie probeert te stoppen wanneer deze niet in de lijst staat, zet deze optie dan uit.
+\n
+\nDeze optie is bedoeld om samen met de optie \"Vergrendelen met app-pictogram\" te worden gebruikt. Deze optie heeft geen invloed op de zwevende actieknop \"Scherm vergrendelen\" in het hoofdscherm.</string>
+    <string name="option_exclude_from_recents_screen">Uitsluiten van Recente Apps</string>
+    <string name="option_exclude_from_recents_screen_desc">Voorkom dat deze app wordt opgenomen in de lijst met recente apps</string>
 </resources>
