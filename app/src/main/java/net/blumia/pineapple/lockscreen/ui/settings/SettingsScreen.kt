@@ -7,8 +7,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.toggleable
+import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Info
@@ -22,7 +23,7 @@ import androidx.core.os.LocaleListCompat
 import net.blumia.pineapple.lockscreen.R
 import java.util.*
 
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
     onBackBtnClicked: () -> Unit = {},
@@ -69,24 +70,17 @@ fun SettingsScreen(
 
             ExposedDropdownMenuBox(
                 expanded = expanded,
-                onExpandedChange = {
-                    expanded = !expanded
-                }
+                onExpandedChange = { expanded = it }
             ) {
                 ListItem(
-                    text = { Text(stringResource(id = R.string.language)) },
-                    trailing = {
-                        ExposedDropdownMenuDefaults.TrailingIcon(
-                            expanded = expanded
-                        )
-                    }
+                    modifier = Modifier.menuAnchor(MenuAnchorType.PrimaryNotEditable),
+                    headlineContent = { Text(stringResource(id = R.string.language)) },
+                    trailingContent = { ExposedDropdownMenuDefaults.TrailingIcon( expanded = expanded ) }
                 )
 
                 ExposedDropdownMenu(
                     expanded = expanded,
-                    onDismissRequest = {
-                        expanded = false
-                    }
+                    onDismissRequest = { expanded = false }
                 ) {
                     locales.forEach { languageTag ->
                         DropdownMenuItem(
@@ -97,16 +91,18 @@ fun SettingsScreen(
                                     LocaleListCompat.forLanguageTags(languageTag)
                                 )
                             },
-                            content = {
+                            text = {
                                 val locale = Locale.forLanguageTag(languageTag)
                                 Text(
                                     "${locale.getDisplayLanguage(locale)} (${
                                         locale.getDisplayLanguage(
                                             currentLocale
                                         )
-                                    })"
+                                    })",
+                                    style = MaterialTheme.typography.bodyLarge
                                 )
-                            }
+                            },
+                            contentPadding = ExposedDropdownMenuDefaults.ItemContentPadding,
                         )
                     }
                 }
@@ -117,9 +113,9 @@ fun SettingsScreen(
                     value = deprecatedShortcutMethodEnabled,
                     onValueChange = onDeprecatedShortcutSwitchClicked
                 ),
-                text = { Text(stringResource(id = R.string.option_use_compat_method)) },
-                secondaryText = { Text(stringResource(id = R.string.option_use_compat_method_short_desc)) },
-                trailing = {
+                headlineContent = { Text(stringResource(id = R.string.option_use_compat_method)) },
+                supportingContent = { Text(stringResource(id = R.string.option_use_compat_method_short_desc)) },
+                trailingContent = {
                     Row {
                         IconButton(onClick = onDeprecatedShortcutInfoBtnClicked) {
                             Icon(Icons.Filled.Info, stringResource(id = R.string.details))
@@ -137,9 +133,9 @@ fun SettingsScreen(
                     value = useLauncherIconToLock,
                     onValueChange = onUseLauncherIconToLockSwitchClicked
                 ),
-                text = { Text(stringResource(id = R.string.option_use_launcher_icon_to_lock)) },
-                secondaryText = { Text(stringResource(id = R.string.option_use_launcher_icon_to_lock_desc)) },
-                trailing = {
+                headlineContent = { Text(stringResource(id = R.string.option_use_launcher_icon_to_lock)) },
+                supportingContent = { Text(stringResource(id = R.string.option_use_launcher_icon_to_lock_desc)) },
+                trailingContent = {
                     Row {
                         IconButton(onClick = onUseLauncherIconToLockInfoButtonClicked) {
                             Icon(Icons.Filled.Info, stringResource(id = R.string.details))
@@ -158,9 +154,9 @@ fun SettingsScreen(
                         value = excludeFromRecents,
                         onValueChange = onExcludeFromRecentsSwitchClicked
                     ),
-                    text = { Text(stringResource(id = R.string.option_exclude_from_recents_screen)) },
-                    secondaryText = { Text(stringResource(id = R.string.option_exclude_from_recents_screen_desc)) },
-                    trailing = {
+                    headlineContent = { Text(stringResource(id = R.string.option_exclude_from_recents_screen)) },
+                    supportingContent = { Text(stringResource(id = R.string.option_exclude_from_recents_screen_desc)) },
+                    trailingContent = {
                         Row {
                             IconButton(onClick = onExcludeFromRecentsInfoBtnClicked) {
                                 Icon(Icons.Filled.Info, stringResource(id = R.string.details))
@@ -176,9 +172,9 @@ fun SettingsScreen(
 
             ListItem(
                 modifier = Modifier.clickable { onBatteryOptimizationBtnClicked() },
-                text = { Text(stringResource(id = R.string.option_battery_optimization)) },
-                secondaryText = { Text(stringResource(id = R.string.option_battery_optimization_short_desc)) },
-                trailing = {
+                headlineContent = { Text(stringResource(id = R.string.option_battery_optimization)) },
+                supportingContent = { Text(stringResource(id = R.string.option_battery_optimization_short_desc)) },
+                trailingContent = {
                     Row {
                         IconButton(onClick = onBatteryOptimizationInfoBtnClicked) {
                             Icon(Icons.Filled.Info, stringResource(id = R.string.details))

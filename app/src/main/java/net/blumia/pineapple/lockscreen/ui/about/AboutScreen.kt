@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Build
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
@@ -36,7 +36,7 @@ fun LineItem(
             .clickable { onClicked() }
             .padding(horizontal = 15.dp)
     ) {
-        ProvideTextStyle(MaterialTheme.typography.subtitle1) {
+        ProvideTextStyle(MaterialTheme.typography.titleMedium) {
             Text(
                 modifier = Modifier.align(Alignment.CenterVertically),
                 text = startText,
@@ -52,8 +52,8 @@ fun MutedText(
     modifier: Modifier = Modifier,
     text: String
 ) {
-    CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
-        ProvideTextStyle(MaterialTheme.typography.subtitle1) {
+    CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onSurfaceVariant) {
+        ProvideTextStyle(MaterialTheme.typography.titleMedium) {
             Text(
                 modifier = modifier,
                 text = text,
@@ -66,7 +66,7 @@ fun MutedText(
 fun MutedIcon(
     imageVector: ImageVector
 ) {
-    CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
+    CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onSurfaceVariant) {
         Icon(imageVector, null)
     }
 }
@@ -90,7 +90,7 @@ fun getInstallerPackageDisplayName(context: Context): String {
     return "Unknown" // should be a bug
 }
 
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AboutScreen(
     onBackBtnClicked: () -> Unit = {},
@@ -113,57 +113,57 @@ fun AboutScreen(
             )
         },
     ) { padding ->
-        Column(Modifier.fillMaxWidth().padding(padding)) {
-            Card(
+        Column(
+            Modifier.fillMaxWidth()
+                .padding(padding)
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+        ) {
+            OutlinedCard(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 5.dp, end = 5.dp, top = 5.dp, bottom = 0.dp),
+                    .fillMaxWidth(),
             ) {
                 Column() {
-                    ListItem(trailing = {
-                        MutedText(text = BuildConfig.VERSION_NAME)
-                    }) {
-                        Text(stringResource(id = R.string.current_version))
-                    }
+                    ListItem(
+                        headlineContent = { Text(stringResource(id = R.string.current_version)) },
+                        trailingContent = { MutedText(text = BuildConfig.VERSION_NAME) }
+                    )
 
-                    ListItem(trailing = {
-                        MutedText(text =
+                    ListItem(
+                        headlineContent = {
+                            Text(stringResource(id = R.string.install_source))
+                        },
+                        trailingContent = { MutedText(text =
                             if (LocalInspectionMode.current) "Preview"
                             else (getInstallerPackageDisplayName(LocalContext.current))
-                        )
-                    }) {
-                        Text(stringResource(id = R.string.install_source))
-                    }
+                        ) }
+                    )
 
                     ListItem(
                         modifier = Modifier.clickable { onShareBtnClicked() },
-                        trailing = { MutedIcon(Icons.Default.Share) },
-                    ) {
-                        Text(stringResource(id = R.string.share))
-                    }
+                        headlineContent = { Text(stringResource(id = R.string.share)) },
+                        trailingContent = { MutedIcon(Icons.Default.Share) },
+                    )
 
                     ListItem(
                         modifier = Modifier.clickable { onContributeTranslationBtnClicked() },
-                        trailing = { MutedIcon(Icons.Default.Translate) },
-                    ) {
-                        Text(stringResource(id = R.string.contribute_translation))
-                    }
+                        headlineContent = { Text(stringResource(id = R.string.contribute_translation)) },
+                        trailingContent = { MutedIcon(Icons.Default.Translate) },
+                    )
 
                     if (BuildConfig.PROMOTE_PLUS_VERSION) {
                         ListItem(
                             modifier = Modifier.clickable { onGetPlusVersionBtnClicked() },
-                            trailing = { MutedIcon(Icons.Default.Star) },
-                        ) {
-                            Text(stringResource(id = R.string.get_plus_version))
-                        }
+                            headlineContent = { Text(stringResource(id = R.string.get_plus_version)) },
+                            trailingContent = { MutedIcon(Icons.Default.Star) },
+                        )
                     }
                 }
             }
 
-            Card(
+            OutlinedCard(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(5.dp),
+                    .fillMaxWidth(),
             ) {
                 Column() {
 //                    ListItem(
@@ -174,24 +174,21 @@ fun AboutScreen(
 //                    }
                     ListItem(
                         modifier = Modifier.clickable { onPrivacyPolicyBtnClicked() },
-                        trailing = { MutedIcon(Icons.AutoMirrored.Filled.KeyboardArrowRight) },
-                    ) {
-                        Text(stringResource(id = R.string.privacy_policy))
-                    }
+                        headlineContent = { Text(stringResource(id = R.string.privacy_policy)) },
+                        trailingContent = { MutedIcon(Icons.AutoMirrored.Filled.KeyboardArrowRight) },
+                    )
 
                     ListItem(
                         modifier = Modifier.clickable { onRateUsBtnClicked() },
-                        trailing = { MutedIcon(Icons.AutoMirrored.Filled.KeyboardArrowRight) },
-                    ) {
-                        Text(stringResource(id = R.string.rate_us))
-                    }
+                        headlineContent = { Text(stringResource(id = R.string.rate_us)) },
+                        trailingContent = { MutedIcon(Icons.AutoMirrored.Filled.KeyboardArrowRight) },
+                    )
 
                     ListItem(
                         modifier = Modifier.clickable { onSourceCodeBtnClicked() },
-                        trailing = { MutedIcon(Icons.AutoMirrored.Filled.KeyboardArrowRight) },
-                    ) {
-                        Text(stringResource(id = R.string.source_code))
-                    }
+                        headlineContent = { Text(stringResource(id = R.string.source_code)) },
+                        trailingContent = { MutedIcon(Icons.AutoMirrored.Filled.KeyboardArrowRight) },
+                    )
                 }
             }
         }

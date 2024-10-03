@@ -9,7 +9,7 @@ import android.content.pm.ShortcutManager
 import android.net.Uri
 import android.provider.Settings
 import androidx.activity.compose.BackHandler
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -54,7 +54,7 @@ fun NavGraph(
             val msgString = stringResource(id = R.string.msg_pls_enable_a11y_service_first)
             val msgActionString = stringResource(id = R.string.msg_action_open_a11y_settings)
             val shortcutString = stringResource(id = R.string.shortcut_name_lock)
-            val scaffoldState = rememberScaffoldState()
+            val snackbarHostState = remember { SnackbarHostState() }
             val coroutineScope = rememberCoroutineScope()
             var showDialog by remember { mutableStateOf(false) }
 
@@ -110,7 +110,7 @@ fun NavGraph(
             })
             HomeScreen(
                 showDialog = showDialog,
-                scaffoldState = scaffoldState,
+                snackbarHostState = snackbarHostState,
                 onOpenA11ySettingsBtnClicked = {
                     prominentDisclosureDlg()
                 },
@@ -120,7 +120,7 @@ fun NavGraph(
                         a11yService.lockScreen()
                     } else {
                         coroutineScope.launch {
-                            when (scaffoldState.snackbarHostState.showSnackbar(msgString, msgActionString)) {
+                            when (snackbarHostState.showSnackbar(msgString, msgActionString)) {
                                 SnackbarResult.ActionPerformed -> prominentDisclosureDlg()
                                 SnackbarResult.Dismissed -> {}
                             }
@@ -133,7 +133,7 @@ fun NavGraph(
                         a11yService.powerDialog()
                     } else {
                         coroutineScope.launch {
-                            when (scaffoldState.snackbarHostState.showSnackbar(msgString, msgActionString)) {
+                            when (snackbarHostState.showSnackbar(msgString, msgActionString)) {
                                 SnackbarResult.ActionPerformed -> prominentDisclosureDlg()
                                 SnackbarResult.Dismissed -> {}
                             }
@@ -174,7 +174,7 @@ fun NavGraph(
                         a11yService.quickSettings()
                     } else {
                         coroutineScope.launch {
-                            when (scaffoldState.snackbarHostState.showSnackbar(msgString, msgActionString)) {
+                            when (snackbarHostState.showSnackbar(msgString, msgActionString)) {
                                 SnackbarResult.ActionPerformed -> prominentDisclosureDlg()
                                 SnackbarResult.Dismissed -> {}
                             }
