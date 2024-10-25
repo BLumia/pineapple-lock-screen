@@ -72,4 +72,7 @@
     <string name="google_play">Google Play</string>
     <string name="amazon_appstore">Amazon Appstore</string>
     <string name="sideloaded">Manuell installiert</string>
+    <string name="option_exclude_from_recents_screen_desc">Anzeigen der App in den letzten Tasks verhindern</string>
+    <string name="option_exclude_from_recents_screen_long_desc">Diese Option versucht, die App in den letzten Tasks oder vorherigen Apps deiner ROM zu verbergen, wenn du das Icon benutzt, um den Bildschirm zu sperren.\n\nDiese Option sollte auf den meisten Geräten und in den meisten ROMs funktionieren. Wenn dein Gerät/deine ROM die App beendet, wenn sie nicht in den letzten Tasks vorhanden ist, schalte die Option bitte aus.\n\nDiese Option ist für „Benutze App-Icon zum sperren“ gedacht. Der schwebende „Bildschirm-Sperren“-Button auf dem Hauptbildschirm ist hiervon unberührt.</string>
+    <string name="option_exclude_from_recents_screen">Nicht in den zuletzt genutzten Apps anzeigen</string>
 </resources>
