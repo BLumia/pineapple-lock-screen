@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "net.blumia.pineapple.lockscreen"
         minSdk 28
-        targetSdk 34
-        versionCode 13
-        versionName "1.4.0"
+        targetSdk 35
+        versionCode 14
+        versionName "2.0.0"
 
         manifestPlaceholders = [
             launcherIcon: "@mipmap/ic_launcher_green_lock",
@@ -26,7 +26,7 @@ android {
 
     flavorDimensions = ["mode"]
     productFlavors {
-        create("free") {
+        register("free") {
             dimension = "mode"
 
             resValue "bool", "supportQuickSettingsTile", "false"
@@ -36,7 +36,7 @@ android {
             buildConfigField "boolean", "PROMOTE_PLUS_VERSION", "true"
             buildConfigField "String", "STORE_LINK", "\"https://play.google.com/store/apps/details?id=%s\""
         }
-        create("plus") {
+        register("plus") {
             dimension = "mode"
             applicationIdSuffix = ".plus"
             versionNameSuffix = "-plus"
@@ -52,7 +52,7 @@ android {
             buildConfigField "boolean", "PROMOTE_PLUS_VERSION", "false"
             buildConfigField "String", "STORE_LINK", "\"https://play.google.com/store/apps/details?id=%s\""
         }
-        create("oss") {
+        register("oss") {
             dimension = "mode"
             applicationIdSuffix = ".oss"
             versionNameSuffix = "-oss"
@@ -99,21 +99,21 @@ android {
 dependencies {
     // Import the Compose BOM
     // BOM to library version mapping: https://developer.android.com/jetpack/compose/bom/bom-mapping
-    def composeBOM = platform('androidx.compose:compose-bom:2024.09.02')
+    def composeBOM = platform('androidx.compose:compose-bom:2024.11.00')
     implementation composeBOM
     androidTestImplementation composeBOM
     // Declare dependencies for the desired Compose libraries without versions
     implementation 'androidx.compose.foundation:foundation'
 
-    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.core:core-ktx:1.15.0'
     implementation "androidx.compose.ui:ui"
     implementation "androidx.compose.material3:material3"
     implementation "androidx.compose.ui:ui-tooling-preview"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.8.5'
-    implementation 'androidx.activity:activity-compose:1.9.2'
-    implementation "androidx.glance:glance-appwidget:1.1.0"
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.8.7'
+    implementation 'androidx.activity:activity-compose:1.9.3'
+    implementation "androidx.glance:glance-appwidget:1.1.1"
     implementation "androidx.datastore:datastore-preferences:1.1.1"
-    def nav_compose_version = '2.8.0'
+    def nav_compose_version = '2.8.4'
     implementation "androidx.navigation:navigation-compose:$nav_compose_version"
     def latestAppCompatVersion = "1.7.0"
     implementation "androidx.appcompat:appcompat:$latestAppCompatVersion"
