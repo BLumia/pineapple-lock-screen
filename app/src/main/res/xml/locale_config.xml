@@ -4,6 +4,9 @@
     <locale android:name="en"/>
     <!-- Simplified Chinese -->
     <locale android:name="zh-CN"/>
+    <!-- Traditional Chinese -->
+    <locale android:name="zh-HK"/>
+    <locale android:name="zh-TW"/>
     <!-- German -->
     <locale android:name="de"/>
     <!-- Japanese -->

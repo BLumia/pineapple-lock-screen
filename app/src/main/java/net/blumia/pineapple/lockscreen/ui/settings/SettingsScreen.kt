@@ -58,6 +58,8 @@ fun SettingsScreen(
             val locales = arrayOf( // should aligns to locale_config.xml
                 "en",
                 "zh-CN",
+                "zh-HK",
+                "zh-TW",
                 "de",
                 "ja",
                 "nl",
