@@ -4,6 +4,8 @@ import android.content.Context
 import android.os.Build
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -116,7 +118,8 @@ fun AboutScreen(
         Column(
             Modifier.fillMaxWidth()
                 .padding(padding)
-                .padding(16.dp),
+                .padding(16.dp)
+                .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             OutlinedCard(
@@ -133,12 +136,21 @@ fun AboutScreen(
                         headlineContent = {
                             Text(stringResource(id = R.string.install_source))
                         },
-                        trailingContent = { MutedText(text =
-                            if (LocalInspectionMode.current) "Preview"
-                            else (getInstallerPackageDisplayName(LocalContext.current))
-                        ) }
+                        trailingContent = {
+                            MutedText(
+                                text =
+                                    if (LocalInspectionMode.current) "Preview"
+                                    else (getInstallerPackageDisplayName(LocalContext.current))
+                            )
+                        }
                     )
-
+                }
+            }
+            OutlinedCard(
+                modifier = Modifier
+                    .fillMaxWidth(),
+            ) {
+                Column() {
                     ListItem(
                         modifier = Modifier.clickable { onShareBtnClicked() },
                         headlineContent = { Text(stringResource(id = R.string.share)) },
