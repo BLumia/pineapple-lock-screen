@@ -96,11 +96,7 @@ fun SettingsScreen(
                             text = {
                                 val locale = Locale.forLanguageTag(languageTag)
                                 Text(
-                                    "${locale.getDisplayLanguage(locale)} (${
-                                        locale.getDisplayLanguage(
-                                            currentLocale
-                                        )
-                                    })",
+                                    "${locale.getDisplayName(locale)} · ${locale.getDisplayName(currentLocale)}",
                                     style = MaterialTheme.typography.bodyLarge
                                 )
                             },

@@ -30,6 +30,7 @@ import net.blumia.pineapple.lockscreen.shortcuts.LockScreenShortcut
 import net.blumia.pineapple.lockscreen.ui.about.AboutScreen
 import net.blumia.pineapple.lockscreen.ui.home.HomeScreen
 import net.blumia.pineapple.lockscreen.ui.settings.SettingsScreen
+import androidx.core.net.toUri
 
 
 object MainDestinations {
@@ -293,38 +294,43 @@ fun NavGraph(
                 onGetPlusVersionBtnClicked = {
                     startActivity(
                         applicationContext,
-                        Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=net.blumia.pineapple.lockscreen.plus")),
+                        Intent(Intent.ACTION_VIEW,
+                            "http://play.google.com/store/apps/details?id=net.blumia.pineapple.lockscreen.plus".toUri()),
                         null
                     )
                 },
                 onPrivacyPolicyBtnClicked = {
                     val browserIntent =
-                        Intent(Intent.ACTION_VIEW, Uri.parse("https://sites.google.com/view/pineapplelockscreen-privacy/"))
+                        Intent(Intent.ACTION_VIEW,
+                            "https://sites.google.com/view/pineapplelockscreen-privacy/".toUri())
                     startActivity(applicationContext, browserIntent, null)
                 },
                 onRateUsBtnClicked = {
                     try {
                         startActivity(
                             applicationContext,
-                            Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackageName")),
+                            Intent(Intent.ACTION_VIEW, "market://details?id=$appPackageName".toUri()),
                             null
                         )
                     } catch (e: ActivityNotFoundException) {
                         startActivity(
                             applicationContext,
-                            Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=$appPackageName")),
+                            Intent(Intent.ACTION_VIEW,
+                                "http://play.google.com/store/apps/details?id=$appPackageName".toUri()),
                             null
                         )
                     }
                 },
                 onContributeTranslationBtnClicked = {
                     val browserIntent =
-                        Intent(Intent.ACTION_VIEW, Uri.parse("https://translate.codeberg.org/projects/pineapple-lock-screen/"))
+                        Intent(Intent.ACTION_VIEW,
+                            "https://translate.codeberg.org/projects/pineapple-lock-screen/".toUri())
                     startActivity(applicationContext, browserIntent, null)
                 },
                 onSourceCodeBtnClicked = {
                     val browserIntent =
-                        Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/BLumia/pineapple-lock-screen"))
+                        Intent(Intent.ACTION_VIEW,
+                            "https://github.com/BLumia/pineapple-lock-screen".toUri())
                     startActivity(applicationContext, browserIntent, null)
                 }
             )
