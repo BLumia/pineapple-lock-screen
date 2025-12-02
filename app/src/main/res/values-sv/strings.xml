@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_launcher_name">Lås skärmen</string>
+    <string name="about">Om</string>
+    <string name="tile_service_label">Lås skärmen</string>
+    <string name="shortcut_name_lock">Lås</string>
+    <string name="fab_lock_screen">Lås skärmen</string>
+    <string name="current_version">Aktuell version</string>
+</resources>
