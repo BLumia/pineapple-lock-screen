@@ -99,7 +99,7 @@ android {
 dependencies {
     // Import the Compose BOM
     // BOM to library version mapping: https://developer.android.com/jetpack/compose/bom/bom-mapping
-    def composeBOM = platform('androidx.compose:compose-bom:2025.10.00')
+    def composeBOM = platform('androidx.compose:compose-bom:2025.12.01')
     implementation composeBOM
     androidTestImplementation composeBOM
     // Declare dependencies for the desired Compose libraries without versions
@@ -110,10 +110,10 @@ dependencies {
     implementation "androidx.compose.material3:material3"
     implementation "androidx.compose.ui:ui-tooling-preview"
     implementation "androidx.compose.material:material-icons-core"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.9.4'
-    implementation 'androidx.activity:activity-compose:1.11.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.10.0'
+    implementation 'androidx.activity:activity-compose:1.12.2'
     implementation "androidx.glance:glance-appwidget:1.1.1"
-    implementation "androidx.datastore:datastore-preferences:1.1.7"
+    implementation "androidx.datastore:datastore-preferences:1.2.0"
     def nav_compose_version = '2.9.0'
     implementation "androidx.navigation:navigation-compose:$nav_compose_version"
     def latestAppCompatVersion = "1.7.1"
