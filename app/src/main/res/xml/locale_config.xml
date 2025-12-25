@@ -17,6 +17,8 @@
     <locale android:name="pl"/>
     <!-- Brazilian Portuguese -->
     <locale android:name="pt-BR"/>
+    <!-- Swedish -->
+    <locale android:name="sv"/>
     <!-- Turkish -->
     <locale android:name="tr"/>
 </locale-config>
