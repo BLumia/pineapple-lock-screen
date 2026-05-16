@@ -99,7 +99,7 @@ android {
 dependencies {
     // Import the Compose BOM
     // BOM to library version mapping: https://developer.android.com/jetpack/compose/bom/bom-mapping
-    def composeBOM = platform('androidx.compose:compose-bom:2026.03.00')
+    def composeBOM = platform('androidx.compose:compose-bom:2026.05.00')
     implementation composeBOM
     androidTestImplementation composeBOM
     // Declare dependencies for the desired Compose libraries without versions
