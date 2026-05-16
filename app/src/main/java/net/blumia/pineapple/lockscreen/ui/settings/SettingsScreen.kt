@@ -38,6 +38,7 @@ fun SettingsScreen(
     onExcludeFromRecentsInfoBtnClicked: () -> Unit = {},
     onBatteryOptimizationBtnClicked: () -> Unit = {},
     onBatteryOptimizationInfoBtnClicked: () -> Unit = {},
+    onAppIconBtnClicked: () -> Unit = {},
 ) {
     Scaffold(
         topBar = {
@@ -106,6 +107,17 @@ fun SettingsScreen(
                     }
                 }
             }
+
+            ListItem(
+                modifier = Modifier.clickable { onAppIconBtnClicked() },
+                headlineContent = { Text(stringResource(id = R.string.app_icon)) },
+                supportingContent = { Text(stringResource(id = R.string.app_icon_desc)) },
+                trailingContent = {
+                    IconButton(onClick = onAppIconBtnClicked) {
+                        Icon(Icons.Filled.Settings, stringResource(id = R.string.app_icon))
+                    }
+                }
+            )
 
             ListItem(
                 modifier = Modifier.toggleable(

@@ -5,6 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -17,6 +18,8 @@ object PreferencesKeys {
     val DEPRECATED_SHORTCUT_METHOD = booleanPreferencesKey("deprecated_shortcut_method")
     val USE_LAUNCHER_ICON_TO_LOCK = booleanPreferencesKey("use_launcher_icon_to_lock")
     val EXCLUDE_FROM_RECENTS = booleanPreferencesKey("exclude_from_recents")
+    val ICON_COLOR = stringPreferencesKey("icon_color")
+    val ICON_STYLE = stringPreferencesKey("icon_style")
 }
 
 fun Context.stringPreference(key: Preferences.Key<String>) : Flow<String> {

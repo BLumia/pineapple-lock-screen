@@ -18,16 +18,10 @@
             android:exported="true"
             android:theme="@style/Theme.PineappleLockScreen">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:scheme="pineapple-lock-screen" />
             </intent-filter>
-            <meta-data android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
         </activity>
         <service android:name="net.blumia.pineapple.accessibility.A11yService"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
@@ -59,6 +53,278 @@
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
+        <!-- Activity aliases for icon switching -->
+        <activity-alias
+            android:name=".MainActivityAliasGreenLock"
+            android:targetActivity=".MainActivity"
+            android:icon="@mipmap/ic_launcher_green_lock"
+            android:roundIcon="@mipmap/ic_launcher_green_round"
+            android:label="@string/app_launcher_name"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+        <activity-alias
+            android:name=".MainActivityAliasGreenPower"
+            android:targetActivity=".MainActivity"
+            android:icon="@mipmap/ic_launcher_green_power"
+            android:roundIcon="@mipmap/ic_launcher_green_power"
+            android:label="@string/app_launcher_name"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+        <activity-alias
+            android:name=".MainActivityAliasBlueLock"
+            android:targetActivity=".MainActivity"
+            android:icon="@mipmap/ic_launcher_blue_lock"
+            android:roundIcon="@mipmap/ic_launcher_blue_lock"
+            android:label="@string/app_launcher_name"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+        <activity-alias
+            android:name=".MainActivityAliasBluePower"
+            android:targetActivity=".MainActivity"
+            android:icon="@mipmap/ic_launcher_blue_power"
+            android:roundIcon="@mipmap/ic_launcher_blue_power"
+            android:label="@string/app_launcher_name"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+        <activity-alias
+            android:name=".MainActivityAliasRedLock"
+            android:targetActivity=".MainActivity"
+            android:icon="@mipmap/ic_launcher_red_lock"
+            android:roundIcon="@mipmap/ic_launcher_red_lock"
+            android:label="@string/app_launcher_name"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+        <activity-alias
+            android:name=".MainActivityAliasRedPower"
+            android:targetActivity=".MainActivity"
+            android:icon="@mipmap/ic_launcher_red_power"
+            android:roundIcon="@mipmap/ic_launcher_red_power"
+            android:label="@string/app_launcher_name"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+        <activity-alias
+            android:name=".MainActivityAliasOrangeLock"
+            android:targetActivity=".MainActivity"
+            android:icon="@mipmap/ic_launcher_orange_lock"
+            android:roundIcon="@mipmap/ic_launcher_orange_lock"
+            android:label="@string/app_launcher_name"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+        <activity-alias
+            android:name=".MainActivityAliasOrangePower"
+            android:targetActivity=".MainActivity"
+            android:icon="@mipmap/ic_launcher_orange_power"
+            android:roundIcon="@mipmap/ic_launcher_orange_power"
+            android:label="@string/app_launcher_name"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+        <activity-alias
+            android:name=".MainActivityAliasPurpleLock"
+            android:targetActivity=".MainActivity"
+            android:icon="@mipmap/ic_launcher_purple_lock"
+            android:roundIcon="@mipmap/ic_launcher_purple_lock"
+            android:label="@string/app_launcher_name"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+        <activity-alias
+            android:name=".MainActivityAliasPurplePower"
+            android:targetActivity=".MainActivity"
+            android:icon="@mipmap/ic_launcher_purple_power"
+            android:roundIcon="@mipmap/ic_launcher_purple_power"
+            android:label="@string/app_launcher_name"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+        <activity-alias
+            android:name=".MainActivityAliasPinkLock"
+            android:targetActivity=".MainActivity"
+            android:icon="@mipmap/ic_launcher_pink_lock"
+            android:roundIcon="@mipmap/ic_launcher_pink_lock"
+            android:label="@string/app_launcher_name"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+        <activity-alias
+            android:name=".MainActivityAliasPinkPower"
+            android:targetActivity=".MainActivity"
+            android:icon="@mipmap/ic_launcher_pink_power"
+            android:roundIcon="@mipmap/ic_launcher_pink_power"
+            android:label="@string/app_launcher_name"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+        <activity-alias
+            android:name=".MainActivityAliasCyanLock"
+            android:targetActivity=".MainActivity"
+            android:icon="@mipmap/ic_launcher_cyan_lock"
+            android:roundIcon="@mipmap/ic_launcher_cyan_lock"
+            android:label="@string/app_launcher_name"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+        <activity-alias
+            android:name=".MainActivityAliasCyanPower"
+            android:targetActivity=".MainActivity"
+            android:icon="@mipmap/ic_launcher_cyan_power"
+            android:roundIcon="@mipmap/ic_launcher_cyan_power"
+            android:label="@string/app_launcher_name"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+        <activity-alias
+            android:name=".MainActivityAliasIndigoLock"
+            android:targetActivity=".MainActivity"
+            android:icon="@mipmap/ic_launcher_indigo_lock"
+            android:roundIcon="@mipmap/ic_launcher_indigo_lock"
+            android:label="@string/app_launcher_name"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+        <activity-alias
+            android:name=".MainActivityAliasIndigoPower"
+            android:targetActivity=".MainActivity"
+            android:icon="@mipmap/ic_launcher_indigo_power"
+            android:roundIcon="@mipmap/ic_launcher_indigo_power"
+            android:label="@string/app_launcher_name"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+        <activity-alias
+            android:name=".MainActivityAliasYellowLock"
+            android:targetActivity=".MainActivity"
+            android:icon="@mipmap/ic_launcher_yellow_lock"
+            android:roundIcon="@mipmap/ic_launcher_yellow_lock"
+            android:label="@string/app_launcher_name"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+        <activity-alias
+            android:name=".MainActivityAliasYellowPower"
+            android:targetActivity=".MainActivity"
+            android:icon="@mipmap/ic_launcher_yellow_power"
+            android:roundIcon="@mipmap/ic_launcher_yellow_power"
+            android:label="@string/app_launcher_name"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+
         <activity
             android:name=".shortcuts.LockScreenShortcut"
             android:label="@string/shortcut_name_lock"

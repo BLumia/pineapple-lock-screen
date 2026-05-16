@@ -29,6 +29,7 @@ import net.blumia.pineapple.lockscreen.preferences.*
 import net.blumia.pineapple.lockscreen.shortcuts.LockScreenShortcut
 import net.blumia.pineapple.lockscreen.ui.about.AboutScreen
 import net.blumia.pineapple.lockscreen.ui.home.HomeScreen
+import net.blumia.pineapple.lockscreen.ui.settings.IconPickerScreen
 import net.blumia.pineapple.lockscreen.ui.settings.SettingsScreen
 import androidx.core.net.toUri
 
@@ -37,6 +38,7 @@ object MainDestinations {
     const val MAIN_ROUTE = "main"
     const val ABOUT_ROUTE = "about"
     const val SETTINGS_ROUTE = "settings"
+    const val ICON_PICKER_ROUTE = "icon_picker"
 }
 
 @Composable
@@ -268,6 +270,38 @@ fun NavGraph(
                 onBatteryOptimizationInfoBtnClicked = {
                     dialogText = msgBatteryOptimizationDescString
                 },
+                onAppIconBtnClicked = {
+                    navController.navigate(MainDestinations.ICON_PICKER_ROUTE)
+                },
+            )
+        }
+
+        composable(MainDestinations.ICON_PICKER_ROUTE) {
+            val applicationContext = LocalContext.current
+            val coroutineScope = rememberCoroutineScope()
+
+            val iconColorKey by applicationContext.stringPreference(
+                PreferencesKeys.ICON_COLOR).collectAsState(initial = "green")
+            val iconStyleKey by applicationContext.stringPreference(
+                PreferencesKeys.ICON_STYLE).collectAsState(initial = "lock")
+
+            val selectedColor = IconColor.fromKey(iconColorKey)
+            val selectedStyle = IconStyle.fromKey(iconStyleKey)
+
+            IconPickerScreen(
+                onBackBtnClicked = {
+                    navController.navigateUp()
+                },
+                selectedColor = selectedColor,
+                selectedStyle = selectedStyle,
+                onConfirmClicked = { color, style ->
+                    coroutineScope.launch {
+                        applicationContext.setStringPreference(PreferencesKeys.ICON_COLOR, color.key)
+                        applicationContext.setStringPreference(PreferencesKeys.ICON_STYLE, style.key)
+                        IconSwitcher.switchIcon(applicationContext, color, style)
+                        (applicationContext as? Activity)?.finishAffinity()
+                    }
+                }
             )
         }
 
