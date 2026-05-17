@@ -42,19 +42,23 @@ object IconSwitcher {
     fun switchIcon(context: Context, color: IconColor, style: IconStyle) {
         val pm = context.packageManager
         val packageName = context.packageName
+        val targetAlias = getAliasName(color, style)
+        val targetComponent = ComponentName(packageName, "net.blumia.pineapple.lockscreen$targetAlias")
+
+        pm.setComponentEnabledSetting(
+            targetComponent,
+            PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+            PackageManager.DONT_KILL_APP
+        )
 
         for (c in IconColor.entries) {
             for (s in IconStyle.entries) {
+                if (c == color && s == style) continue
                 val aliasName = getAliasName(c, s)
-                val component = ComponentName(packageName, "$packageName$aliasName")
-                val newState = if (c == color && s == style) {
-                    PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-                } else {
-                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED
-                }
+                val component = ComponentName(packageName, "net.blumia.pineapple.lockscreen$aliasName")
                 pm.setComponentEnabledSetting(
                     component,
-                    newState,
+                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
                     PackageManager.DONT_KILL_APP
                 )
             }
