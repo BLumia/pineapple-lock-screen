@@ -53,4 +53,20 @@
     <string name="accessibility_service_prominent_disclosure_dlg_desc">Este aplicativo utiliza o Serviço de Acessibilidade para fornecer a funcionalidade da tela de bloqueio. O serviço relacionado precisa estar habilitado para funcionar.\n\nVocê pode usar o link de entrada na tela principal para acessar as configurações de acessibilidade a qualquer momento.\n\nEste aplicativo não coleta dados do usuário. Você também pode consultar o conteúdo completo da Política de Privacidade na tela Sobre.</string>
     <string name="option_use_launcher_icon_to_lock">Use o ícone do aplicativo para bloquear</string>
     <string name="option_use_launcher_icon_to_lock_long_desc">Após ativar esta opção, quando o serviço de acessibilidade estiver ativado, você poderá usar o ícone padrão deste aplicativo para bloquear a tela.\n\nEsta opção é para o caso de o método de compatibilidade não funcionar mais em versões mais recentes do Android e para usuários que não desejam ter um emblema no ícone dos atalhos que criaram.\n\nApós a ativação, você ainda pode acessar a tela de Configurações para desativar esta opção tocando e segurando o ícone padrão do aplicativo para abrir o menu de atalhos e escolher a opção Configurações.</string>
+    <string name="icon_color_red">Vermelha</string>
+    <string name="icon_color_orange">Laranja</string>
+    <string name="icon_color_purple">Roxa</string>
+    <string name="icon_color_pink">Rosa</string>
+    <string name="icon_color_cyan">Ciano</string>
+    <string name="icon_color_indigo">Índigo</string>
+    <string name="icon_color_yellow">Amarela</string>
+    <string name="icon_style_lock">Bloqueio</string>
+    <string name="icon_style_power">Energia</string>
+    <string name="icon_restart_required">Toque em Aceitar para aplicar. O aplicativo pode ser fechado para que a alteração entre em vigor.</string>
+    <string name="app_icon">Ícone do aplicativo</string>
+    <string name="app_icon_desc">Personalize o ícone do aplicativo</string>
+    <string name="icon_color">Cor</string>
+    <string name="icon_style">Estilo</string>
+    <string name="icon_color_green">Verde</string>
+    <string name="icon_color_blue">Azul</string>
 </resources>
