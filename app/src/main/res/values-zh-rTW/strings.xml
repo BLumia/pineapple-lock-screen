@@ -53,4 +53,19 @@
     <string name="option_exclude_from_recents_screen">從最近任務列表中排除</string>
     <string name="option_exclude_from_recents_screen_desc">避免應用顯示在最近任務列表中</string>
     <string name="option_exclude_from_recents_screen_long_desc">當你使用應用程式圖標進行鎖屏時，此選項會嘗試避免在你的 ROM 的「最近屏幕」或「最近應用列表」介面中顯示此應用。\n\n此選項在大部分設備/ROM可以正常工作。如果你的設備/ROM會嘗試停止不在最近應用列表中的應用程序的話，請保持此選項為關閉。\n\n此選項需配合「使用應用程式圖標進行鎖屏」一同使用。應用主屏幕內的「鎖定屏幕」懸浮按鈕並不受此選項控制。</string>
+    <string name="app_icon">應用程式圖示</string>
+    <string name="app_icon_desc">自訂應用程式圖示</string>
+    <string name="icon_color">顏色</string>
+    <string name="icon_style">樣式</string>
+    <string name="icon_color_green">綠色</string>
+    <string name="icon_color_blue">藍色</string>
+    <string name="icon_color_red">紅色</string>
+    <string name="icon_color_orange">橙色</string>
+    <string name="icon_color_purple">紫色</string>
+    <string name="icon_color_pink">粉紅色</string>
+    <string name="icon_color_cyan">青色</string>
+    <string name="icon_color_indigo">靛藍色</string>
+    <string name="icon_color_yellow">黃色</string>
+    <string name="icon_style_lock">鎖定</string>
+    <string name="icon_style_power">電源</string>
 </resources>
