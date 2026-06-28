@@ -26,6 +26,9 @@ import net.blumia.pineapple.accessibility.openSystemA11ySettings
 import net.blumia.pineapple.lockscreen.BuildConfig
 import net.blumia.pineapple.lockscreen.R
 import net.blumia.pineapple.lockscreen.preferences.*
+import net.blumia.pineapple.lockscreen.shizuku.LockScreenMethod
+import net.blumia.pineapple.lockscreen.shizuku.ShizukuLockScreenManager
+import net.blumia.pineapple.lockscreen.shizuku.ShizukuLockScreenState
 import net.blumia.pineapple.lockscreen.shortcuts.LockScreenShortcut
 import net.blumia.pineapple.lockscreen.ui.about.AboutScreen
 import net.blumia.pineapple.lockscreen.ui.home.HomeScreen
@@ -63,8 +66,70 @@ fun NavGraph(
 
             val prominentDisclosureAccepted by applicationContext.booleanPreference(
                 PreferencesKeys.PROMINENT_DISCLOSURE_ACCEPTED).collectAsState(
-                initial = false
-            )
+                    initial = false
+                )
+
+            val lockScreenMethod by applicationContext.stringPreference(
+                PreferencesKeys.LOCK_SCREEN_METHOD, "accessibility"
+            ).collectAsState(initial = "accessibility")
+
+            val shizukuManager = remember { ShizukuLockScreenManager.getInstance(applicationContext) }
+            val shizukuState by shizukuManager.state.collectAsState()
+
+            LaunchedEffect(shizukuState) {
+                if (shizukuState is ShizukuLockScreenState.Ready) {
+                    snackbarHostState.showSnackbar(
+                        message = applicationContext.getString(R.string.msg_shizuku_ready)
+                    )
+                }
+            }
+
+            val prominentDisclosureDlg = {
+                if (!prominentDisclosureAccepted) {
+                    showDialog = true
+                } else {
+                    openSystemA11ySettings(applicationContext)
+                }
+            }
+
+            fun lockScreenWithPreferredMethod() {
+                when (lockScreenMethod) {
+                    "shizuku" -> {
+                        if (shizukuManager.isReady()) {
+                            shizukuManager.lockScreen()
+                        } else {
+                            coroutineScope.launch {
+                                val msg = when {
+                                    shizukuState is ShizukuLockScreenState.Connecting ->
+                                        applicationContext.getString(R.string.msg_shizuku_connecting)
+                                    shizukuState is ShizukuLockScreenState.Unavailable ->
+                                        applicationContext.getString(R.string.msg_shizuku_not_available)
+                                    shizukuState is ShizukuLockScreenState.NotGranted ->
+                                        applicationContext.getString(R.string.msg_shizuku_permission_denied)
+                                    else -> msgString
+                                }
+                                when (snackbarHostState.showSnackbar(msg, msgActionString)) {
+                                    SnackbarResult.ActionPerformed -> prominentDisclosureDlg()
+                                    SnackbarResult.Dismissed -> {}
+                                }
+                            }
+                        }
+                    }
+                    else -> {
+                        val a11yService = A11yService.instance()
+                        if (a11yService != null) {
+                            a11yService.lockScreen()
+                        } else {
+                            coroutineScope.launch {
+                                when (snackbarHostState.showSnackbar(msgString, msgActionString)) {
+                                    SnackbarResult.ActionPerformed -> prominentDisclosureDlg()
+                                    SnackbarResult.Dismissed -> {}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
             if (showDialog) {
                 AlertDialog(
@@ -98,14 +163,6 @@ fun NavGraph(
                 )
             }
 
-            val prominentDisclosureDlg = {
-                if (!prominentDisclosureAccepted) {
-                    showDialog = true
-                } else {
-                    openSystemA11ySettings(applicationContext)
-                }
-            }
-
             // Finish the activity so it will no longer be in the recent app screen.
             // For https://github.com/BLumia/pineapple-lock-screen/issues/3
             BackHandler(onBack = {
@@ -114,21 +171,13 @@ fun NavGraph(
             HomeScreen(
                 showDialog = showDialog,
                 snackbarHostState = snackbarHostState,
+                shizukuState = shizukuState,
+                lockScreenMethod = lockScreenMethod,
                 onOpenA11ySettingsBtnClicked = {
                     prominentDisclosureDlg()
                 },
                 onLockScreenBtnClicked = {
-                    val a11yService = A11yService.instance()
-                    if (a11yService != null) {
-                        a11yService.lockScreen()
-                    } else {
-                        coroutineScope.launch {
-                            when (snackbarHostState.showSnackbar(msgString, msgActionString)) {
-                                SnackbarResult.ActionPerformed -> prominentDisclosureDlg()
-                                SnackbarResult.Dismissed -> {}
-                            }
-                        }
-                    }
+                    lockScreenWithPreferredMethod()
                 },
                 onLockScreenBtnLongPressed = {
                     val a11yService = A11yService.instance()
@@ -205,12 +254,15 @@ fun NavGraph(
             )
             val useLauncherIconToLock by applicationContext.booleanPreference(
                 PreferencesKeys.USE_LAUNCHER_ICON_TO_LOCK).collectAsState(
-                initial = false
-            )
+                    initial = false
+                )
             val excludeFromRecents by applicationContext.booleanPreference(
                 PreferencesKeys.EXCLUDE_FROM_RECENTS).collectAsState(
-                initial = false
-            )
+                    initial = false
+                )
+            val lockScreenMethod by applicationContext.stringPreference(
+                PreferencesKeys.LOCK_SCREEN_METHOD, "accessibility"
+            ).collectAsState(initial = "accessibility")
             val msgCompatMethodDescString = stringResource(id = R.string.option_use_compat_method_long_desc)
             val msgLauncherIconToLockDescString = stringResource(id = R.string.option_use_launcher_icon_to_lock_long_desc)
             val msgExcludeFromRecentsDescString = stringResource(id = R.string.option_exclude_from_recents_screen_long_desc)
@@ -272,6 +324,12 @@ fun NavGraph(
                 },
                 onAppIconBtnClicked = {
                     navController.navigate(MainDestinations.ICON_PICKER_ROUTE)
+                },
+                lockScreenMethod = lockScreenMethod,
+                onLockScreenMethodChanged = { method ->
+                    coroutineScope.launch {
+                        applicationContext.setStringPreference(PreferencesKeys.LOCK_SCREEN_METHOD, method)
+                    }
                 },
             )
         }

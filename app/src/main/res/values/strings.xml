@@ -69,4 +69,16 @@
     <string name="icon_style_lock">Lock</string>
     <string name="icon_style_power">Power</string>
     <string name="icon_restart_required">Tap Accept to apply. The app may exit to make the change take effect.</string>
+    <string name="option_lock_screen_method">Lock screen method</string>
+    <string name="option_lock_screen_method_desc">Choose how to lock the screen</string>
+    <string name="method_accessibility">Accessibility Service</string>
+    <string name="method_shizuku">Shizuku</string>
+    <string name="card_shizuku_description">Shizuku provides a more reliable way to lock the screen without the accessibility service. Install and enable Shizuku to use this feature.</string>
+    <string name="card_shizuku_action_connect">Connect Shizuku</string>
+    <string name="msg_shizuku_not_available">Shizuku is not available. Please install Shizuku first.</string>
+    <string name="msg_shizuku_permission_denied">Shizuku permission not granted. Please grant permission in Shizuku.</string>
+    <string name="msg_shizuku_ready">Shizuku is ready</string>
+    <string name="msg_shizuku_connecting">Connecting to Shizuku…</string>
+    <string name="msg_shizuku_service_not_running">Shizuku service is not running. Please start it from the Shizuku app.</string>
+    <string name="card_shizuku_action_start_service">Start Shizuku Service</string>
 </resources>

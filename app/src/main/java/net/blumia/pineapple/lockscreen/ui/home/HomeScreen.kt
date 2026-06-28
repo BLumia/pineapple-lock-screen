@@ -13,13 +13,20 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import android.content.Intent
+import androidx.core.net.toUri
+import rikka.shizuku.Shizuku
 import net.blumia.pineapple.lockscreen.R
+import net.blumia.pineapple.lockscreen.shizuku.ShizukuLockScreenState
+import net.blumia.pineapple.lockscreen.shizuku.ShizukuLockScreenManager
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     showDialog: Boolean = false,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
+    shizukuState: ShizukuLockScreenState = ShizukuLockScreenState.Unavailable,
+    lockScreenMethod: String = "accessibility",
     onOpenA11ySettingsBtnClicked: () -> Unit = {},
     onLockScreenBtnClicked: () -> Unit = {},
     onOpenQuickSettingsBtnClicked: () -> Unit = {},
@@ -27,6 +34,7 @@ fun HomeScreen(
     onCreateShortcutBtnClicked: () -> Unit = {},
     onActionSettingsClicked: () -> Unit = {},
     onActionAboutClicked: () -> Unit = {},
+    onShizukuConnectClicked: () -> Unit = {},
 ) {
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) },
@@ -72,11 +80,91 @@ fun HomeScreen(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            MainScreenCard(
-                descriptionText = stringResource(id = R.string.card_a11y_description),
-                actionText = stringResource(id = R.string.card_a11y_action_go_to_setting),
-                onActionClicked = onOpenA11ySettingsBtnClicked
-            )
+            val context = LocalContext.current
+
+            if (lockScreenMethod == "shizuku") {
+                val manager = ShizukuLockScreenManager.getInstance(context)
+                val shizukuInstalled = manager.isShizukuInstalled()
+
+                when (shizukuState) {
+                    is ShizukuLockScreenState.Unavailable -> {
+                        if (shizukuInstalled) {
+                            MainScreenCard(
+                                descriptionText = stringResource(id = R.string.card_shizuku_description),
+                                actionText = stringResource(id = R.string.msg_shizuku_service_not_running),
+                                onActionClicked = {
+                                    manager.refreshState()
+                                    try {
+                                        context.packageManager.getLaunchIntentForPackage("moe.shizuku.privileged.api")
+                                            ?.let { context.startActivity(it) }
+                                    } catch (e: Exception) {}
+                                }
+                            )
+                        } else {
+                            MainScreenCard(
+                                descriptionText = stringResource(id = R.string.card_shizuku_description),
+                                actionText = stringResource(id = R.string.msg_shizuku_not_available),
+                                onActionClicked = {
+                                    manager.refreshState()
+                                    try {
+                                        context.packageManager.getLaunchIntentForPackage("moe.shizuku.privileged.api")
+                                            ?.let { context.startActivity(it) }
+                                    } catch (e: Exception) {
+                                        try {
+                                            val intent = Intent(Intent.ACTION_VIEW, "https://shizuku.rikka.app/download/".toUri())
+                                            context.startActivity(intent)
+                                        } catch (e2: Exception) {}
+                                    }
+                                }
+                            )
+                        }
+                    }
+                    is ShizukuLockScreenState.NotGranted -> {
+                        MainScreenCard(
+                            descriptionText = stringResource(id = R.string.card_shizuku_description),
+                            actionText = stringResource(id = R.string.card_shizuku_action_connect),
+                            onActionClicked = {
+                                manager.refreshState()
+                                if (Shizuku.getBinder() == null) {
+                                    try {
+                                        context.packageManager.getLaunchIntentForPackage("moe.shizuku.privileged.api")
+                                            ?.let { context.startActivity(it) }
+                                    } catch (e: Exception) {
+                                        try {
+                                            val intent = Intent(Intent.ACTION_VIEW, "https://shizuku.rikka.app/download/".toUri())
+                                            context.startActivity(intent)
+                                        } catch (e2: Exception) {}
+                                    }
+                                } else {
+                                    manager.requestPermission(1001)
+                                }
+                            }
+                        )
+                    }
+                    is ShizukuLockScreenState.Connecting -> {
+                        MainScreenCard(
+                            descriptionText = stringResource(id = R.string.card_shizuku_description),
+                            actionText = stringResource(id = R.string.msg_shizuku_connecting),
+                            onActionClicked = {
+                                manager.refreshState()
+                            }
+                        )
+                    }
+                    is ShizukuLockScreenState.Ready -> {
+                        MainScreenCard(
+                            descriptionText = stringResource(id = R.string.card_shizuku_description),
+                            actionText = stringResource(id = R.string.msg_shizuku_ready),
+                            onActionClicked = {}
+                        )
+                    }
+                }
+            } else {
+                MainScreenCard(
+                    descriptionText = stringResource(id = R.string.card_a11y_description),
+                    actionText = stringResource(id = R.string.card_a11y_action_go_to_setting),
+                    onActionClicked = onOpenA11ySettingsBtnClicked
+                )
+            }
 
             MainScreenCard(
                 descriptionText = stringResource(id = R.string.card_shortcut_description),

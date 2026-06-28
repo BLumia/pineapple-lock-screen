@@ -13,10 +13,13 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import net.blumia.pineapple.accessibility.A11yService
 import net.blumia.pineapple.lockscreen.preferences.PreferencesKeys.EXCLUDE_FROM_RECENTS
+import net.blumia.pineapple.lockscreen.preferences.PreferencesKeys.LOCK_SCREEN_METHOD
 import net.blumia.pineapple.lockscreen.preferences.PreferencesKeys.USE_LAUNCHER_ICON_TO_LOCK
 import net.blumia.pineapple.lockscreen.preferences.booleanPreference
+import net.blumia.pineapple.lockscreen.preferences.stringPreference
 import net.blumia.pineapple.lockscreen.ui.NavGraph
 import net.blumia.pineapple.lockscreen.ui.theme.PineappleLockScreenTheme
+import net.blumia.pineapple.lockscreen.shizuku.ShizukuLockScreenManager
 
 // For now, extend from AppCompatActivity.
 // Otherwise, setApplicationLocales will do nothing.
@@ -25,23 +28,41 @@ class MainActivity : AppCompatActivity() {
     // Return if the code should continue to run.
     private fun checkAndLockScreen(): Boolean {
         var shouldLock: Boolean
+        var method: String
         runBlocking {
             shouldLock = applicationContext.booleanPreference(USE_LAUNCHER_ICON_TO_LOCK).first()
+            method = applicationContext.stringPreference(LOCK_SCREEN_METHOD, "accessibility").first()
         }
         if (!shouldLock) return false
 
-        val a11yService = A11yService.instance()
-        if (a11yService != null) {
-            var deepLinked = false
-            intent?.data?.let { deepLinked = true }
-            if (!deepLinked) {
-                var removeTask: Boolean
-                runBlocking {
-                    removeTask = applicationContext.booleanPreference(EXCLUDE_FROM_RECENTS).first()
+        var deepLinked = false
+        intent?.data?.let { deepLinked = true }
+        if (deepLinked) return false
+
+        when (method) {
+            "shizuku" -> {
+                val manager = ShizukuLockScreenManager.getInstance(this)
+                if (manager.isReady()) {
+                    manager.lockScreen()
+                    var removeTask: Boolean
+                    runBlocking {
+                        removeTask = applicationContext.booleanPreference(EXCLUDE_FROM_RECENTS).first()
+                    }
+                    if (removeTask) finishAndRemoveTask() else finishAffinity()
+                    return true
                 }
-                a11yService.lockScreen()
-                if (removeTask) finishAndRemoveTask() else finishAffinity()
-                return true
+            }
+            else -> {
+                val a11yService = A11yService.instance()
+                if (a11yService != null) {
+                    a11yService.lockScreen()
+                    var removeTask: Boolean
+                    runBlocking {
+                        removeTask = applicationContext.booleanPreference(EXCLUDE_FROM_RECENTS).first()
+                    }
+                    if (removeTask) finishAndRemoveTask() else finishAffinity()
+                    return true
+                }
             }
         }
         return false
@@ -61,5 +82,10 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ShizukuLockScreenManager.getInstance(this).destroy()
     }
 }

@@ -20,12 +20,20 @@ object PreferencesKeys {
     val EXCLUDE_FROM_RECENTS = booleanPreferencesKey("exclude_from_recents")
     val ICON_COLOR = stringPreferencesKey("icon_color")
     val ICON_STYLE = stringPreferencesKey("icon_style")
+    val LOCK_SCREEN_METHOD = stringPreferencesKey("lock_screen_method")
 }
 
 fun Context.stringPreference(key: Preferences.Key<String>) : Flow<String> {
     return dataStore.data
         .map { preferences ->
             preferences[key] ?: ""
+        }
+}
+
+fun Context.stringPreference(key: Preferences.Key<String>, default: String) : Flow<String> {
+    return dataStore.data
+        .map { preferences ->
+            preferences[key] ?: default
         }
 }
 

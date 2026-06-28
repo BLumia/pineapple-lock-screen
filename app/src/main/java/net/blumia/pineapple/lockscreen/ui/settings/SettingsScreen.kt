@@ -21,6 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.os.LocaleListCompat
 import net.blumia.pineapple.lockscreen.R
+import net.blumia.pineapple.lockscreen.shizuku.LockScreenMethod
 import java.util.*
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -39,6 +40,8 @@ fun SettingsScreen(
     onBatteryOptimizationBtnClicked: () -> Unit = {},
     onBatteryOptimizationInfoBtnClicked: () -> Unit = {},
     onAppIconBtnClicked: () -> Unit = {},
+    lockScreenMethod: String = "accessibility",
+    onLockScreenMethodChanged: (String) -> Unit = {},
 ) {
     Scaffold(
         topBar = {
@@ -99,6 +102,48 @@ fun SettingsScreen(
                                 val locale = Locale.forLanguageTag(languageTag)
                                 Text(
                                     "${locale.getDisplayName(locale)} · ${locale.getDisplayName(currentLocale)}",
+                                    style = MaterialTheme.typography.bodyLarge
+                                )
+                            },
+                            contentPadding = ExposedDropdownMenuDefaults.ItemContentPadding,
+                        )
+                    }
+                }
+            }
+
+            var methodExpanded by remember { mutableStateOf(false) }
+            val lockMethods = remember {
+                listOf(
+                    Triple("accessibility", R.string.method_accessibility, R.string.card_a11y_description),
+                    Triple("shizuku", R.string.method_shizuku, R.string.card_shizuku_description)
+                )
+            }
+            val selectedMethod = lockMethods.find { it.first == lockScreenMethod } ?: lockMethods[0]
+
+            ExposedDropdownMenuBox(
+                expanded = methodExpanded,
+                onExpandedChange = { methodExpanded = it }
+            ) {
+                ListItem(
+                    modifier = Modifier.menuAnchor(MenuAnchorType.PrimaryNotEditable),
+                    headlineContent = { Text(stringResource(id = R.string.option_lock_screen_method)) },
+                    supportingContent = { Text(stringResource(id = R.string.option_lock_screen_method_desc)) },
+                    trailingContent = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = methodExpanded) }
+                )
+
+                ExposedDropdownMenu(
+                    expanded = methodExpanded,
+                    onDismissRequest = { methodExpanded = false }
+                ) {
+                    lockMethods.forEach { (key, labelRes, _) ->
+                        DropdownMenuItem(
+                            onClick = {
+                                methodExpanded = false
+                                onLockScreenMethodChanged(key)
+                            },
+                            text = {
+                                Text(
+                                    stringResource(id = labelRes),
                                     style = MaterialTheme.typography.bodyLarge
                                 )
                             },
