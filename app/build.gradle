@@ -10,8 +10,8 @@ android {
         applicationId "net.blumia.pineapple.lockscreen"
         minSdk 28
         targetSdk 37
-        versionCode 23
-        versionName "2.2.1"
+        versionCode 24
+        versionName "3.0.0"
 
         manifestPlaceholders = [
             launcherIcon: "@mipmap/ic_launcher_green_lock",
