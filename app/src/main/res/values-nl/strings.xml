@@ -94,4 +94,19 @@
     <string name="icon_style_lock">Vergrendelen</string>
     <string name="icon_style_power">Energie</string>
     <string name="icon_restart_required">Druk op de goedkeurknop om toe te passen. De app kan worden afgesloten om de wijziging toe te passen.</string>
+    <string name="option_lock_screen_method">Vergrendelschermmethode</string>
+    <string name="option_lock_screen_method_desc">Geef aan op welke manier het scherm vergrendeld moet worden</string>
+    <string name="method_accessibility">Toegankelijkheidsdienst</string>
+    <string name="method_shizuku">Shizuku</string>
+    <string name="card_shizuku_description">Shizuku kan worden gebruikt om het scherm te vergrendelen, zonder daarbij gebruik te maken van de toegankelijkheidsdienst. Installeer en schakel Shizuku in om te gebruiken.</string>
+    <string name="card_shizuku_action_connect">Verbinden met Shizuku</string>
+    <string name="msg_shizuku_not_available">Shizuku is niet beschikbaar — installeer Shizuku.</string>
+    <string name="msg_shizuku_permission_denied">De app heeft geen toegang gekregen. Verleen dit recht in Shizuku.</string>
+    <string name="msg_shizuku_ready">Shizuku is gereed</string>
+    <string name="msg_shizuku_connecting">Bezig met verbinden met Shizuku…</string>
+    <string name="msg_shizuku_service_not_running">De Shizuku-dienst is niet actief — start deze in de Shizuku-app.</string>
+    <string name="card_shizuku_action_start_service">Shizuku-dienst starten</string>
+    <string name="settings_section_lock_method">Vergrendelmethode</string>
+    <string name="settings_section_general">Algemeen</string>
+    <string name="settings_section_advanced">Geavanceerd</string>
 </resources>
