@@ -84,8 +84,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        ShizukuLockScreenManager.getInstance(this).destroy()
-    }
+    // Note: the Shizuku backend deliberately does NOT follow this activity's
+    // lifecycle. Locking via the launcher icon finishes this activity, and the
+    // UserService binding must survive that so the next icon tap still locks
+    // instantly. See ShizukuLockScreenManager for its actual teardown paths.
 }

@@ -20,6 +20,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navDeepLink
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import net.blumia.pineapple.accessibility.A11yService
 import net.blumia.pineapple.accessibility.openSystemA11ySettings
@@ -51,6 +52,21 @@ fun NavGraph(
 ) {
     val deepLinkScheme = "pineapple-lock-screen://"
 
+    val appContext = LocalContext.current.applicationContext
+
+    // Keep the Shizuku backend alive only while the Shizuku method is selected:
+    // the pure accessibility mode never initializes it, and switching away from
+    // the Shizuku method tears it down completely (and vice versa).
+    LaunchedEffect(Unit) {
+        appContext.stringPreference(PreferencesKeys.LOCK_SCREEN_METHOD, "accessibility").collect { method ->
+            if (method == "shizuku") {
+                ShizukuLockScreenManager.getInstance(appContext)
+            } else {
+                ShizukuLockScreenManager.peekInstance()?.destroy()
+            }
+        }
+    }
+
     NavHost(
         navController = navController,
         startDestination = startDestination
@@ -73,8 +89,17 @@ fun NavGraph(
                 PreferencesKeys.LOCK_SCREEN_METHOD, "accessibility"
             ).collectAsState(initial = "accessibility")
 
-            val shizukuManager = remember { ShizukuLockScreenManager.getInstance(applicationContext) }
-            val shizukuState by shizukuManager.state.collectAsState()
+            // Only initialize the Shizuku backend while the Shizuku method is
+            // actually selected; it stays null in the pure accessibility mode.
+            val shizukuManager = remember(lockScreenMethod) {
+                if (lockScreenMethod == "shizuku") {
+                    ShizukuLockScreenManager.getInstance(applicationContext)
+                } else {
+                    null
+                }
+            }
+            val shizukuState by shizukuManager?.state?.collectAsState()
+                ?: remember { mutableStateOf(ShizukuLockScreenState.Unavailable) }
 
             LaunchedEffect(shizukuState) {
                 if (shizukuState is ShizukuLockScreenState.Ready) {
@@ -95,7 +120,7 @@ fun NavGraph(
             fun lockScreenWithPreferredMethod() {
                 when (lockScreenMethod) {
                     "shizuku" -> {
-                        if (shizukuManager.isReady()) {
+                        if (shizukuManager != null && shizukuManager.isReady()) {
                             shizukuManager.lockScreen()
                         } else {
                             coroutineScope.launch {
@@ -108,10 +133,9 @@ fun NavGraph(
                                         applicationContext.getString(R.string.msg_shizuku_permission_denied)
                                     else -> msgString
                                 }
-                                when (snackbarHostState.showSnackbar(msg, msgActionString)) {
-                                    SnackbarResult.ActionPerformed -> prominentDisclosureDlg()
-                                    SnackbarResult.Dismissed -> {}
-                                }
+                                // Shizuku failures are unrelated to the accessibility
+                                // backend, so do not offer the a11y settings action here.
+                                snackbarHostState.showSnackbar(msg)
                             }
                         }
                     }

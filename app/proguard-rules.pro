@@ -21,3 +21,10 @@
 #-renamesourcefileattribute SourceFile
 
 -dontobfuscate
+
+# The Shizuku server instantiates LockScreenUserService in the user service
+# process via reflection (including its constructor), so it must survive
+# shrinking. See rikka.shizuku.server.UserService#create in Shizuku-API.
+-keep class net.blumia.pineapple.lockscreen.shizuku.LockScreenUserService {
+    public <init>(...);
+}
