@@ -9,7 +9,7 @@
     <string name="fab_lock_screen">锁定屏幕</string>
     <string name="open_source_licenses">开放源代码许可</string>
     <string name="current_version">当前版本</string>
-    <string name="card_a11y_description">此应用程序需要启用其对应的无障碍服务才能正常工作，您可以通过下面的按钮方便的开启或关闭相关服务。</string>
+    <string name="card_a11y_description">此应用程序需要启用其对应的无障碍服务才能正常工作，您可以通过下面的按钮方便地开启或关闭相关服务。</string>
     <string name="card_a11y_action_go_to_setting">无障碍设置</string>
     <string name="card_shortcut_description">您可以在启动器上添加快捷方式图标以便更方便的进行锁屏。</string>
     <string name="card_shortcut_action_create_shortcut">创建锁屏图标</string>
@@ -78,7 +78,7 @@
     <string name="msg_shizuku_not_available">Shizuku 不可用。请先安装 Shizuku。</string>
     <string name="msg_shizuku_permission_denied">未获得 Shizuku 权限。请在 Shizuku 中授权。</string>
     <string name="msg_shizuku_ready">Shizuku 已就绪</string>
-    <string name="msg_shizuku_connecting">正在连接到 Shizuku...</string>
+    <string name="msg_shizuku_connecting">正在连接到 Shizuku…</string>
     <string name="msg_shizuku_service_not_running">Shizuku 服务未在运行。请在其应用中启动服务。</string>
     <string name="card_shizuku_action_start_service">开启 Shizuku 服务</string>
     <string name="settings_section_lock_method">锁屏方式</string>
