@@ -1,13 +1,13 @@
 package net.blumia.pineapple.lockscreen.shortcuts
 
 import android.content.Intent
-import android.os.Build
-import android.os.Bundle
-import androidx.core.content.edit
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 import net.blumia.pineapple.accessibility.A11yService
 import net.blumia.pineapple.lockscreen.MainActivity
 import net.blumia.pineapple.lockscreen.R
 import net.blumia.pineapple.lockscreen.preferences.PreferencesKeys
+import net.blumia.pineapple.lockscreen.preferences.stringPreference
 import net.blumia.pineapple.lockscreen.shizuku.ShizukuLockScreenManager
 
 class LockScreenShortcut: ShortcutActivity() {
@@ -20,8 +20,14 @@ class LockScreenShortcut: ShortcutActivity() {
     }
 
     private fun getLockScreenMethod(): String {
-        val prefs = getSharedPreferences("settings", MODE_PRIVATE)
-        return prefs.getString(PreferencesKeys.LOCK_SCREEN_METHOD.name, "accessibility") ?: "accessibility"
+        // Read the same DataStore-backed preference that the settings UI
+        // writes to. A blocking read is acceptable here: this is a short-lived
+        // no-display activity, and MainActivity does the same for icon locking.
+        return runBlocking {
+            applicationContext.stringPreference(
+                PreferencesKeys.LOCK_SCREEN_METHOD, "accessibility"
+            ).first()
+        }
     }
 
     private fun lockScreenWithAccessibility() {
