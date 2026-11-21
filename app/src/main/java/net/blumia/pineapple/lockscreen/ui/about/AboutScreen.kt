@@ -128,14 +128,12 @@ fun AboutScreen(
             ) {
                 Column() {
                     ListItem(
-                        headlineContent = { Text(stringResource(id = R.string.current_version)) },
                         trailingContent = { MutedText(text = BuildConfig.VERSION_NAME) }
-                    )
+                    ) {
+                        Text(stringResource(id = R.string.current_version))
+                    }
 
                     ListItem(
-                        headlineContent = {
-                            Text(stringResource(id = R.string.install_source))
-                        },
                         trailingContent = {
                             MutedText(
                                 text =
@@ -143,7 +141,9 @@ fun AboutScreen(
                                     else (getInstallerPackageDisplayName(LocalContext.current))
                             )
                         }
-                    )
+                    ) {
+                        Text(stringResource(id = R.string.install_source))
+                    }
                 }
             }
             OutlinedCard(
@@ -153,22 +153,25 @@ fun AboutScreen(
                 Column() {
                     ListItem(
                         modifier = Modifier.clickable { onShareBtnClicked() },
-                        headlineContent = { Text(stringResource(id = R.string.share)) },
                         trailingContent = { MutedIcon(Icons.Default.Share) },
-                    )
+                    ) {
+                        Text(stringResource(id = R.string.share))
+                    }
 
                     ListItem(
                         modifier = Modifier.clickable { onContributeTranslationBtnClicked() },
-                        headlineContent = { Text(stringResource(id = R.string.contribute_translation)) },
                         trailingContent = { MutedIcon(Icons.Default.Translate) },
-                    )
+                    ) {
+                        Text(stringResource(id = R.string.contribute_translation))
+                    }
 
                     if (BuildConfig.PROMOTE_PLUS_VERSION) {
                         ListItem(
                             modifier = Modifier.clickable { onGetPlusVersionBtnClicked() },
-                            headlineContent = { Text(stringResource(id = R.string.get_plus_version)) },
                             trailingContent = { MutedIcon(Icons.Default.Star) },
-                        )
+                        ) {
+                            Text(stringResource(id = R.string.get_plus_version))
+                        }
                     }
                 }
             }
@@ -186,21 +189,24 @@ fun AboutScreen(
 //                    }
                     ListItem(
                         modifier = Modifier.clickable { onPrivacyPolicyBtnClicked() },
-                        headlineContent = { Text(stringResource(id = R.string.privacy_policy)) },
                         trailingContent = { MutedIcon(Icons.AutoMirrored.Filled.KeyboardArrowRight) },
-                    )
+                    ) {
+                        Text(stringResource(id = R.string.privacy_policy))
+                    }
 
                     ListItem(
                         modifier = Modifier.clickable { onRateUsBtnClicked() },
-                        headlineContent = { Text(stringResource(id = R.string.rate_us)) },
                         trailingContent = { MutedIcon(Icons.AutoMirrored.Filled.KeyboardArrowRight) },
-                    )
+                    ) {
+                        Text(stringResource(id = R.string.rate_us))
+                    }
 
                     ListItem(
                         modifier = Modifier.clickable { onSourceCodeBtnClicked() },
-                        headlineContent = { Text(stringResource(id = R.string.source_code)) },
                         trailingContent = { MutedIcon(Icons.AutoMirrored.Filled.KeyboardArrowRight) },
-                    )
+                    ) {
+                        Text(stringResource(id = R.string.source_code))
+                    }
                 }
             }
         }

@@ -17,8 +17,8 @@ import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.text.intl.Locale as IntlLocale
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalLocale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -77,8 +77,7 @@ fun SettingsScreen(
                 onExpandedChange = { methodExpanded = it }
             ) {
                 ListItem(
-                    modifier = Modifier.menuAnchor(MenuAnchorType.PrimaryNotEditable),
-                    headlineContent = { Text(stringResource(id = R.string.option_lock_screen_method)) },
+                    modifier = Modifier.menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable),
                     supportingContent = { Text(stringResource(id = R.string.option_lock_screen_method_desc)) },
                     trailingContent = {
                         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -90,7 +89,9 @@ fun SettingsScreen(
                             ExposedDropdownMenuDefaults.TrailingIcon(expanded = methodExpanded)
                         }
                     }
-                )
+                ) {
+                    Text(stringResource(id = R.string.option_lock_screen_method))
+                }
 
                 ExposedDropdownMenu(
                     expanded = methodExpanded,
@@ -125,15 +126,14 @@ fun SettingsScreen(
                 "de", "ja", "nl", "pl", "pt-BR", "sv", "tr"
             )
             val currentLocale = AppCompatDelegate.getApplicationLocales()[0]
-                ?: Locale.forLanguageTag(IntlLocale.current.toLanguageTag())
+                ?: Locale.forLanguageTag(LocalLocale.current.toLanguageTag())
 
             ExposedDropdownMenuBox(
                 expanded = langExpanded,
                 onExpandedChange = { langExpanded = it }
             ) {
                 ListItem(
-                    modifier = Modifier.menuAnchor(MenuAnchorType.PrimaryNotEditable),
-                    headlineContent = { Text(stringResource(id = R.string.language)) },
+                    modifier = Modifier.menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable),
                     trailingContent = {
                         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             Text(
@@ -144,7 +144,9 @@ fun SettingsScreen(
                             ExposedDropdownMenuDefaults.TrailingIcon(expanded = langExpanded)
                         }
                     }
-                )
+                ) {
+                    Text(stringResource(id = R.string.language))
+                }
 
                 ExposedDropdownMenu(
                     expanded = langExpanded,
@@ -173,14 +175,15 @@ fun SettingsScreen(
 
             ListItem(
                 modifier = Modifier.clickable { onAppIconBtnClicked() },
-                headlineContent = { Text(stringResource(id = R.string.app_icon)) },
                 supportingContent = { Text(stringResource(id = R.string.app_icon_desc)) },
                 trailingContent = {
                     IconButton(onClick = onAppIconBtnClicked) {
                         Icon(Icons.Filled.Settings, stringResource(id = R.string.app_icon))
                     }
                 }
-            )
+            ) {
+                Text(stringResource(id = R.string.app_icon))
+            }
 
             HorizontalDivider()
 
@@ -215,14 +218,15 @@ fun SettingsScreen(
 
             ListItem(
                 modifier = Modifier.clickable { onBatteryOptimizationBtnClicked() },
-                headlineContent = { Text(stringResource(id = R.string.option_battery_optimization)) },
                 supportingContent = { Text(stringResource(id = R.string.option_battery_optimization_short_desc)) },
                 trailingContent = {
                     IconButton(onClick = onBatteryOptimizationInfoBtnClicked) {
                         Icon(Icons.Filled.Info, stringResource(id = R.string.details))
                     }
                 }
-            )
+            ) {
+                Text(stringResource(id = R.string.option_battery_optimization))
+            }
         }
     }
 }
@@ -250,7 +254,6 @@ private fun SwitchSettingItem(
             value = checked,
             onValueChange = onCheckedChange
         ),
-        headlineContent = { Text(title) },
         supportingContent = { Text(subtitle) },
         trailingContent = {
             Row {
@@ -263,7 +266,9 @@ private fun SwitchSettingItem(
                 )
             }
         }
-    )
+    ) {
+        Text(title)
+    }
 }
 
 @Composable
