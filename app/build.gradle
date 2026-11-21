@@ -4,7 +4,11 @@ plugins {
 }
 
 android {
-    compileSdk = 37
+    compileSdk {
+        version = release(37) {
+            it.minorApiLevel = 1
+        }
+    }
 
     defaultConfig {
         applicationId "net.blumia.pineapple.lockscreen"
